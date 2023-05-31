@@ -1,0 +1,44 @@
+<%- include('./partials/header') %>
+
+
+
+<form action="/resume" method="POST">
+    <fieldset>
+        <div class="container text-center">
+            <div class="row">
+              <div class="col">
+                <div class="mb-3">
+                    <label for="formFile" class="form-label">Default file input example</label>
+                    <input class="form-control" type="file" id="formFile">
+                </div>
+                <button type ="reset" class="btn btn-primary">Reset</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+      
+      
+              <div class="col">
+                <div class="mb-3">
+                    
+                    <label for="experience" class="form-label">Paste Your Previous Internships & Experience</label>
+
+                    <textarea class="form-control" id="exp" name="exp" rows="3"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="projects" class="form-label">Write About Your Past Projects</label>
+
+                    <textarea class="form-control" id="proj" name="proj" rows="3"></textarea>
+                </div>
+                <button type ="reset" class="btn btn-primary">Reset</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+              
+            </div>
+      
+            
+          </div>
+    </fieldset>
+    
+  </form>
+
+
+  <%- include('./partials/footer') %>

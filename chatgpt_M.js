@@ -2,6 +2,16 @@ const { Configuration, OpenAIApi } = require("openai");
 const readlineSync = require("readline-sync");
 require("dotenv").config();
 
+var sqlite3 = require('sqlite3').verbose();
+var express = require('express');
+var http = require('http');
+var path = require("path");
+var bodyParser = require('body-parser');
+var helmet = require('helmet');
+var rateLimit = require("express-rate-limit");
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: true }));
+
 (async () => {
   const configuration = new Configuration({
     apiKey: process.env.OPENAI_API_KEY,
