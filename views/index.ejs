@@ -8,11 +8,16 @@
             <div class="row">
               <div class="col">
                 <div class="mb-3">
-                    <label for="formFile" class="form-label">Default file input example</label>
+                    <label for="formFile" class="form-label">Job Desciption Upload</label>
                     <input class="form-control" type="file" id="formFile">
                 </div>
-                <button type ="reset" class="btn btn-primary">Reset</button>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <div class="mb-3">
+                    
+                    <label for="experience" class="form-label">Paste The job Description</label>
+
+                    <textarea class="form-control" id="jd" name="jd" rows="8"></textarea>
+                </div>
+
               </div>
       
       
@@ -21,17 +26,17 @@
                     
                     <label for="experience" class="form-label">Paste Your Previous Internships & Experience</label>
 
-                    <textarea class="form-control" id="exp" name="exp" rows="3"></textarea>
+                    <textarea class="form-control" id="exp" name="exp" rows="8"></textarea>
                 </div>
                 <div class="mb-3">
                     <label for="projects" class="form-label">Write About Your Past Projects</label>
 
-                    <textarea class="form-control" id="proj" name="proj" rows="3"></textarea>
+                    <textarea class="form-control" id="proj" name="proj" rows="8"></textarea>
                 </div>
-                <button type ="reset" class="btn btn-primary">Reset</button>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                
               </div>
-              
+              <button type ="reset" class="btn btn-primary">Clear All</button>
+                <button type="submit" class="btn btn-primary">Generate Answers</button>
             </div>
       
             
@@ -39,6 +44,33 @@
     </fieldset>
     
   </form>
+
+  <br>
+
+  <div class="cardz">
+    <div class="card-container">
+      <div class="card text-center p-4 shadow" style="width: 18rem; border-radius: 20px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.1);">
+        <h2 class="card-title pb-3" >Upload Your CV</h2>
+          <img class="card-img-top" id="uploadImage" src="/folder.png" alt="Card image cap">
+        <p>Drag and Drop Files here</p>
+        
+      </div>
+    </div>
+    
+    <div class="card-container">
+      <div class="card text-center p-4 shadow" style="width: 18rem; border-radius: 20px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.1);">
+        <h2 class="card-title pb-3" >Upload Your CV</h2>
+          <img class="card-img-top" id="uploadImage" src="/folder.png" alt="Card image cap">
+        <p>Drag and Drop Files here</p>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control rounded-pill border border-dashed border-secondary" placeholder="Paste Your JD Link" aria-label="Input Field" aria-describedby="button-addon2">
+        </div>
+      </div>
+    </div>
+    
+
+  </div>
+  
 
 
   <%- include('./partials/footer') %>

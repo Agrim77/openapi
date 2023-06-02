@@ -1,0 +1,26 @@
+*{
+    margin:0;
+    padding:0;
+}
+body{
+    background-color: #b53dff;
+   }
+.cardz{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.card-container {
+    margin: 3rem;
+  }
+  .card-container h2{
+    color: #9d35de;
+  }
+  .card-container p{
+    color: gray;
+  }
+footer{
+    margin-top: 3%;
+    text-align: center;
+   }

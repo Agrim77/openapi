@@ -6,11 +6,13 @@ const rateLimit = require("express-rate-limit");
 const bodyParser = require('body-parser');
 const { log } = require('console');
 const port = 3000;
+const { model1 } = require('./chatgpt_M.js');
 
 //create app
 const app = express()
-app.use('/app',express.static(path.join('../app')))
-app.use('/public',express.static(path.join('../public')))
+// app.use('/app',express.static(path.join('../app')))
+// app.use('/public',express.static(path.join('../public')))
+app.use(express.static('public'))
 
 // always code for body-parser
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -24,8 +26,8 @@ const limiter = rateLimit({
   });
 
 //middlewares
-// app.use(helmet());
-// app.use(limiter);
+app.use(helmet());
+app.use(limiter);
 
 
 //register view-engine
@@ -41,8 +43,12 @@ app.get('/', (req,res) => {
 })
 
 app.post('/resume', (req, res) => {
-    console.log(`Inside post resume route ${port}`);
-    console.log(req.body);
+    const exp = req.body.exp;
+    const proj = req.body.proj;
+    const jd = req.body.jd;
+    // console.log(`Experince: ${exp} \n Projects: ${proj}`);
+    const cv = "Past Experience: "+ exp + "and personal projects :"+ proj;
+    // model1(jd, cv);
   res.render('success');
 })
 
