@@ -48,7 +48,8 @@ app.post('/resume', (req, res) => {
     const jd = req.body.jd;
     // console.log(`Experince: ${exp} \n Projects: ${proj}`);
     const cv = "Past Experience: "+ exp + "and personal projects :"+ proj;
-    // model1(jd, cv);
+    // console.log(`${cv} \n`);
+    model1(jd, cv);
   res.render('success');
 })
 

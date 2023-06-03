@@ -3,8 +3,20 @@
     padding:0;
 }
 body{
-    background-color: #b53dff;
+    background-color: #800e49;
    }
+.navb{
+  background-color: #790e44;
+    display: flex;
+    justify-content:space-between;
+    padding-left: 8px;
+    padding-right: 5px;
+    /* align-items: */
+  }
+  .navb a{
+    text-decoration: none;
+    color: #d88bb4;
+  }
 .cardz{
     display: flex;
     flex-direction: column;
