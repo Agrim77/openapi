@@ -45,9 +45,11 @@ app.get('/', (req,res) => {
 app.post('/resume', (req, res) => {
     const exp = req.body.exp;
     const proj = req.body.proj;
+    const skills = req.body.skills;
     const jd = req.body.jd;
+    const ach = req.body.ach;
     // console.log(`Experince: ${exp} \n Projects: ${proj}`);
-    const cv = "Past Experience: "+ exp + "and personal projects :"+ proj;
+    const cv = "Past Experience: "+ exp + "and personal projects :"+ proj +" Skills:"+skills+" Achievements: " + ach;
     // console.log(`${cv} \n`);
     model1(jd, cv);
   res.render('success');

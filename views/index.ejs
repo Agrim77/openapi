@@ -1,74 +1,84 @@
 <%- include('./partials/header') %>
 
+<!---HERO Section-->
 
+<div class="hero">
 
-<form action="/resume" method="POST">
-    <fieldset>
-        <div class="container text-center">
-            <div class="row">
-              <div class="col">
-                <div class="mb-3">
-                    <label for="formFile" class="form-label">Job Desciption Upload</label>
-                    <input class="form-control" type="file" id="formFile">
-                </div>
-                <div class="mb-3">
-                    
-                    <label for="experience" class="form-label">Paste The job Description</label>
-
-                    <textarea class="form-control" id="jd" name="jd" rows="8"></textarea>
-                </div>
-
-              </div>
-      
-      
-              <div class="col">
-                <div class="mb-3">
-                    
-                    <label for="experience" class="form-label">Paste Your Previous Internships & Experience</label>
-
-                    <textarea class="form-control" id="exp" name="exp" rows="8"></textarea>
-                </div>
-                <div class="mb-3">
-                    <label for="projects" class="form-label">Write About Your Past Projects</label>
-
-                    <textarea class="form-control" id="proj" name="proj" rows="8"></textarea>
-                </div>
-                
-              </div>
-              <button type ="reset" class="btn btn-primary">Clear All</button>
-                <button type="submit" class="btn btn-primary">Generate Answers</button>
-            </div>
-      
-            
-          </div>
-    </fieldset>
-    
-  </form>
-
-  <br>
-  <div class="cardz">
-    <div class="card-container">
-      <div class="card text-center p-4 shadow" style="width: 18rem; border-radius: 20px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.1);">
-        <h2 class="card-title pb-3" >Upload Your CV</h2>
-          <img class="card-img-top" id="uploadImage" src="/folder.png" alt="Card image cap">
-        <p>Drag and Drop Files here</p>
-        
-      </div>
+  <div class="intro">
+    <div class="hero_header">
+      <h4>GET JOBY READY - INTERVIEW HACKS</h4>
+      <br>
+      <h1>Top 50 Questions to Ace your Interview</h1>
+      <br>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque nisi provident omnis id perspiciatis optio, eveniet illum beatae, recusandae deleniti alias dolor eligendi blanditiis. Ducimus totam cum accusantium dolorum ipsam?</p>
+      <br>
+      <div class="buttons">
+        <button id="scrollButton" class="btn-p">Upload Your CV</button>
+       </div>
     </div>
-    
-    <div class="card-container">
-      <div class="card text-center p-4 shadow" style="width: 35rem; border-radius: 20px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.1);">
-        <h2 class="card-title pb-3" >Upload Your CV</h2>
-          <img class="card-img-top" id="uploadImage" src="/folder.png" alt="Card image cap">
-        <p>Drag and Drop Files here</p>
-        <div class="input-group mb-3">
-          <input type="text" class="form-control rounded-pill border border-dashed border-secondary" placeholder="Paste Your JD Link" aria-label="Input Field" aria-describedby="button-addon2">
-        </div>
-      </div>
-    </div>
-    
 
   </div>
+
+  <div class="hero_img">
+    <img style="position: absolute;
+    right:-200px;" src="/laptop_mob.png" alt="Laptop_png">
+  </div>
+</div>
+
+<div class="section_1">
+    <h2>HOW IT WORKS</h2>
+    <img src="/step-1-1.png" alt="">
+  
+</div>
+
+<!----Form -->
+  <form action="/resume" method="post">
+    <div class="cardz">
+
+      <div class="card-container">
+        <div class="card text-center p-4 shadow" style="width: 25rem; border-radius: 29px; box-shadow: 0 15px 15px rgba(0, 0, 0, 0.1), 0 15px 25px rgba(0, 0, 0, 0.1);">
+          <h2 class="card-title pb-3" >Paste Your CV</h2>
+            <div class="mb-3">    
+              <label for="experience" class="form-label">Paste Your Internships & Experience</label>
+              <textarea class="form-control" id="exp" name="exp" rows="3"></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="projects" class="form-label">Write About Your Personal Projects</label>
+  
+              <textarea class="form-control" id="proj" name="proj" rows="4"></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="projects" class="form-label">Skills</label>
+              <textarea class="form-control" id="skills" name="skills" rows="1"></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="projects" class="form-label">Achievements</label>
+              <textarea class="form-control" id="ach" name="ach" rows="1"></textarea>
+            </div>
+          
+        </div>
+      </div>
+      
+      <div class="card-container">
+        <div class="card text-center p-4 shadow" style="width: 25rem; border-radius: 29px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.1);">
+          <h2 class="card-title pb-3" >Paste your JD</h2>
+          <div class="mb-3">
+            <label for="experience" class="form-label">Paste Job Description</label>
+            <textarea class="form-control" id="jd" name="jd" rows="6"></textarea>
+        </div>
+          <div class="input-group mb-3">
+            <input type="text" class="form-control rounded-pill border border-dashed border-secondary" placeholder="Paste Your JD Link" aria-label="Input Field" aria-describedby="button-addon2">
+          </div>
+        </div>
+      </div>
+      
+     <div class="buttons">
+      <button type="submit" class="btn-p">Generate Answers</button>
+     </div>
+    </div>
+
+  </form>
+  
   <div class="cardz">
     <div class="card-container">
       <div class="card text-center p-4 shadow" style="width: 18rem; border-radius: 20px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.1);">
