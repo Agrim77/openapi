@@ -1,46 +1,155 @@
-*{
-    margin:0;
-    padding:0;
-    color:white;
-    font-family: 'Lato', sans-serif;
-    overflow-x: hidden;
+* {
+  margin: 0;
+  padding: 0;
+  color: white;
+  font-family: "Lato", sans-serif;
+  overflow-x: hidden;
 }
 /* body{
     background-color: #800e49;
    } */
-.page1{
-  background-color: #800e49;
-}
-.page2{
-  background-color: white;
-}
-.nav_l{
+
+.nav_l {
   overflow-y: hidden;
 }
-.navb{
+.navb {
   background-color: #790e44;
-    display: flex;
-    justify-content:space-between;
-    padding-left: 8px;
-    padding-right: 5px;
-    overflow-x: hidden;
-    /* align-items: */
-  }
-  .navb a{
-    text-decoration: none;
-    color: #d88bb4;
-  }
-
-.hero{
   display: flex;
-  font-family: 'Lato', sans-serif;
+  justify-content: space-between;
+  padding-left: 8px;
+  padding-right: 5px;
+  overflow-x: hidden;
+  /* align-items: */
+}
+.navb a {
+  text-decoration: none;
+  color: #d88bb4;
+}
+.page1 {
+  background-color: #800e49;
+}
+
+.page2 {
+  background-color: white;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.page2 .dash_section1 {
+  margin: 2% 5%;
+  height: 40%;
+  border-radius: 30px;
+  display: flex;
+  width: 100%;
+}
+.dashboard_intro{
+  width:60%;
+  padding: 4% 5%;
+  /* background-color: #9d35de; */
+}
+.dashboard_search{
+width: 37%;
+/* background-color: #cade35; */
+padding: 4% 5%;
+}
+.dashboard_intro h2{
+  color: black;
+}
+
+.dash_section2 {
+  display: flex;
+  justify-content: space-around;
+  width:100%;
+  border-radius: 30px ;
+  color:black;
+  /* justify-content: space-around; */
+}
+.dash_section2 h1,h2, p{
+  color: black;
+}
+.dash_section2 h1,h2{
+  font-weight: 400;
+}
+.user_dash {
+  display: flex;
+  width:60%;
+  padding: 4% 5%;
+  background-color: rgb(255, 238, 238);
+  border-radius: 30px;
+}
+.user_dash p{
+  color: rgb(80, 80, 80);
+}
+.user_dash img {
+  position: absolute;
+  width: 15%;
+  height: auto;
+  /* margin-top: 15%; */
+  margin-bottom: 90%;
+  margin-left:20%;
+}
+.user_nav{
+  color:black;
+  text-align: center;
+  border:3px solid #f9aad4;
+  border-radius: 30px;
+  padding: 3% 8%;
+}
+.search-bar {
+  display: flex;
+  align-items: center;
+  width: 400px;
+  border-radius: 25px;
+  overflow: hidden;
+}
+
+#search-input {
+  flex: 1;
+  color:rgb(72, 66, 66);
+  background-color: rgb(255, 238, 238);
+  border: 1px solid rgb(179, 179, 179);
+  outline: none;
+  padding: 10px;
+  border-radius: 25px 0 0 25px;
+}
+
+#search-button {
+  background-color: #ccc;
+  border: none;
+  outline: none;
+  padding: 10px;
+  border-radius: 0 25px 25px 0;
+  cursor: pointer;
+}
+
+#search-button i {
+  color: #fff;
+}
+
+.dash_section3{
+  margin-top: 4%;
+  text-align: center;
+  padding: 3% 8%;
+}
+.dash_section3 h1, p{
+  color: black;
+}
+.dash_section3 h4{
+  color: rgb(80, 80, 80);
+}
+
+.hero {
+  display: flex;
+  font-family: "Lato", sans-serif;
   min-height: 100vh;
   justify-content: center;
   align-items: center;
-  width:100%;
+  width: 100%;
 }
-.intro{
-  width:33.33%;
+.intro {
+  width: 33.33%;
   color: white;
   display: flex;
   flex-direction: column;
@@ -48,41 +157,41 @@
   justify-content: flex-start;
   /* justify-content: space-between;  */
 }
-.intro h4{
+.intro h4 {
   font-weight: 300;
 }
-.hero_img{
+.hero_img {
   position: relative;
-  width:40%;
-  right:0;
-  height:100vh;
+  width: 40%;
+  right: 0;
+  height: 100vh;
   overflow: hidden;
 }
-.hero_img img{
+.hero_img img {
   position: absolute;
-  right:0;
-  width:auto;
-  height:60%;
-  top:25%;
+  right: 0;
+  width: auto;
+  height: 60%;
+  top: 25%;
   object-fit: cover;
   /* transform: translateX(50%); */
 }
 
-.section_1{
+.section_1 {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.section_1 h2{
+.section_1 h2 {
   font-weight: 900;
 }
-.section_1 img{
+.section_1 img {
   width: 20%;
   height: 23px;
 }
 
-.section_2{
+.section_2 {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -96,7 +205,7 @@
   border-right: 50vw solid transparent;
   border-bottom: 50px solid white;
 }
-.desc{
+.desc {
   background-color: white;
   width: 100%;
   text-align: center;
@@ -104,10 +213,10 @@
   padding: 5% 15%;
   color: black;
 }
-.desc h3{
+.desc h3 {
   color: black;
 }
-.arrow2{
+.arrow2 {
   background-color: white;
   width: 0;
   height: 0;
@@ -115,48 +224,48 @@
   border-right: 50vw solid transparent;
   border-bottom: 50px solid #800e49;
 }
-.cardz{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.cardz {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-.cardz h3{
+.cardz h3 {
   font-weight: 400;
-  margin: 7% 0%; 
+  margin: 7% 0%;
 }
 .card-container {
-    margin: 3rem;
-  }
-  .card-container h2{
-    color: #9d35de;
-    font-weight: 700;
-  }
-  .card-container p{
-    color: gray;
-  }
-  label{
-    font-style: italic;
-    color: gray;
-  }
-  textarea{
-    border-radius: 14px;
-  }
-  .btn-p{
-    color: #ffffff;
-    border: dashed;
-    padding: 0.5rem 1rem;
-    background-color: #800e49;
-    border-radius: 14px;
-    transition: box-shadow 0.3s;
-  }
-  .btn-p:hover {
-    background-color: #9d35de;
-    /* Change the color to your desired hover color */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    /* Adjust the box shadow properties as per your preference */
-  }
-footer{
-    margin-top: 3%;
-    text-align: center;
-   }
+  margin: 3rem;
+}
+.card-container h2 {
+  color: #9d35de;
+  font-weight: 700;
+}
+.card-container p {
+  color: gray;
+}
+label {
+  font-style: italic;
+  color: gray;
+}
+textarea {
+  border-radius: 14px;
+}
+.btn-p {
+  color: #ffffff;
+  border: dashed;
+  padding: 0.5rem 1rem;
+  background-color: #800e49;
+  border-radius: 14px;
+  transition: box-shadow 0.3s;
+}
+.btn-p:hover {
+  background-color: #9d35de;
+  /* Change the color to your desired hover color */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  /* Adjust the box shadow properties as per your preference */
+}
+footer {
+  margin-top: 3%;
+  text-align: center;
+}

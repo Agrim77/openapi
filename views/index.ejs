@@ -1,121 +1,205 @@
 <%- include('./partials/header') %>
 
-<div class="page1">
-<!---HERO Section-->
-
-<div class="hero">
-
-  <div class="intro">
-    <div class="hero_header">
-      <h4>GET JOBY READY - INTERVIEW HACKS</h4>
-      <br>
-      <h1>Top 50 Questions to Ace your Interview</h1>
-      <br>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque nisi provident omnis id perspiciatis optio, eveniet illum beatae, recusandae deleniti alias dolor eligendi blanditiis. Ducimus totam cum accusantium dolorum ipsam?</p>
-      <br>
-      <div class="buttons">
-        <button id="scrollButton" class="btn-p">Upload Your CV</button>
-       </div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarNavAltMarkup"
+    aria-controls="navbarNavAltMarkup"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link active" href="#"
+        >Home <span class="sr-only">(current)</span></a
+      >
+      <a class="nav-item nav-link" href="#">Features</a>
+      <a class="nav-item nav-link" href="#">Pricing</a>
     </div>
-
   </div>
+</nav>
+<div class="page1">
+  <!---HERO Section-->
 
-  <div class="hero_img">
-    <img src="/laptop.png" alt="Laptop_png">
-  </div>
-</div>
-
-<div class="section_1">
-    <h2>HOW IT WORKS</h2>
-    <img src="/step-1-1.png" alt="">
-  
-</div>
-
-<div class="section_2">
-  <div class="arrow1"></div>
-  <div class="desc">
-    <h3>Nail Your Interviews with ease!
-    <br><br>
-    Paste Your CV Details, and Paste Your JD or link, make $50 payment and obtain expert responses to 50 most important questions that are most likely to be asked.
-    </h3>
-  </div>
-  <div class="arrow2"></div>
-</div>
-
-<!----Form -->
-  <form action="/resume" method="post">
-    <div class="cardz">
-    <h3>STEP 1:</h3>
-      <div class="card-container">
-        <div class="card text-center p-4 shadow" style="width: 25rem; border-radius: 29px; box-shadow: 0 15px 15px rgba(0, 0, 0, 0.1), 0 15px 25px rgba(0, 0, 0, 0.1);">
-          <h2 class="card-title pb-3" >Paste Your CV</h2>
-            <div class="mb-3">    
-              <label for="experience" class="form-label">Paste Your Internships & Experience</label>
-              <textarea class="form-control" id="exp" name="exp" rows="3"></textarea>
-            </div>
-            <div class="mb-3">
-              <label for="projects" class="form-label">Write About Your Personal Projects</label>
-  
-              <textarea class="form-control" id="proj" name="proj" rows="4"></textarea>
-            </div>
-            <div class="mb-3">
-              <label for="projects" class="form-label">Skills</label>
-              <textarea class="form-control" id="skills" name="skills" rows="1"></textarea>
-            </div>
-            <div class="mb-3">
-              <label for="projects" class="form-label">Achievements</label>
-              <textarea class="form-control" id="ach" name="ach" rows="1"></textarea>
-            </div>
-          
+  <div class="hero">
+    <div class="intro">
+      <div class="hero_header">
+        <h4>GET JOBY READY - INTERVIEW HACKS</h4>
+        <br />
+        <h1>Top 50 Questions to Ace your Interview</h1>
+        <br />
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque nisi
+          provident omnis id perspiciatis optio, eveniet illum beatae,
+          recusandae deleniti alias dolor eligendi blanditiis. Ducimus totam cum
+          accusantium dolorum ipsam?
+        </p>
+        <br />
+        <div class="buttons">
+          <button id="scrollButton" class="btn-p">Upload Your CV</button>
         </div>
       </div>
-    <h3>STEP 2:</h3>
+    </div>
+
+    <div class="hero_img">
+      <img src="/laptop.png" alt="Laptop_png" />
+    </div>
+  </div>
+
+  <div class="section_1">
+    <h2>HOW IT WORKS</h2>
+    <img src="/step-1-1.png" alt="" />
+  </div>
+
+  <div class="section_2">
+    <div class="arrow1"></div>
+    <div class="desc">
+      <h3>
+        Nail Your Interviews with ease! <br /><br />
+        Paste Your CV Details, and Paste Your JD or link, make $50 payment and
+        obtain expert responses to 50 most important questions that are most
+        likely to be asked.
+      </h3>
+    </div>
+    <div class="arrow2"></div>
+  </div>
+
+  <!----Form -->
+  <form action="/resume" method="post">
+    <div class="cardz">
+      <h3>STEP 1:</h3>
       <div class="card-container">
-        <div class="card text-center p-4 shadow" style="width: 25rem; border-radius: 29px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.1);">
-          <h2 class="card-title pb-3" >Paste your JD</h2>
+        <div
+          class="card text-center p-4 shadow"
+          style="width: 25rem; border-radius: 29px; box-shadow: 0 15px 15px rgba(0, 0, 0, 0.1), 0 15px 25px rgba(0, 0, 0, 0.1);"
+        >
+          <h2 class="card-title pb-3">Paste Your CV</h2>
           <div class="mb-3">
-            <label for="experience" class="form-label">Paste Job Description</label>
-            <textarea class="form-control" id="jd" name="jd" rows="6"></textarea>
-        </div>
-          <div class="input-group mb-3">
-            <input type="text" class="form-control rounded-pill border border-dashed border-secondary" placeholder="Paste Your JD Link" aria-label="Input Field" aria-describedby="button-addon2">
+            <label for="experience" class="form-label"
+              >Paste Your Internships & Experience</label
+            >
+            <textarea
+              class="form-control"
+              id="exp"
+              name="exp"
+              rows="3"
+            ></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="projects" class="form-label"
+              >Write About Your Personal Projects</label
+            >
+
+            <textarea
+              class="form-control"
+              id="proj"
+              name="proj"
+              rows="4"
+            ></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="projects" class="form-label">Skills</label>
+            <textarea
+              class="form-control"
+              id="skills"
+              name="skills"
+              rows="1"
+            ></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="projects" class="form-label">Achievements</label>
+            <textarea
+              class="form-control"
+              id="ach"
+              name="ach"
+              rows="1"
+            ></textarea>
           </div>
         </div>
       </div>
-      
-     <div class="buttons">
-      <button type="submit" class="btn-p">Generate Answers</button>
-     </div>
-    </div>
+      <h3>STEP 2:</h3>
+      <div class="card-container">
+        <div
+          class="card text-center p-4 shadow"
+          style="width: 25rem; border-radius: 29px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.1);"
+        >
+          <h2 class="card-title pb-3">Paste your JD</h2>
+          <div class="mb-3">
+            <label for="experience" class="form-label"
+              >Paste Job Description</label
+            >
+            <textarea
+              class="form-control"
+              id="jd"
+              name="jd"
+              rows="6"
+            ></textarea>
+          </div>
+          <div class="input-group mb-3">
+            <input
+              type="text"
+              class="form-control rounded-pill border border-dashed border-secondary"
+              placeholder="Paste Your JD Link"
+              aria-label="Input Field"
+              aria-describedby="button-addon2"
+            />
+          </div>
+        </div>
+      </div>
 
-  </form>
-  
-  <div class="cardz">
-    <div class="card-container">
-      <div class="card text-center p-4 shadow" style="width: 18rem; border-radius: 20px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.1);">
-        <h2 class="card-title pb-3" >Upload Your CV</h2>
-          <img class="card-img-top" id="uploadImage" src="/folder.png" alt="Card image cap">
-        <p>Drag and Drop Files here</p>
-        
+      <div class="buttons">
+        <button type="submit" class="btn-p">Generate Answers</button>
       </div>
     </div>
-    
+  </form>
+
+  <div class="cardz">
     <div class="card-container">
-      <div class="card text-center p-4 shadow" style="width: 18rem; border-radius: 20px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.1);">
-        <h2 class="card-title pb-3" >Upload Your CV</h2>
-          <img class="card-img-top" id="uploadImage" src="/folder.png" alt="Card image cap">
+      <div
+        class="card text-center p-4 shadow"
+        style="width: 18rem; border-radius: 20px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.1);"
+      >
+        <h2 class="card-title pb-3">Upload Your CV</h2>
+        <img
+          class="card-img-top"
+          id="uploadImage"
+          src="/folder.png"
+          alt="Card image cap"
+        />
+        <p>Drag and Drop Files here</p>
+      </div>
+    </div>
+
+    <div class="card-container">
+      <div
+        class="card text-center p-4 shadow"
+        style="width: 18rem; border-radius: 20px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.1);"
+      >
+        <h2 class="card-title pb-3">Upload Your CV</h2>
+        <img
+          class="card-img-top"
+          id="uploadImage"
+          src="/folder.png"
+          alt="Card image cap"
+        />
         <p>Drag and Drop Files here</p>
         <div class="input-group mb-3">
-          <input type="text" class="form-control rounded-pill border border-dashed border-secondary" placeholder="Paste Your JD Link" aria-label="Input Field" aria-describedby="button-addon2">
+          <input
+            type="text"
+            class="form-control rounded-pill border border-dashed border-secondary"
+            placeholder="Paste Your JD Link"
+            aria-label="Input Field"
+            aria-describedby="button-addon2"
+          />
         </div>
       </div>
     </div>
-    
-
   </div>
 </div>
 
-  
-
-
-  <%- include('./partials/footer') %>
+<%- include('./partials/footer') %>

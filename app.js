@@ -6,7 +6,7 @@ const rateLimit = require("express-rate-limit");
 const bodyParser = require("body-parser");
 const { log } = require("console");
 const port = 3000;
-const model1  = require("./chatgpt_M.js");
+const model1 = require("./chatgpt_M.js");
 
 //create app
 const app = express();
@@ -39,6 +39,11 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
+app.get("/resume", (req, res) => {
+  console.log("get route resume");
+  res.render("success");
+});
+
 app.post("/resume", async (req, res) => {
   const exp = req.body.exp;
   const proj = req.body.proj;
@@ -67,7 +72,6 @@ app.post("/resume", async (req, res) => {
       res.render("error");
     });
 
-  
   res.render("success");
 });
 

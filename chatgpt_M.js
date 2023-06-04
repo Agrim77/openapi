@@ -27,7 +27,7 @@ return questions;
 
 
 async function model1(jd, cv){
-  const prompt1 = `As a top Career Adviser, based on the JD (Job description) and CV (Resume) below, please list out the Questions (printed as Question <Space> Number:) & answers(printed as Answer <Space> Number:) to 10 most important coding questions. 
+  const prompt1 = `As a top Career Adviser, based on the JD (Job description) and CV (Resume) below, please list out the Questions (printed as Question <Space> Number:) & answers(printed as Answer <Space> Number:) to 15 most important coding questions. Print questions & answers in with space between them.
   Questions can include implementation, algorithm code, how to use the technology mentioned in JD to solve a problem. Include code in answers, and explain the code in layman's terms \n
   Here is the JD :\n ${jd} \n  Here is the CV :\n ${cv}.  `;
   const prompt2 = `Generate 20 concept-based answers to the below questions assess the candidate's knowledge and understanding related to the provided Job Description and CV.`

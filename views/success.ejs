@@ -1,12 +1,48 @@
 <%- include('./partials/header') %>
 
 <div class="page2">
-    <div class="dashboard">
-        <div class="dashboard_intro">My Dashboard</div>
-        <div class="dashboard_search">
-            searc
+  <div class="dash_section1">
+    <div class="dashboard_intro">
+      <h2>My dashboard</h2>
+    </div>
+
+    <div class="dashboard_search">
+        <div class="search-bar">
+            <input type="text" id="search-input" placeholder="What are you looking for?">
+            <button id="search-button">
+              <i class="fas fa-search"></i>
+            </button>
         </div>
     </div>
+  </div>
+
+  <div class="dash_section2">
+    <div class="user_dash">
+        <div class="user_content">
+            <h1>Good Morning User !</h1>
+        <br>
+        <p>A simple quote of the day !</p>
+        </div>
+        <div class="user_img">
+            <img src="/vector.png" alt="">
+        </div>
+        
+    </div>
+    <div class="user_nav">
+        <h2>50 Questions</h2>
+    </div>
+  </div>
+
+  <div class="dash_section3">
+        <h4>Hi User</h4> 
+        <br>
+        <h1>We are here to help</h1>
+        <br>
+        <p>Welcome to the expert response to the 50 top 
+            <br>
+            interview questions tailored to you !</p>
+        
+  </div>
 </div>
 
 <%- include('./partials/footer') %>
