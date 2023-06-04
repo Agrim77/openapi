@@ -41,10 +41,26 @@ app.get("/", (req, res) => {
 
 app.get("/resume", (req, res) => {
   console.log("get route resume");
-  res.render("success");
+  const result=[
+    {
+      "Question 1": "FKEDFNKDFNDVN",
+  "ANSWER 1":"DEFJEBFJKEBFKBE"
+},
+{
+  "Question 2": "FKEDFNKDFNDVN",
+"ANSWER 2":"DEFJEBFJKEBFKBE"
+},
+{
+  "Question 3": "FKEDFNKDFNDVN",
+"ANSWER 3":"DEFJEBFJKEBFKBE"
+},
+
+  ]
+  res.render("success", result);
 });
 
 app.post("/resume", async (req, res) => {
+  res.render("loader")
   const exp = req.body.exp;
   const proj = req.body.proj;
   const skills = req.body.skills;
@@ -61,6 +77,7 @@ app.post("/resume", async (req, res) => {
     " Achievements: " +
     ach;
   // console.log(`${cv} \n`);
+  
   model1(jd, cv)
     .then((result) => {
       console.log("\n---------In app.js----\n");
@@ -72,7 +89,6 @@ app.post("/resume", async (req, res) => {
       res.render("error");
     });
 
-  res.render("success");
 });
 
 // PRV INETEB LINE 1

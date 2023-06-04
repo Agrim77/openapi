@@ -7,42 +7,66 @@
     </div>
 
     <div class="dashboard_search">
-        <div class="search-bar">
-            <input type="text" id="search-input" placeholder="What are you looking for?">
-            <button id="search-button">
-              <i class="fas fa-search"></i>
-            </button>
-        </div>
+      <div class="search-bar">
+        <input
+          type="text"
+          id="search-input"
+          placeholder="What are you looking for?"
+        />
+        <button id="search-button">
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
     </div>
   </div>
 
   <div class="dash_section2">
     <div class="user_dash">
-        <div class="user_content">
-            <h1>Good Morning User !</h1>
-        <br>
+      <div class="user_content">
+        <h1>Good Morning User !</h1>
+        <br />
         <p>A simple quote of the day !</p>
-        </div>
-        <div class="user_img">
-            <img src="/vector.png" alt="">
-        </div>
-        
+      </div>
+      <div class="user_img">
+        <img src="/vector.png" alt="" />
+      </div>
     </div>
     <div class="user_nav">
-        <h2>50 Questions</h2>
+      <h2>50 Questions</h2>
+      <p>SLIDER HERE !</p>
     </div>
   </div>
 
   <div class="dash_section3">
-        <h4>Hi User</h4> 
-        <br>
-        <h1>We are here to help</h1>
-        <br>
-        <p>Welcome to the expert response to the 50 top 
-            <br>
-            interview questions tailored to you !</p>
-        
+    <h4>Hi User</h4>
+    <br />
+    <h1>We are here to help</h1>
+    <br />
+    <p>
+      Welcome to the expert response to the 50 top
+      <br />
+      interview questions tailored to you !
+    </p>
+  </div>
+
+  <div class="dash_section4">
+    <h2>50 Top Interview Questions</h2>
+    <p>Everything you need to know to ace your interviews</p>
+    <div class="qs">
+      
+    </div>
   </div>
 </div>
 
+<script>
+  const navbar = document.getElementById("navbar");
+  const page2 = document.querySelector(".page2");
+  const page2BgColor = getComputedStyle(page2).backgroundColor;
+  // Function to change the navbar background color
+  function changeNavbarColor(color) {
+    navbar.style.backgroundColor = color;
+  }
+
+  changeNavbarColor(page2BgColor);
+</script>
 <%- include('./partials/footer') %>
