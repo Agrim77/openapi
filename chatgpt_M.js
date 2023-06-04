@@ -4,10 +4,12 @@ const readlineSync = require("readline-sync");
 require("dotenv").config();
 
 
+
+const questions = [];
 const convert = (inputText) => {
   console.log("\n --- Now converting to JSON --");
   const questionPattern = /Question (\d+): (.+)(?:\n\s+Answer \d+: (.+))?/g;
-const questions = [];
+
 let match;
 while ((match = questionPattern.exec(inputText)) !== null) {
   const questionNumber = match[1];
@@ -19,13 +21,14 @@ while ((match = questionPattern.exec(inputText)) !== null) {
   });
 }
 
-console.log(questions);
+// console.log(questions);
+return questions;
 }
 
 
 async function model1(jd, cv){
   const prompt1 = `As a top Career Adviser, based on the JD (Job description) and CV (Resume) below, please list out the Questions (printed as Question <Space> Number:) & answers(printed as Answer <Space> Number:) to 10 most important coding questions. 
-  Questions can include implementation, algorithm code, how to use the technology mentioned in JD to solve a problem. \n
+  Questions can include implementation, algorithm code, how to use the technology mentioned in JD to solve a problem. Include code in answers, and explain the code in layman's terms \n
   Here is the JD :\n ${jd} \n  Here is the CV :\n ${cv}.  `;
   const prompt2 = `Generate 20 concept-based answers to the below questions assess the candidate's knowledge and understanding related to the provided Job Description and CV.`
 
@@ -65,8 +68,9 @@ async function model1(jd, cv){
       console.log(completion_text);
 
       history.push([user_input, completion_text]);
-      convert(completion_text);
-      return;
+      return convert(completion_text);
+      // break;
+      // return;
       // const user_input_again = readlineSync.question(
       //   "\nWould you like to continue the conversation? (Y/N)"
       // );
@@ -87,4 +91,4 @@ async function model1(jd, cv){
   }
 };
 
-module.exports = {model1};
+module.exports = model1;
