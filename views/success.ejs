@@ -51,14 +51,22 @@
 
   <div class="dash_section4">
     <h2>50 Top Interview Questions</h2>
-    <p>Everything you need to know to ace your interviews</p>
+    <h2>Result length:<%= result.length %></h2>
+    <p>Everything you need to know to ace your interviews!</p>
     <div class="qs">
-      
+        <% for (let i = 0; i < result.length; i++) { %>
+            <h3>Question <%= i+1 %>: <%= result[i].ques %></h3>
+            <!-- <pre><%- unescape(result[i].ans.replace(/\r?\n|\r/g, '<br>')) %></pre> -->
+            <p>Answer <%= i+1 %>:</p>
+            <pre><code><%- unescape(result[i].ans.replace(/<br>/g, '\n').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&amp;/g, '&').replace(/&nbsp;/g, ' ').replace(/</g, '&lt;').replace(/>/g, '&gt;')) %></code></pre>
+
+          <% } %>
     </div>
   </div>
 </div>
 
 <script>
+    console.log("Inside script tag in succes ejs");
   const navbar = document.getElementById("navbar");
   const page2 = document.querySelector(".page2");
   const page2BgColor = getComputedStyle(page2).backgroundColor;

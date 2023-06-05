@@ -36,3 +36,48 @@ ALL_CRYPTO:
 Multipage responsive website showcasing cryptocurrencies and their details, news, in a user
 friendly graph and cards like fashion. Fixed switch to router (react router) and chartJs
 'category') bug.
+
+
+//   const questionPattern = /Question\s+(\d+)\s+:\s+([\s\S]*?)(?:\s+Answer\s+\d+\s+:\s+([\s\S]*?))?/g;
+
+// let match;
+// while ((match = questionPattern.exec(inputText)) !== null) {
+//   const questionNumber = match[1];
+//   const question = match[2].trim();
+//   const answer = match[3] ? match[3].trim() : '';
+//   questions.push({
+//     [`Question ${questionNumber}`]: question,
+//     [`Answer ${questionNumber}`]: answer,
+//   });
+// }
+  // const questionPattern = /Question\s+(\d+)\s+:\s+([\s\S]*?)(?:\s+Answer\s+(\d+)\s+:\s+([\s\S]*?))?/g;
+  // const questionPattern = /Question\s+(\d+)\s+:\s+([\s\S]*?)(?:\s+Answer\s+\d+\s+:\s+([\s\S]*?))?/g;
+
+  // let match;
+  // while ((match = questionPattern.exec(inputText)) !== null) {
+  //   const questionNumber = match[1];
+  //   const question = match[2].trim();
+  //   const answerNumber = match[3] ? match[3] : '';
+  //   const answer = match[4] ? match[4].trim() : '';
+  //   questions.push({
+  //     [`Question ${questionNumber}`]: question,
+  //     [`Answer ${answerNumber}`]: answer,
+  //   });
+  // }
+  
+  // const questionPattern = /Question (\d+): (.+)(?:\n\s+Answer \d+: (.+))?/g;
+//   const questionPattern = /Question\s*(\d+)\s*:\s*(.+?)(?:\s*Answer\s*(\d+)\s*:\s*(.+))?/gs;
+
+
+// let match;
+// while ((match = questionPattern.exec(inputText)) !== null) {
+//   const questionNumber = match[1];
+//   const question = match[2].trim();
+//   const answer = match[3] ? match[3].trim() : '';
+//   questions.push({
+//     [`Question ${questionNumber}`]: question,
+//     [`Answer ${questionNumber}`]: answer,
+//   });
+
+
+// }

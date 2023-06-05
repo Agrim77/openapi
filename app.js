@@ -6,7 +6,9 @@ const rateLimit = require("express-rate-limit");
 const bodyParser = require("body-parser");
 const { log } = require("console");
 const port = 3000;
+// const ejs = require('ejs')
 const model1 = require("./chatgpt_M.js");
+const convert = require("./chatgpt_M.js");
 
 //create app
 const app = express();
@@ -41,54 +43,53 @@ app.get("/", (req, res) => {
 
 app.get("/resume", (req, res) => {
   console.log("get route resume");
-  const result=[
-    {
-      "Question 1": "FKEDFNKDFNDVN",
-  "ANSWER 1":"DEFJEBFJKEBFKBE"
-},
-{
-  "Question 2": "FKEDFNKDFNDVN",
-"ANSWER 2":"DEFJEBFJKEBFKBE"
-},
-{
-  "Question 3": "FKEDFNKDFNDVN",
-"ANSWER 3":"DEFJEBFJKEBFKBE"
-},
-
-  ]
-  res.render("success", result);
+  const result = convert();
+  // const result = [
+  //   {
+  //     "Question 1":"WABABABDBFHBBHB fdbfkdsbfksjb",
+  //     "Answer 1":"fdnfsdjnfljsnfl"
+  //   },
+  //   {
+  //     "Question 2":"WABABABDBFHBBHB fdbfkdsbfksjb",
+  //     "Answer 2":"fdnfsdjnfljsnfl"
+  //   },{
+  //     "Question 3":"WABABABDBFHBBHB fdbfkdsbfksjb",
+  //     "Answer 3":"fdnfsdjnfljsnfl"
+  //   },
+  // ]
+  console.log(result);
+  res.render("success", {result: result});
 });
 
 app.post("/resume", async (req, res) => {
-  res.render("loader")
+  res.render("loader");
   const exp = req.body.exp;
   const proj = req.body.proj;
   const skills = req.body.skills;
   const jd = req.body.jd;
   const ach = req.body.ach;
   // console.log(`Experince: ${exp} \n Projects: ${proj}`);
-  const cv =
-    "Past Experience: " +
-    exp +
-    "and personal projects :" +
-    proj +
-    " Skills:" +
-    skills +
-    " Achievements: " +
-    ach;
+  const cv = `
+    Past Experience:  
+    ${exp} \n
+    and personal projects : 
+    ${proj} \n
+    and Skills:
+    ${skills} \n
+    Achievements:
+    ${ach} `;
   // console.log(`${cv} \n`);
-  
+
   model1(jd, cv)
     .then((result) => {
       console.log("\n---------In app.js----\n");
       console.log(result);
-      res.render("success", result);
+      res.render("success", {result: result});
     })
     .catch((error) => {
       console.log(error);
       res.render("error");
     });
-
 });
 
 // PRV INETEB LINE 1
