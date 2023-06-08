@@ -23,9 +23,10 @@
   <div class="dash_section2">
     <div class="user_dash">
       <div class="user_content">
-        <h1>Good Morning User !</h1>
+        <h1>Good Evening User !</h1>
         <br />
         <p>A simple quote of the day !</p>
+        <div id="paypal-button-container"></div>
       </div>
       <div class="user_img">
         <img src="/vector.png" alt="" />
@@ -58,23 +59,26 @@
             <h3>Question <%= i+1 %>: <%= result[i].ques %></h3>
             <!-- <pre><%- unescape(result[i].ans.replace(/\r?\n|\r/g, '<br>')) %></pre> -->
             <p>Answer <%= i+1 %>:</p>
+            <pre><%-result[i].ans %></pre>
+            <br>
+            Using pre and code syntax
             <pre><code><%- unescape(result[i].ans.replace(/<br>/g, '\n').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&amp;/g, '&').replace(/&nbsp;/g, ' ').replace(/</g, '&lt;').replace(/>/g, '&gt;')) %></code></pre>
 
           <% } %>
     </div>
   </div>
+
+  <div class="dash_section5">
+    <div id="paypal-button-container"></div>
+  </div>
 </div>
 
-<script>
-    console.log("Inside script tag in succes ejs");
-  const navbar = document.getElementById("navbar");
-  const page2 = document.querySelector(".page2");
-  const page2BgColor = getComputedStyle(page2).backgroundColor;
-  // Function to change the navbar background color
-  function changeNavbarColor(color) {
-    navbar.style.backgroundColor = color;
-  }
+<script src="https://www.paypal.com/sdk/js?client-id=AczF_NZmU4pVaN9FeL8WOj9St9782qUfdpWG3hkta_xgod5LMXYFt02FZsl7N0dF_hx3n4_ydnAs3Uoy&currency=USD"></script>
+    <!-- Set up a container element for the button -->
 
-  changeNavbarColor(page2BgColor);
-</script>
-<%- include('./partials/footer') %>
+
+<script src=".paypal_checkout.js"></script>
+
+<!-- <%- include('./partials/footer') %> -->
+</body>
+</html>
