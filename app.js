@@ -4,16 +4,17 @@ const path = require("path");
 const helmet = require("helmet");
 const rateLimit = require("express-rate-limit");
 const bodyParser = require("body-parser");
-const { log } = require("console");
-const port = 3000 || process.env.PORT;
-// const ejs = require('ejs')
+const port = 8000 || process.env.PORT;
+const ejs = require('ejs')
 const model = require("./chatgpt_M.js");
 // const convert = require("./chatgpt_M.js");
-const fetch = require('node-fetch');
+const paypal = require("./paypal_api.js");
+const { log } = require("console");
 
-require('dotenv').config();
-//create app
 const app = express();
+require('dotenv').config();
+const {CLIENT_ID, APP_SECRET} = process.env;
+
 // app.use('/app',express.static(path.join('../app')))
 // app.use('/public',express.static(path.join('../public')))
 app.use(express.static("public"));
@@ -24,11 +25,11 @@ app.use(bodyParser.json());
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100, // limit each IP to 100 requests per windowMs
+  max: 10, // limit each IP to 10 requests per windowMs
 });
 
 //middlewares
-app.use(helmet());
+// app.use(helmet());
 app.use(limiter);
 
 //register view-engine
@@ -46,10 +47,32 @@ app.get("/", (req, res) => {
 });
 
 app.get("/checkout", (req,res) => {
-  res.render('checkout' , {PAYPAL_CLIENT_ID: CLIENT_ID});
-})
+  
+  res.render('checkout' , { CLIENT_ID});
+});
+
+app.post("/my-server/create-paypal-order", async (req, res) => {
+  try {
+    const order = await paypal.createOrder();
+    res.json(order);
+  } catch (err) {
+    res.status(500).render('error',{error:err.message});
+  }
+});
+
+app.post("/my-server/capture-paypal-order", async (req, res) => {
+  const { orderID } = req.body;
+  try {
+    const captureData = await paypal.capturePayment(orderID);
+    res.json(captureData);
+  } catch (err) {
+    res.status(500).render('error',{error:err.message});
+  }
+});
+
+//comment this route after going live
 app.get("/resume", (req, res) => {
-  console.log("\n ------Get route resume----- \n");
+  console.log("\n ------Get route resume(FOR DEV PRODUCTION ONLY)----- \n");
   const result = model.convert();
   // const result = [
   //   {
@@ -98,11 +121,6 @@ app.post("/resume", async (req, res) => {
     });
 });
 
-// PRV INETEB LINE 1
-// LINE 2 BDHFBDS HKFBDHFBDHBFHHADHFBDHKFVDSHKFVHKSDVFHK SDVHFVSDHFVDSHVFHDS
-
-// past rpoj line 1
-// line 2 sbfhdsbfhsdbfhsdfh dsjf dshfbdhf sdhfbdshfbsdjf dfbslfjlsdbfjk
 app.listen(port, () => {
   console.log(`Server running  on ${port}`);
 });
