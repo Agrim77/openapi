@@ -1,9 +1,13 @@
 <%- include('./partials/header') %>
-
+<script src="https://www.paypal.com/sdk/js?client-id=<%= CLIENT_ID %>"></script>
+<title>Ready !</title>
+  </head>
+<body>
+<%- include('./partials/navbar') %>
 <div class="page2">
   <div class="dash_section1">
     <div class="dashboard_intro">
-      <h2>My dashboard</h2>
+      <h2>My dashboard </h2>
     </div>
 
     <div class="dashboard_search">
@@ -26,7 +30,6 @@
         <h1>Good Evening User !</h1>
         <br />
         <p>A simple quote of the day !</p>
-        <div id="paypal-button-container"></div>
       </div>
       <div class="user_img">
         <img src="/vector.png" alt="" />
@@ -69,16 +72,11 @@
   </div>
 
   <div class="dash_section5">
-    <div id="paypal"></div>
+    <div id="paypal_button"></div>
   </div>
+  <script src="/paypal_client.js"></script>
+ 
 </div>
-
-<script src="https://www.paypal.com/sdk/js?client-id=AczF_NZmU4pVaN9FeL8WOj9St9782qUfdpWG3hkta_xgod5LMXYFt02FZsl7N0dF_hx3n4_ydnAs3Uoy"></script>
-<script src="/paypal_client.js" defer></script>
-    <!-- Set up a container element for the button -->
-
-
-<!-- <script src=".paypal_checkout.js"></script> -->
 
 <%- include('./partials/footer') %>
 

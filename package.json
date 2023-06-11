@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -18,7 +19,7 @@
     "express-rate-limit": "^6.7.0",
     "handlebars": "^4.7.7",
     "helmet": "^7.0.0",
-    "node-fetch": "2.0",
+    "node-fetch": "^2.6.11",
     "nodemon": "^2.0.22",
     "openai": "^3.2.1",
     "paypal-rest-sdk": "^1.8.1",

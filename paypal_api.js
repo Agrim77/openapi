@@ -1,9 +1,9 @@
-const fetch = require("node-fetch");
-
+import fetch from "node-fetch";
 const { CLIENT_ID, APP_SECRET } = process.env;
 const base = "https://api-m.sandbox.paypal.com";
 
-async function createOrder() {
+export async function createOrder() {
+  console.log("INSIDE API- cretaeORDER \n");
   const accessToken = await generateAccessToken();
   const url = `${base}/v2/checkout/orders`;
   const response = await fetch(url, {
@@ -28,7 +28,8 @@ async function createOrder() {
   return handleResponse(response);
 }
 
-async function capturePayment(orderId) {
+export async function capturePayment(orderId) {
+  console.log("INSIDE API- captureORDER \n");
   const accessToken = await generateAccessToken();
   const url = `${base}/v2/checkout/orders/${orderId}/capture`;
   const response = await fetch(url, {
@@ -42,7 +43,8 @@ async function capturePayment(orderId) {
   return handleResponse(response);
 }
 
-async function generateAccessToken() {
+export async function generateAccessToken() {
+  console.log("INSIDE API- genrate token ORDER \n");
   const auth = Buffer.from(CLIENT_ID + ":" + APP_SECRET).toString("base64");
   const response = await fetch(`${base}/v1/oauth2/token`, {
     method: "post",
@@ -65,5 +67,5 @@ async function handleResponse(response) {
   throw new Error(errorMessage);
 }
 
-module.export ={createOrder, capturePayment, generateAccessToken}
+// module.export ={createOrder, capturePayment, generateAccessToken}
 

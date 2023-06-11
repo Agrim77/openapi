@@ -1,18 +1,17 @@
-const express = require("express");
-const http = require("http");
-const path = require("path");
-const helmet = require("helmet");
-const rateLimit = require("express-rate-limit");
-const bodyParser = require("body-parser");
-const port = 8000 || process.env.PORT;
-const ejs = require('ejs')
-const model = require("./chatgpt_M.js");
-// const convert = require("./chatgpt_M.js");
-const paypal = require("./paypal_api.js");
-const { log } = require("console");
-
+import dotenv from 'dotenv';
+import express from 'express';
+import http from 'http';
+import path from 'path';
+import helmet from 'helmet';
+import rateLimit from 'express-rate-limit';
+import bodyParser from 'body-parser';
+import * as model from './chatgpt_M.js';
+dotenv.config();
+// import "dotenv/config"; // loads variables from .env file
+import * as paypal from "./paypal_api.js";
+import { log } from 'console';
+const port = process.env.PORT;
 const app = express();
-require('dotenv').config();
 const {CLIENT_ID, APP_SECRET} = process.env;
 
 // app.use('/app',express.static(path.join('../app')))
@@ -42,16 +41,14 @@ app.use(express.urlencoded({ extended: false }));
 app.get("/", (req, res) => {
   //NOT: res.send(, sendFile();
   // res.sendFile(path.join(__dirname, '/index.html'));
-  console.log(`Inside / route ${port}`);
+  log(`Inside / route ${port}`);
   res.render("index");
 });
 
-app.get("/checkout", (req,res) => {
-  
-  res.render('checkout' , { CLIENT_ID});
-});
+
 
 app.post("/my-server/create-paypal-order", async (req, res) => {
+  log("Create-paypal-order POST route \n");
   try {
     const order = await paypal.createOrder();
     res.json(order);
@@ -61,6 +58,7 @@ app.post("/my-server/create-paypal-order", async (req, res) => {
 });
 
 app.post("/my-server/capture-paypal-order", async (req, res) => {
+  log("Capture order POST route \n");
   const { orderID } = req.body;
   try {
     const captureData = await paypal.capturePayment(orderID);
@@ -70,9 +68,13 @@ app.post("/my-server/capture-paypal-order", async (req, res) => {
   }
 });
 
-//comment this route after going live
+app.get("/thanks", (req, res) => {
+  res.render("thanks");
+})
+
+//TODO: comment this route after going live
 app.get("/resume", (req, res) => {
-  console.log("\n ------Get route resume(FOR DEV PRODUCTION ONLY)----- \n");
+  log("\n ------Get route resume(FOR DEV PRODUCTION ONLY-- comment out)----- \n");
   const result = model.convert();
   // const result = [
   //   {
@@ -87,7 +89,15 @@ app.get("/resume", (req, res) => {
   //     "Answer 3":"fdnfsdjnfljsnfl"
   //   },
   // ]
-  res.render("success", {result: result});
+  for (const key in result) {
+    if (result.hasOwnProperty(key)) {
+      const item = result[key];
+      log("Question:", item.ques);
+      log("Answer:", item.ans);
+      log("\n");
+    }
+  }
+  res.render("success", {result, CLIENT_ID});
 });
 
 app.post("/resume", async (req, res) => {
@@ -97,7 +107,7 @@ app.post("/resume", async (req, res) => {
   const skills = req.body.skills;
   const jd = req.body.jd;
   const ach = req.body.ach;
-  // console.log(`Experince: ${exp} \n Projects: ${proj}`);
+  // log(`Experince: ${exp} \n Projects: ${proj}`);
   const cv = `
     Past Experience:  
     ${exp} \n
@@ -107,20 +117,20 @@ app.post("/resume", async (req, res) => {
     ${skills} \n
     Achievements:
     ${ach} `;
-  // console.log(`${cv} \n`);
+  // log(`${cv} \n`);
 
   model.model1(jd, cv)
     .then((result) => {
-      console.log("\n---------In app.js model1 promise--------\n");
-      console.log(result);
+      log("\n---------In app.js model1 promise--------\n");
+      log(result);
       res.render("success", {result: result});
     })
     .catch((error) => {
-      console.log(error);
+      log(error);
       res.render("error");
     });
 });
 
 app.listen(port, () => {
-  console.log(`Server running  on ${port}`);
+  log(`Server running  on ${port}`);
 });

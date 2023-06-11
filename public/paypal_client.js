@@ -1,7 +1,8 @@
-console.log("Paypal_button script loaded");
+console.log("Paypal button client side loaded");
 paypal.Buttons({
           // Sets up the transaction when a payment button is clicked
           createOrder: function () {
+            console.log("REMOVE: inside client create \n");
             return fetch("/my-server/create-paypal-order", {
               method: "post",
               headers: {
@@ -23,6 +24,7 @@ paypal.Buttons({
           },
           // Finalize the transaction after payer approval
           onApprove: function (data) {
+            console.log("REMOVE: inside client approve \n");
             return fetch("/my-server/capture-paypal-order", {
               method: "post",
               headers: {
@@ -42,13 +44,7 @@ paypal.Buttons({
                 );
                 const transaction = orderData.purchase_units[0].payments.captures[0];
                 //actions.redirect('thank_you.html');
-                alert(
-                  "Transaction " +
-                    transaction.status +
-                    ": " +
-                    transaction.id +
-                    "\n\nSee console for all available details"
-                );
+                window.location.href = '/thanks';
                 // When ready to go live, remove the alert and show a success message within this page. For example:
                 // var element = document.getElementById('paypal-button-container');
                 // element.innerHTML = '<h3>Thank you for your payment!</h3>';
@@ -56,4 +52,4 @@ paypal.Buttons({
               });
           },
         })
-        .render("#paypal");
+        .render("#paypal_button");
