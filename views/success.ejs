@@ -1,13 +1,16 @@
 <%- include('./partials/header') %>
 <script src="https://www.paypal.com/sdk/js?client-id=<%= CLIENT_ID %>"></script>
+<script src="/answers.js"></script>
 <title>Ready !</title>
+
   </head>
 <body>
 <%- include('./partials/navbar') %>
+<!-- <div id="loader" class="loader_center"></div> -->
 <div class="page2">
   <div class="dash_section1">
     <div class="dashboard_intro">
-      <h2>My dashboard </h2>
+      <h2>My dashboard <i class="fa-regular fa-circle-plus" style="color: #a8deff;"></i> </h2>
     </div>
 
     <div class="dashboard_search">
@@ -42,33 +45,51 @@
   </div>
 
   <div class="dash_section3">
-    <h4>Hi User</h4>
-    <br />
-    <h1>We are here to help</h1>
-    <br />
-    <p>
+    <h4 style="font-weight:700;">Hi User,</h4>
+    <h1 style="font-weight:700;">We are here to help</h1>
+    <p style="color:grey;">
       Welcome to the expert response to the 50 top
-      <br />
       interview questions tailored to you !
     </p>
   </div>
 
   <div class="dash_section4">
-    <h2>50 Top Interview Questions</h2>
-    <h2>Result length:<%= result.length %></h2>
-    <p>Everything you need to know to ace your interviews!</p>
+    <h1 style="font-weight:700;">50 Top Interview Questions</h1>
+    <!-- <h3>Number of Q/As : result.length %></h3> -->
+    <p style="color:grey;">Everything you need to know to ace your interviews!</p>
+    <br>
     <div class="qs">
-        <% for (let i = 0; i < result.length; i++) { %>
-            <h3>Question <%= i+1 %>: <%= result[i].ques %></h3>
-            <!-- <pre><%- unescape(result[i].ans.replace(/\r?\n|\r/g, '<br>')) %></pre> -->
-            <p>Answer <%= i+1 %>:</p>
-            <pre><%-result[i].ans %></pre>
-            <br>
-            Using pre and code syntax
-            <pre><code><%- unescape(result[i].ans.replace(/<br>/g, '\n').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&amp;/g, '&').replace(/&nbsp;/g, ' ').replace(/</g, '&lt;').replace(/>/g, '&gt;')) %></code></pre>
-
-          <% } %>
+      <% for (let i = 0; i < result.length; i++) { %>
+          <div class="question">
+              <h4><pre>
+                  <span class="question-text"><%= i+1 %>: <%= result[i].ques %>
+                  </span>
+              </pre></h4>
+              <i class="fa-regular fa-circle-plus" style="color: #1f78ff;"></i>
+          </div>
+          <div class="answer">
+            <p style="font-family: 'Lato',sans-serif;font-weight: 300;color: rgb(89, 89, 89);">
+              <pre><%-result[i].ans %></pre>
+            </p>
+          </div>
+      <% } %>
     </div>
+    <!-- <div class="qs">
+        <% for (let i = 0; i < result.length; i++) { %>
+          <div class="question-container">
+            <h4 class="question">
+              <span class=""question-text">
+                <%= i+1 %>: <%= result[i].ques %>
+              </span>
+              <i class="toggle-icon fa-regular fa-circle-plus" style="color: #1f78ff;"></i>
+            </h4>
+            <div class="answer hidden">
+              <pre><%-result[i].ans %></pre>
+            </div>
+            
+          </div>
+          <% } %>
+    </div> -->
   </div>
 
   <div class="dash_section5">

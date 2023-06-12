@@ -33,14 +33,11 @@ app.use(limiter);
 
 //register view-engine
 app.set("view engine", "ejs");
-// app.set('views','myfolder')
 app.use(express.urlencoded({ extended: false }));
 
 
 
 app.get("/", (req, res) => {
-  //NOT: res.send(, sendFile();
-  // res.sendFile(path.join(__dirname, '/index.html'));
   log(`Inside / route ${port}`);
   res.render("index");
 });
@@ -89,25 +86,20 @@ app.get("/resume", (req, res) => {
   //     "Answer 3":"fdnfsdjnfljsnfl"
   //   },
   // ]
-  for (const key in result) {
-    if (result.hasOwnProperty(key)) {
-      const item = result[key];
-      log("Question:", item.ques);
-      log("Answer:", item.ans);
-      log("\n");
-    }
-  }
+  log(result);
   res.render("success", {result, CLIENT_ID});
 });
 
-app.post("/resume", async (req, res) => {
+app.get("/loader", (req, res) => {
   res.render("loader");
+})
+app.post("/resume", async (req, res) => {
+  // res.render("loader");
   const exp = req.body.exp;
   const proj = req.body.proj;
   const skills = req.body.skills;
   const jd = req.body.jd;
   const ach = req.body.ach;
-  // log(`Experince: ${exp} \n Projects: ${proj}`);
   const cv = `
     Past Experience:  
     ${exp} \n
@@ -117,13 +109,12 @@ app.post("/resume", async (req, res) => {
     ${skills} \n
     Achievements:
     ${ach} `;
-  // log(`${cv} \n`);
 
   model.model1(jd, cv)
     .then((result) => {
       log("\n---------In app.js model1 promise--------\n");
       log(result);
-      res.render("success", {result: result});
+      res.render("success", {result: result, CLIENT_ID});
     })
     .catch((error) => {
       log(error);

@@ -29,22 +29,46 @@
 }
 
 /*-----------LOADER----------*/
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
+/* @keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+} */
 
+@keyframes spin {
+  100% {
+      transform: rotate(360deg);
+  }
+}
+#loader {
+  border: 12px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  animation: spin 1s linear infinite;
+}
+.loader_center {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
 .loader {
-  border: 16px solid #f3f3f3; /* Light gray border */
-  border-top: 16px solid #3498db; /* Blue border */
+  border: 16px solid #f3f3f3;
+  border-top: 16px solid #3498db;
   border-radius: 50%;
   width: 120px;
   height: 120px;
-  animation: spin 2s linear infinite; /* Apply the spin animation */
-  margin: 0 auto; /* Center the loader */
-  margin-top: 50px; /* Adjust the top margin as needed */
+  animation: spin 2s linear infinite;
+  margin: 0 auto;
+  margin-top: 50px;
 }
-
 
 /*------------success page ------------*/
 .page2 {
@@ -62,42 +86,43 @@
   display: flex;
   width: 100%;
 }
-.dashboard_intro{
-  width:60%;
+.dashboard_intro {
+  width: 60%;
   padding: 4% 5%;
   /* background-color: #9d35de; */
 }
-.dashboard_search{
-width: 37%;
-/* background-color: #cade35; */
-padding: 4% 5%;
+.dashboard_search {
+  width: 37%;
+  /* background-color: #cade35; */
+  padding: 4% 5%;
 }
-.dashboard_intro h2{
+.dashboard_intro h2 {
   color: black;
 }
 
 .dash_section2 {
   display: flex;
   justify-content: space-around;
-  width:100%;
-  border-radius: 30px ;
-  color:black;
+  width: 100%;
+  border-radius: 30px;
+  color: black;
   /* justify-content: space-around; */
 }
-.dash_section2 h1,h2, p{
+.dash_section2 h1,h2,p {
   color: black;
 }
-.dash_section2 h1,h2{
+.dash_section2 h1,
+h2 {
   font-weight: 400;
 }
 .user_dash {
   display: flex;
-  width:60%;
+  width: 60%;
   padding: 4% 5%;
   background-color: rgb(255, 238, 238);
   border-radius: 30px;
 }
-.user_dash p{
+.user_dash p {
   color: rgb(80, 80, 80);
 }
 .user_dash img {
@@ -106,12 +131,12 @@ padding: 4% 5%;
   height: auto;
   /* margin-top: 15%; */
   margin-bottom: 90%;
-  margin-left:20%;
+  margin-left: 20%;
 }
-.user_nav{
-  color:black;
+.user_nav {
+  color: black;
   text-align: center;
-  border:3px solid #f9aad4;
+  border: 3px solid #f9aad4;
   border-radius: 30px;
   padding: 3% 8%;
 }
@@ -125,7 +150,7 @@ padding: 4% 5%;
 
 #search-input {
   flex: 1;
-  color:rgb(72, 66, 66);
+  color: rgb(72, 66, 66);
   background-color: rgb(255, 238, 238);
   border: 1px solid rgb(179, 179, 179);
   outline: none;
@@ -146,41 +171,57 @@ padding: 4% 5%;
   color: #fff;
 }
 
-.dash_section3{
+.dash_section3 {
   margin-top: 4%;
   text-align: center;
   padding: 3% 8%;
 }
-.dash_section3 h1, p{
+.dash_section3 h1,p {
   color: black;
 }
-.dash_section3 h4{
+.dash_section3 h4 {
   color: rgb(80, 80, 80);
 }
 
-.dash_section4{
+.dash_section4 {
   display: flex;
   flex-direction: column;
   align-items: center;
-color: black;
-width: 70%;
-margin:5% 5%;
-padding: 5% 5%;
-background-color: rgb(255, 238, 238);
+  color: black;
+  width: 70%;
+  margin: 5% 5%;
+  padding: 5% 5%;
+  background-color: rgb(255, 238, 238);
   border-radius: 30px;
-
 }
-.qs{
-  width: 100%;
-  overflow-x: hidden;
+.qs {
+  margin: 0 auto;
+  width: 80%;
+  overflow: hidden;
   white-space: pre-wrap;
   word-wrap: break-word;
 }
-
-.qs h3, p, pre{
-  color:black
+.qs h4, pre {
+  overflow-x: hidden;
+  white-space: pre-wrap;
 }
-
+.qs h4 {
+  font-family:'Poppins', sans-serif;
+  font-weight: 700;
+  color:black;
+}
+.answer p, pre{
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  color: grey;
+}
+.question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* padding: 1% 2%; */
+  cursor: pointer;
+}
 
 
 /*----------LANDING PAGE----------*/
@@ -202,6 +243,15 @@ background-color: rgb(255, 238, 238);
 }
 .intro h4 {
   font-weight: 300;
+}
+.intro p{
+  color: white;
+  width: 100%;
+  overflow: hidden;
+  word-wrap: break-word;
+}
+.intro .btn-p{
+  border: solid;
 }
 .hero_img {
   position: relative;
@@ -227,7 +277,7 @@ background-color: rgb(255, 238, 238);
   align-items: center;
 }
 .section_1 h1 {
-  font-family: 'Koulen', cursive;
+  font-family: "Koulen", cursive;
   font-weight: 400;
   overflow: hidden;
   color: white;
@@ -237,14 +287,14 @@ background-color: rgb(255, 238, 238);
   /* width: 20%;
   height: 20%; */
 }
-.arrow0 img{
+.arrow0 img {
   position: absolute;
   width: 70%;
-  height:auto;
+  height: auto;
 }
 
 .section_2 {
-  color:black;
+  color: black;
   display: flex;
   flex-direction: column;
   justify-content: center;

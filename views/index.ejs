@@ -12,12 +12,10 @@
       <div class="hero_header">
         <h4>GET JOBY READY - INTERVIEW HACKS</h4>
         <br />
-        <h1>Top 50 Questions to Ace your Interview</h1>
-        <br />
+        <h1>Top 50 Questions <br> to Ace your Interview</h1>
+        <!-- <br /> -->
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque nisi
-          provident omnis id perspiciatis optio, eveniet illum beatae,
-          recusandae deleniti alias dolor eligendi blanditiis. Ducimus totam cum
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque nisi provident omnis id perspiciatis optio, eveniet illum beatae, recusandae deleniti alias dolor eligendi blanditiis. Ducimus totam cum
           accusantium dolorum ipsam?
         </p>
         <br />
@@ -54,6 +52,7 @@
 
   <!----Form -->
   <form action="/resume" method="post">
+    <!-- onsubmit="show()" -->
     <div class="cardz">
       <h3>STEP 1:</h3>
       <div class="card-container">
@@ -186,15 +185,10 @@
 </div>
 
 <!-- <script>
-  const scrollButton = document.getElementById('scrollButton');
-  console.log("In script tag of index ejs");
-  const targetCard = document.getElementById('exp');
-      // const dragDropText = document.getElementById('dragDropText');
-
-  scrollButton.addEventListener('click', () => {
-      console.log("Scroll button clicked");
-        targetCard.scrollIntoView({ behavior: 'smooth' });
-  });
+  function showLoader(){
+    console.log("----going to loader-----")
+    window.location.href = "/loader";
+  }
 </script> -->
 
 <%- include('./partials/footer') %>
