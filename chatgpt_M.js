@@ -73,7 +73,7 @@ export function convert(completionText) {
 
   Question 12 : Explain the concept of a virtual DOM in React.
   Answer 12 : The virtual DOM is a lightweight, in-memory representation of the actual DOM used by React to optimize component rendering. When a component's state changes, React generates a new virtual DOM and performs a diffing algorithm to determine the minimal set of changes required to update the actual DOM. This process is called reconciliation, and it makes React applications render updates more efficiently and performantly.`;
-  var inputText = inputText2;
+  var inputText = completionText;
   if (!completionText) {
     inputText = inputText2;
   }

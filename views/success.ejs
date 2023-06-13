@@ -54,42 +54,35 @@
   </div>
 
   <div class="dash_section4">
-    <h1 style="font-weight:700;">50 Top Interview Questions</h1>
-    <!-- <h3>Number of Q/As : result.length %></h3> -->
-    <p style="color:grey;">Everything you need to know to ace your interviews!</p>
-    <br>
-    <div class="qs">
+    <div class="dash_section4_head">
+      <h1 style="font-weight:700;">50 Top Interview Questions</h1>
+      <p style="color:grey;">Everything you need to know to ace your interviews!</p>
+    </div>
+    
+    
       <% for (let i = 0; i < result.length; i++) { %>
+      <div class="qs">
           <div class="question">
+            <div class="question_area">
               <h4><pre>
-                  <span class="question-text"><%= i+1 %>: <%= result[i].ques %>
-                  </span>
+                <span class="question_text"><%= i+1 %>: <%= result[i].ques %>
+                </span>
               </pre></h4>
-              <i class="fa-regular fa-circle-plus" style="color: #1f78ff;"></i>
-          </div>
+            </div>
+            <div class="question_click">
+              <i class="fa fa-regular fa-circle-plus" style="color: #1f78ff;"></i>
+            </div>
+          </div>  
+
           <div class="answer">
             <p style="font-family: 'Lato',sans-serif;font-weight: 300;color: rgb(89, 89, 89);">
               <pre><%-result[i].ans %></pre>
             </p>
           </div>
+      </div>
       <% } %>
-    </div>
-    <!-- <div class="qs">
-        <% for (let i = 0; i < result.length; i++) { %>
-          <div class="question-container">
-            <h4 class="question">
-              <span class=""question-text">
-                <%= i+1 %>: <%= result[i].ques %>
-              </span>
-              <i class="toggle-icon fa-regular fa-circle-plus" style="color: #1f78ff;"></i>
-            </h4>
-            <div class="answer hidden">
-              <pre><%-result[i].ans %></pre>
-            </div>
-            
-          </div>
-          <% } %>
-    </div> -->
+    
+    
   </div>
 
   <div class="dash_section5">

@@ -1,4 +1,7 @@
 <%- include('./partials/header') %>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/loader.js"></script>
 <title>InterviewHacks</title>
   </head>
   <body>
@@ -50,8 +53,12 @@
     <div class="arrow2"></div>
   </div>
 
+  <!----LOADERR-->
+  <div id="pageloader">
+    <img src="http://cdnjs.cloudflare.com/ajax/libs/semantic-ui/0.16.1/images/loader-large.gif" alt="processing..." />
+ </div>
   <!----Form -->
-  <form action="/resume" method="post">
+  <form id="int_form" action="/resume" method="post">
     <!-- onsubmit="show()" -->
     <div class="cardz">
       <h3>STEP 1:</h3>

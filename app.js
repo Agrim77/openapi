@@ -39,9 +39,9 @@ app.use(express.urlencoded({ extended: false }));
 
 app.get("/", (req, res) => {
   log(`Inside / route ${port}`);
+  // res.sendFile(path.join(__dirname, 'views', 'index.html'));
   res.render("index");
 });
-
 
 
 app.post("/my-server/create-paypal-order", async (req, res) => {
