@@ -146,7 +146,7 @@ let htmlString = inputText.replace(regex, function(match) {
 }
 
 export async function model1(jd, cv) {
-  const prompt1 = `As a top Career Adviser, based on the JD (Job description) and CV (Resume) below, List out the 15 Questions & answers to most important coding questions.
+  const prompt1 = `As a top Career Adviser, based on the JD (Job description) and CV (Resume) below, List out the 10 Questions & answers to most important coding questions.
   IMPORTANT: The output format should be as follows:
 
   "Question 1 <Space> : <space> What is meaning of React 
@@ -193,7 +193,7 @@ export async function model1(jd, cv) {
       const completion = await openai.createChatCompletion({
         model: "gpt-4",
         messages: messages,
-        temperature:0.4,
+        temperature:0.6,
       });
 
       const completion_text = completion.data.choices[0].message.content;

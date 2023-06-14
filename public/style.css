@@ -171,6 +171,7 @@ h2 {
   color: #fff;
 }
 
+
 .dash_section3 {
   margin-top: 4%;
   text-align: center;
@@ -204,6 +205,7 @@ h2 {
   flex-direction: column;
   align-items: center;
   overflow: hidden;
+  justify-content: space-around;
   white-space: pre-wrap;
   word-wrap: break-word;
 }
@@ -215,7 +217,10 @@ h2 {
 }
 .question_area {
   left: 0;
-  width:90%;
+  width:80%;
+  overflow: hidden;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 .question_text{
   left:0;
@@ -235,13 +240,27 @@ h2 {
   white-space: pre-wrap;
 }
 
-.answer p, pre{
+.answer span, p, pre{
   font-family: "Lato", sans-serif;
   font-weight: 300;
   color: grey;
   overflow: hidden;
   white-space: pre-wrap;
   word-wrap: break-word;
+}
+
+.answer_text{
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  color: grey;
+  overflow: hidden;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.question_text .highlight,
+.answer .highlight {
+  background-color: yellow;
 }
 
 

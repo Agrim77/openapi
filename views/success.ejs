@@ -1,6 +1,8 @@
 <%- include('./partials/header') %>
 <script src="https://www.paypal.com/sdk/js?client-id=<%= CLIENT_ID %>"></script>
+<script src="/search_qs.js"></script>
 <script src="/answers.js"></script>
+<script src="/dropdown_qs.js"></script>
 <title>Ready !</title>
 
   </head>
@@ -10,7 +12,7 @@
 <div class="page2">
   <div class="dash_section1">
     <div class="dashboard_intro">
-      <h2>My dashboard <i class="fa-regular fa-circle-plus" style="color: #a8deff;"></i> </h2>
+      <h2>My dashboard <i class="fa fa-regular fa-circle-plus" style="color: #a8deff;"></i> </h2>
     </div>
 
     <div class="dashboard_search">
@@ -39,7 +41,7 @@
       </div>
     </div>
     <div class="user_nav">
-      <h2>50 Questions</h2>
+      <h2><% result.length %> Questions</h2>
       <p>SLIDER HERE !</p>
     </div>
   </div>
@@ -61,7 +63,7 @@
     
     
       <% for (let i = 0; i < result.length; i++) { %>
-      <div class="qs">
+      <div class="qs" id="question<%= i %>">
           <div class="question">
             <div class="question_area">
               <h4><pre>
@@ -75,8 +77,8 @@
           </div>  
 
           <div class="answer">
-            <p style="font-family: 'Lato',sans-serif;font-weight: 300;color: rgb(89, 89, 89);">
-              <pre><%-result[i].ans %></pre>
+            <p>
+              <pre class="answer_text"><%-result[i].ans %></pre>
             </p>
           </div>
       </div>
