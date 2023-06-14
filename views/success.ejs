@@ -41,8 +41,25 @@
       </div>
     </div>
     <div class="user_nav">
-      <h2><% result.length %> Questions</h2>
-      <p>SLIDER HERE !</p>
+      <div>
+        <h2><%- result.length %> Questions</h2>
+      </div>
+      <div class="dropdown-container">
+        <div class="btn-group dropstart">
+          <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            Select Your Question
+          </button>
+          <ul class="dropdown-menu">
+            <% for (let i = 0; i < result.length; i++) { %>
+              <li>
+                <a class="dropdown-item" href="#question<%= i %>"><%= i+1 %>: <%= result[i].ques.substring(0, 27) %> ....</a>
+              </li>
+              <% } %>
+          </ul>
+        </div>
+      </div>
+      
+      
     </div>
   </div>
 
