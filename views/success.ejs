@@ -17,6 +17,7 @@
 
     <div class="dashboard_search">
       <div class="search-bar">
+        <!-- <button class="btn btn-outline-secondary" type="button" id="button-addon1">Button</button> -->
         <input
           type="text"
           id="search-input"
@@ -49,10 +50,11 @@
           <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
             Select Your Question
           </button>
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu dropdown-menu-lg-start">
             <% for (let i = 0; i < result.length; i++) { %>
               <li>
                 <a class="dropdown-item" href="#question<%= i %>"><%= i+1 %>: <%= result[i].ques.substring(0, 27) %> ....</a>
+                <!-- <li><a class="dropdown-item disabled">Disabled link</a></li> -->
               </li>
               <% } %>
           </ul>
@@ -74,7 +76,7 @@
 
   <div class="dash_section4">
     <div class="dash_section4_head">
-      <h1 style="font-weight:700;">50 Top Interview Questions</h1>
+      <h1 style="font-weight:700;"><%- result.length %> Top Interview Questions</h1>
       <p style="color:grey;">Everything you need to know to ace your interviews!</p>
     </div>
     
@@ -108,7 +110,7 @@
     <div id="paypal_button"></div>
   </div>
   <script src="/paypal_client.js"></script>
- 
+  <script src="/page2.js"></script>
 </div>
 
 <%- include('./partials/footer') %>

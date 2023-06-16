@@ -6,6 +6,7 @@ import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
 import bodyParser from 'body-parser';
 import * as model from './chatgpt_M.js';
+import nodemailer from 'nodemailer';
 dotenv.config();
 // import "dotenv/config"; // loads variables from .env file
 import * as paypal from "./paypal_api.js";
@@ -35,14 +36,11 @@ app.use(limiter);
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: false }));
 
-
-
+/*-------ROutes------------*/
 app.get("/", (req, res) => {
   log(`Inside / route ${port}`);
-  // res.sendFile(path.join(__dirname, 'views', 'index.html'));
   res.render("index");
 });
-
 
 app.post("/my-server/create-paypal-order", async (req, res) => {
   log("Create-paypal-order POST route \n");
@@ -65,27 +63,10 @@ app.post("/my-server/capture-paypal-order", async (req, res) => {
   }
 });
 
-app.get("/thanks", (req, res) => {
-  res.render("thanks");
-})
-
 //TODO: comment this route after going live
 app.get("/resume", (req, res) => {
   log("\n ------Get route resume(FOR DEV PRODUCTION ONLY-- comment out)----- \n");
   const result = model.convert();
-  // const result = [
-  //   {
-  //     "Question 1":"WABABABDBFHBBHB fdbfkdsbfksjb",
-  //     "Answer 1":"fdnfsdjnfljsnfl"
-  //   },
-  //   {
-  //     "Question 2":"WABABABDBFHBBHB fdbfkdsbfksjb",
-  //     "Answer 2":"fdnfsdjnfljsnfl"
-  //   },{
-  //     "Question 3":"WABABABDBFHBBHB fdbfkdsbfksjb",
-  //     "Answer 3":"fdnfsdjnfljsnfl"
-  //   },
-  // ]
   log(result);
   res.render("success", {result, CLIENT_ID});
 });
@@ -93,6 +74,7 @@ app.get("/resume", (req, res) => {
 app.get("/loader", (req, res) => {
   res.render("loader");
 })
+
 app.post("/resume", async (req, res) => {
   // res.render("loader");
   const exp = req.body.exp;
@@ -120,6 +102,59 @@ app.post("/resume", async (req, res) => {
       log(error);
       res.render("error");
     });
+});
+
+app.get("/thanks", (req, res) => {
+    res.render("thanks");
+})
+
+app.post('/send-email', (req, res) => {
+  const { user_name, user_email, user_phone } = req.body;
+  // Create a Nodemailer transporter
+  const transporter = nodemailer.createTransport({
+    // Set up your email service or SMTP settings here
+    // For example, for Gmail:
+    service: 'Gmail',
+    auth: {
+      user: process.env.MY_EMAIL,
+      pass: process.env.MY_PASS,
+    },
+  });
+  // let testAccount = await nodemailer.createTestAccount();
+
+//   const transporter = nodemailer.createTransport({
+//     host: 'smtp.ethereal.email',
+//     port: 587,
+//     auth: {
+//         user: 'merlin.romaguera12@ethereal.email',
+//         pass: 'MWVqaM1Cc5yzFyHtRw'
+//     }
+// });
+
+  // Construct the email message
+  const mailOptions = {
+    from: process.env.MY_EMAIL,
+    to: `${user_email}`,
+    subject: 'Your PDF File',
+    text: `Dear ${user_name},\n\nPlease find the attached PDF file.\n\nBest regards,\n  INterviewHacks.HQ`,
+    attachments: [
+      {
+        filename: 'q_and_a.pdf',
+        path: path.join('public', 'pdfs', 'q_and_a.pdf'),
+      },
+    ],
+  };
+
+  // Send the email
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.log(error);
+      res.status(500).send('Error sending email');
+    } else {
+      console.log('Email sent: ' + info.response);
+      res.send('Email sent successfully');
+    }
+  });
 });
 
 app.listen(port, () => {

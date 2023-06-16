@@ -1,5 +1,5 @@
 
-console.log("ques dropdown disabled rn");
+console.log("ans.js which dispalyas inside qs disabled rn");
 // document.addEventListener('DOMContentLoaded', () => {
 //     const toggleIcons = document.querySelectorAll('.toggle-icon');
   

@@ -3,11 +3,88 @@ import { Configuration, OpenAIApi } from "openai";
 import dotenv from "dotenv";
 dotenv.config();
 import { log } from "console";
-
+import * as pdf_gen from './pdfGen.js'
 //---FOR TEST PURPOSE---
 // model1(jd, cv)
 // convert();
 
+export function qs_as_format(inputText){
+  log("\n----Converting to proper question & answer format-------\n")
+  const lines = inputText.split("\n");
+  const formattedLines = lines.map((line) => {
+    if (line.trim().startsWith("Question") || line.trim().startsWith("Answer")) {
+      const parts = line.split(":");
+      if (parts.length === 2) {
+        const number = parts[0].trim().replace(/\D/g, "");
+        const text = parts[1].trim();
+        return `${parts[0].trim()} : ${text.trim()}`; // Add space on both sides of the colon
+      }
+    }
+    return line;
+  });
+  const formattedText = formattedLines.join("\n");
+  log(formattedText);
+  return formattedText;
+}
+
+function htmlEntity(inputText){
+  log("\n ----- Now converting the code part of answers to HTML ENTITITES ----- \n");
+  let regex = /[&<>"'\/\\]/g;
+  let htmlString = inputText.replace(regex, function(match) {
+  if (match === "&") {
+    return "&amp;";
+  } else if (match === "<") {
+    return "&lt;";
+  } else if (match === ">") {
+    return "&gt;";
+  } else if (match === '"') {
+    return "&quot;";
+  } else if (match === "'") {
+    return "&apos;";
+  } else if (match === "/") {
+    return "&#x2F;";
+  } else if (match === "\\") {
+    return "&#92;";
+  }
+});
+
+// log(htmlString);
+return htmlString;
+
+}
+
+export function json_format(inputText){
+  log("\n ----- Now converting to proper JSON format for EJS rendering -----\n");
+  // Define the regular expressions for matching questions and answers
+  const questionRegex = /Question (\d+) : (.*?)(?=\nAnswer \d+ :|$)/gs;
+  const answerRegex = /Answer \d+ : (.*?)(?=\nQuestion \d+ :|$)/gs;
+  let match;
+  const result = [];
+  
+  // Extract questions
+  while ((match = questionRegex.exec(inputText)) !== null) {
+    const question = match[2].trim();
+    result.push({ ques: question, ans: "" });
+  }
+  
+  // Extract answers and assign them to corresponding questions
+  let resultIndex = 0;
+  while ((match = answerRegex.exec(inputText)) !== null) {
+    const answer = match[1].trim();
+    result[resultIndex].ans = answer;
+    resultIndex++;
+  }
+  // log(result);
+  return result;
+}
+
+//----------FUnction for pdf gen-------
+function for_pdf(formattedLines){
+  log('-------COnverting for pdf gen object------\n')
+  const pdf_result = json_format(formattedLines);
+  log(pdf_result);
+  pdf_gen.createPDF(pdf_result, 'public/pdfs', 'q_and_a.pdf');
+}
 const questions = [];
 export function convert(completionText) {
 
@@ -77,73 +154,14 @@ export function convert(completionText) {
   if (!completionText) {
     inputText = inputText2;
   }
-  log("\n----Converting to proper question & answer format-------\n")
+  const formattedLines = qs_as_format(inputText);
+  //for pdf gen
+  for_pdf(formattedLines);
   
-  const lines = inputText.split("\n");
-  const formattedLines = lines.map((line) => {
-    if (line.trim().startsWith("Question") || line.trim().startsWith("Answer")) {
-      const parts = line.split(":");
-      if (parts.length === 2) {
-        const number = parts[0].trim().replace(/\D/g, "");
-        const text = parts[1].trim();
-        return `${parts[0].trim()} : ${text.trim()}`; // Add space on both sides of the colon
-      }
-    }
-    return line;
-  });
-  inputText =formattedLines.join("\n");
-  // log("\n",inputText)
-
-  log("\n ----- Now converting the code part of answers to HTML ENTITITES ----- \n");
-
-  let regex = /[&<>"'\/\\]/g;
-let htmlString = inputText.replace(regex, function(match) {
-  if (match === "&") {
-    return "&amp;";
-  } else if (match === "<") {
-    return "&lt;";
-  } else if (match === ">") {
-    return "&gt;";
-  } else if (match === '"') {
-    return "&quot;";
-  } else if (match === "'") {
-    return "&apos;";
-  } else if (match === "/") {
-    return "&#x2F;";
-  } else if (match === "\\") {
-    return "&#92;";
-  }
-});
-  // log(htmlString);
-  log("\n ----- Now converting to proper format for EJS rendering -----\n");
-  inputText = htmlString;
-
-  // Define the regular expressions for matching questions and answers
-  const questionRegex = /Question (\d+) : (.*?)(?=\nAnswer \d+ :|$)/gs;
-  const answerRegex = /Answer \d+ : (.*?)(?=\nQuestion \d+ :|$)/gs;
-  let match;
-  const result = [];
-  
-  // Extract questions
-  while ((match = questionRegex.exec(inputText)) !== null) {
-    const question = match[2].trim();
-    result.push({ ques: question, ans: "" });
-  }
-  
-  // Extract answers and assign them to corresponding questions
-  let resultIndex = 0;
-  while ((match = answerRegex.exec(inputText)) !== null) {
-    const answer = match[1].trim();
-    result[resultIndex].ans = answer;
-    resultIndex++;
-  }
-  // log("-------Result printed in ChatMODEL file---- \n");
-  // result.forEach((e, index) => {
-  //   log(index, e, "\n");
-  // })
-  // log(result);
-  return result;
+  inputText =htmlEntity(formattedLines);
+  return json_format(inputText);
 }
+
 
 export async function model1(jd, cv) {
   const prompt1 = `As a top Career Adviser, based on the JD (Job description) and CV (Resume) below, List out the 10 Questions & answers to most important coding questions.
@@ -172,9 +190,9 @@ export async function model1(jd, cv) {
   var count = 1;
 
   const history = [];
-
   while (true) {
-    log("\n Count:" + count);
+    log(`------ Running prompt ${count} ------`);
+    
     var user_input = prompt1;
     if (count == 2) user_input = prompt2;
     count++;
@@ -198,8 +216,11 @@ export async function model1(jd, cv) {
 
       const completion_text = completion.data.choices[0].message.content;
       log(completion_text);
+      
 
       history.push([user_input, completion_text]);
+      // log('------TIme-----')
+      // console.timeEnd('model1exe');
       return convert(completion_text);
       // break;
       // return;
@@ -223,5 +244,3 @@ export async function model1(jd, cv) {
   }
 }
 
-// module.exports = { model1, convert };
-// module.exports = convert;

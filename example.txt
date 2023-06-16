@@ -1,3 +1,32 @@
+---email----
+const transporter = nodemailer.createTransport({
+    host: 'smtp.ethereal.email',
+    port: 587,
+    auth: {
+        user: 'merlin.romaguera12@ethereal.email',
+        pass: 'MWVqaM1Cc5yzFyHtRw'
+    }
+});
+
+SMTP configuration
+Host	smtp.ethereal.email
+Port	587
+Security	STARTTLS
+Username	merlin.romaguera12@ethereal.email
+Password	MWVqaM1Cc5yzFyHtRw
+IMAP configuration
+Host	imap.ethereal.email
+Port	993
+Security	TLS
+Username	merlin.romaguera12@ethereal.email
+Password	MWVqaM1Cc5yzFyHtRw
+POP3 configuration
+Host	pop3.ethereal.email
+Port	995
+Security	TLS
+Username	merlin.romaguera12@ethereal.email
+Password	MWVqaM1Cc5yzFyHtRw
+
 -----MODEL EXAMPLES OF JD & CV FOR MODEL TESTING--
 
 const jd = `Selected intern's day-to-day responsibilities include 1. Building data and logic-driven web-based workflow systems using bubble.io 2. Working with custom coding 3. Debugging and testing the code 4. Documenting and testing 5. Working with the different data sources, SDKs, and APIs Requirements: 1. Strong analytical skills 2. Excellent coding skills 3. A good foundation in algorithms and data structures 4. Exposure to any HTML/CSS/Node.js/React/MongoDB/Postgres/APIs etc. 5. Attention to detail 6. Passion for excellence 7. B. Tech/BE from good institutes 8. Above-average academic performance 9. Aspiring full-stack developer 10. Past experience in real-world and academic projects is preferred
