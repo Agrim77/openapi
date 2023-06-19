@@ -110,10 +110,9 @@ app.get("/thanks", (req, res) => {
 
 app.post('/send-email', (req, res) => {
   const { user_name, user_email, user_phone } = req.body;
+  log(user_name, user_email, user_phone);
   // Create a Nodemailer transporter
   const transporter = nodemailer.createTransport({
-    // Set up your email service or SMTP settings here
-    // For example, for Gmail:
     service: 'Gmail',
     auth: {
       user: process.env.MY_EMAIL,
@@ -136,7 +135,7 @@ app.post('/send-email', (req, res) => {
     from: process.env.MY_EMAIL,
     to: `${user_email}`,
     subject: 'Your PDF File',
-    text: `Dear ${user_name},\n\nPlease find the attached PDF file.\n\nBest regards,\n  INterviewHacks.HQ`,
+    text: `Dear ${user_name},\n\nPlease find the attached PDF file.\n\nBest regards,\n  InterviewHacks.HQ`,
     attachments: [
       {
         filename: 'q_and_a.pdf',
