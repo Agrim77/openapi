@@ -25,7 +25,17 @@
   color: #d88bb4;
 }
 .page1 {
+  overflow-x: hidden;
   background-color: #800e49;
+  /* background: hsla(329, 81%, 27%, 1);
+
+background: linear-gradient(270deg, hsla(329, 81%, 27%, 1) 0%, hsla(329, 85%, 36%, 1) 50%, hsla(329, 83%, 34%, 1) 100%);
+
+background: -moz-linear-gradient(270deg, hsla(329, 81%, 27%, 1) 0%, hsla(329, 85%, 36%, 1) 50%, hsla(329, 83%, 34%, 1) 100%);
+
+background: -webkit-linear-gradient(270deg, hsla(329, 81%, 27%, 1) 0%, hsla(329, 85%, 36%, 1) 50%, hsla(329, 83%, 34%, 1) 100%);
+
+filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#7F0D47", endColorstr="#AA0E5E", GradientType=1 ); */
 }
 
 /*-----------LOADER----------*/
@@ -190,7 +200,7 @@ h2 {
 .dropdown-menu {
   position: absolute;
   background-color: rgb(255, 238, 238);
-  z-index: 2;
+  z-index: 9999;
   top: 100%;
   left: 0;
   margin-right:100px;
@@ -348,7 +358,15 @@ h2 {
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  /* justify-content: space-between;  */
+  margin-right: 800px;
+  margin-left: 0px; /* Add margin on the left */
+  margin-bottom: 20px; /* Add margin at the bottom */
+  padding-bottom: 50px; 
+  margin-top: 80px;
+}
+
+.hero_header p{
+  left :0;
 }
 .intro h4 {
   font-weight: 300;
@@ -363,23 +381,29 @@ h2 {
   border: solid;
 }
 .hero_img {
-  position: relative;
-  width: 40%;
-  right: 0;
-  height: 100vh;
+  position: absolute;
+  top: 12%; /* Adjust the top position */
+  right: 50%;
+  left: 20%;
+  width: 80%;
+  height: 90vh; /* Adjust the height to prevent cropping */
+  /* margin-bottom: 1000px; */
   overflow: hidden;
 }
+
 .hero_img img {
   position: absolute;
   right: 0;
   width: auto;
-  height: 60%;
-  top: 25%;
+  height: 100%;
+  top: 0;
+  bottom: 15%;
   object-fit: cover;
-  /* transform: translateX(50%); */
+  
 }
 
 .section_1 {
+  margin-top:13%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -391,16 +415,24 @@ h2 {
   overflow: hidden;
   color: white;
 }
+/*---aayan ---*/
+.section_1 img {
+  width: auto;
+  height: 80px;
+}
+/*
 .section_1 .arrow0 {
   position: relative;
-  /* width: 20%;
-  height: 20%; */
+  width: 20%;
+  height: 20%; 
 }
 .arrow0 img {
   position: absolute;
   width: 70%;
   height: auto;
 }
+
+*/
 
 .section_2 {
   color: black;
@@ -423,10 +455,16 @@ h2 {
   text-align: center;
   height: auto;
   padding: 5% 15%;
+  color: black;
 }
-.desc h4 {
+.desc h3 {
   font-weight: 400;
   color: black;
+}
+.section_2 img {
+  margin-top: -4%;
+  width: auto;
+  height: 80px;
 }
 .arrow2 {
   background-color: white;
@@ -466,18 +504,50 @@ textarea {
 }
 .btn-p {
   color: #ffffff;
-  border: dashed;
   padding: 0.5rem 1rem;
   background-color: #800e49;
-  border-radius: 14px;
+  border-radius: 100px;
+  border-color: #ffffff;
   transition: box-shadow 0.3s;
 }
 .btn-p:hover {
   background-color: #9d35de;
-  /* Change the color to your desired hover color */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  /* Adjust the box shadow properties as per your preference */
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); */
 }
+.section_3 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.section_3 img {
+  width: auto;
+  height: 80px;
+}
+.submit-button {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+
+.pay-button {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.custom-button {
+  background-color: #800e49;
+  color: white;
+  border: 2px solid white;
+  border-radius: 25px;
+  padding: 15px 30px;
+  font-size: 18px;
+  width: 631px;
+}
+
 .download-button {
   display: inline-block;
   padding: 10px 20px;
@@ -493,6 +563,8 @@ textarea {
 .download-button:hover {
   background-color: #6c0d3c;
 }
+
+
 
 footer {
   margin-top: 3%;
