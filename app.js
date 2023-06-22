@@ -36,6 +36,8 @@ app.use(limiter);
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: false }));
 
+let pay_flag = false;
+
 /*-------ROutes------------*/
 app.get("/", (req, res) => {
   log(`Inside / route ${port}`);
@@ -57,6 +59,7 @@ app.post("/my-server/capture-paypal-order", async (req, res) => {
   const { orderID } = req.body;
   try {
     const captureData = await paypal.capturePayment(orderID);
+    pay_flag = true;
     res.json(captureData);
   } catch (err) {
     res.status(500).render('error',{error:err.message});
@@ -105,7 +108,10 @@ app.post("/resume", async (req, res) => {
 });
 
 app.get("/thanks", (req, res) => {
+  if(pay_flag)
     res.render("thanks");
+  else
+    res.render("error", {"msg":"payment route"});
 })
 
 app.post('/send-email', (req, res) => {

@@ -1,8 +1,9 @@
 <%- include('./partials/header') %>
 <script src="https://www.paypal.com/sdk/js?client-id=<%= CLIENT_ID %>"></script>
-<script src="/search_qs.js"></script>
-<script src="/answers.js"></script>
-<script src="/dropdown_qs.js"></script>
+<script src="/js/search_qs.js"></script>
+<script src="/js/q_and_a_drop.js"></script>
+<script src="/js/dropdown_qs.js"></script>
+<script src="https://kit.fontawesome.com/510a4172a7.js" crossorigin="anonymous"></script>
 <title>Ready !</title>
 
   </head>
@@ -12,7 +13,8 @@
 <div class="page2">
   <div class="dash_section1">
     <div class="dashboard_intro">
-      <h2>My dashboard <i class="fa fa-regular fa-circle-plus" style="color: #a8deff;"></i> </h2>
+      <h2 style="font-family: Poppins;
+      font-weight: 500;">My dashboard </h2>
     </div>
 
     <div class="dashboard_search">
@@ -82,24 +84,18 @@
     
     
       <% for (let i = 0; i < result.length; i++) { %>
-      <div class="qs" id="question<%= i %>">
+      <div class="qs" id="question<%=i%>">
           <div class="question">
-            <div class="question_area">
-              <h4><pre>
-                <span class="question_text"><%= i+1 %>: <%= result[i].ques %>
-                </span>
-              </pre></h4>
+            <div class="question_area"><h4><pre><%= i+1 %>: <%= result[i].ques %>
+                </pre></h4>
             </div>
             <div class="question_click">
-              <i class="fa fa-regular fa-circle-plus" style="color: #1f78ff;"></i>
+              <i class="fa-solid fa-circle-plus" style="color: #5794ff; "onclick="toggleAnswer(<%=i%>)"></i>
             </div>
           </div>  
-
-          <div class="answer">
-            <p>
-              <pre class="answer_text"><%-result[i].ans %></pre>
-            </p>
-          </div>
+          <% if (i < 2) { %>
+            <pre id="answer<%=i%>" class="answer_text" style="display: none;"><%-result[i].ans %></pre>
+          <% } %>
       </div>
       <% } %>
     
@@ -107,10 +103,33 @@
   </div>
 
   <div class="dash_section5">
-    <div id="paypal_button"></div>
+    <div class="pay-button">
+      <button type="submit" id="show_paypal" class="btn-p">Pay to view all 50 Answers >></button>
+      <div class="paypal_btn" id="paypal_button"></div>
   </div>
-  <script src="/paypal_client.js"></script>
-  <script src="/page2.js"></script>
+  <script>
+    function toggleAnswer(index) {
+    const answerElement = document.getElementById(`answer${index}`);
+    const iconElement = document.querySelector(`#question${index} .question_click i`);
+
+    if (answerElement.style.display === 'none') {
+      answerElement.style.display = 'block';
+      iconElement.classList.remove('fa-circle-plus');
+      iconElement.classList.add('fa-circle-minus');
+
+      if (index >= 2) {
+        const payBtnElement = document.getElementById('pay-btn');
+        payBtnElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    } else {
+      answerElement.style.display = 'none';
+      iconElement.classList.remove('fa-circle-minus');
+      iconElement.classList.add('fa-circle-plus');
+    }
+  }
+  </script>
+  <script src="/js/paypal_client.js"></script>
+  <script src="/js/page2.js"></script>
 </div>
 
 <%- include('./partials/footer') %>

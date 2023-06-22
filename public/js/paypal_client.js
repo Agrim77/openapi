@@ -43,7 +43,7 @@ paypal.Buttons({
                   JSON.stringify(orderData, null, 2)
                 );
                 const transaction = orderData.purchase_units[0].payments.captures[0];
-                //actions.redirect('thank_you.html');
+                // const response = fetch ("http://localhost:8000/resume#question8")
                 window.location.href = '/thanks';
                 // When ready to go live, remove the alert and show a success message within this page. For example:
                 // var element = document.getElementById('paypal-button-container');

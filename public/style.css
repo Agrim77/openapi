@@ -90,13 +90,15 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#7F0D47", en
   justify-content: center;
 }
 .page2 .dash_section1 {
-  margin: 2% 5%;
+  margin: 4% 5%;
   height: 40%;
   border-radius: 30px;
   display: flex;
   width: 100%;
 }
 .dashboard_intro {
+  font-family: Poppins;
+font-weight: 500;
   width: 60%;
   padding: 4% 5%;
   /* background-color: #9d35de; */
@@ -227,14 +229,16 @@ h2 {
   flex-direction: column;
   align-items: center;
   color: black;
-  width: 70%;
   margin: 5% 5%;
   padding: 5% 5%;
-  background-color: rgb(255, 238, 238);
-  border-radius: 30px;
+  background: rgba(127, 13, 71, 0.04);
+  border-radius: 66px;
+  width: 80rem; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 .dash_section4_head{
-  margin:2% 5%;
+  text-align: center;
+  margin:4% 5%;
   align-items: center;
 }
 .qs {
@@ -243,64 +247,100 @@ h2 {
   flex-direction: column;
   align-items: center;
   overflow: hidden;
-  justify-content: space-around;
+  /* justify-content: space-around; */
   white-space: pre-wrap;
   word-wrap: break-word;
+  /* margin: 0; */
+  margin-top:3%;
+  margin-bottom: 10px; /* Add a margin-bottom to create space between each question and answer */
+  border-bottom: 1px solid #C4C4C4;
 }
 .question {
+  width:100%;
+  /* background-color: #ff1f1f; */
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0% 4%;
+  padding: 0;
+  margin: 0;
+  /* padding: 0% 4%; */
 }
 .question_area {
+  /* background-color: #f5f222; */
   left: 0;
-  width:80%;
-  overflow: hidden;
-  white-space: pre-wrap;
-  word-wrap: break-word;
-}
-.question_text{
-  left:0;
-  width:100%;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding-left: 0;
+  width:90%;
+  height: 100%;
+  
+  margin-top:0;
+  height: 100%;
   font-family:'Poppins', sans-serif;
   font-weight: 700;
-  color:black;
+  color: black;
   overflow: hidden;
   white-space: pre-wrap;
   word-wrap: break-word;
 }
+.question_area h4, pre{
+  font-family:'Poppins', sans-serif;
+font-style: normal;
+font-weight: 500;
+  color: black;
+}
 .question_click{
-  cursor: pointer;
+  /* background-color: #ff1fa2;s */
+  display: inline-block;
+}
+.question_click i {
+  width:100%;
+  height: 100%;
 }
 .qs h4, pre {
+  margin: 0;
+  padding: 0;
+  left: 0;
   overflow-x: hidden;
   white-space: pre-wrap;
 }
 
-.answer span, p, pre{
-  font-family: "Lato", sans-serif;
-  font-weight: 300;
-  color: grey;
-  overflow: hidden;
-  white-space: pre-wrap;
-  word-wrap: break-word;
+.answer{
+  background-color: #fff01f;
+  margin: 0;
+  position: relative;
+  width:100%;
+  padding: 0;
 }
 
-.answer_text{
+.answer span, p, pre{
+  /* overflow: hidden; */
+  /* white-space: pre-wrap; */
+  word-wrap: break-word;
+  padding:0;
+  margin: 0;
+  margin-bottom: 5px;
+}
+
+.answer_text pre{
   font-family: "Lato", sans-serif;
   font-weight: 300;
   color: grey;
-  overflow: hidden;
-  white-space: pre-wrap;
-  word-wrap: break-word;
+  padding: 0;
+  margin:0;
+  height: 100%; /* occupy full height of parent */
+  /* white-space: pre-wrap;
+  word-wrap: break-word; */
 }
 
 .question_text .highlight,
 .answer .highlight {
   background-color: yellow;
 }
-
+.dash_section5{
+  margin-bottom: 3%;
+}
 /*-----------Thanks page----------*/
 .page3{
   display: flex;
@@ -508,11 +548,13 @@ textarea {
   background-color: #800e49;
   border-radius: 100px;
   border-color: #ffffff;
-  transition: box-shadow 0.3s;
+  transition: backgorund-color 0.5s;
 }
 .btn-p:hover {
-  background-color: #9d35de;
-  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); */
+  background-color: #ce3989;
+}
+.paypal_btn{
+  display: none;
 }
 .section_3 {
   display: flex;

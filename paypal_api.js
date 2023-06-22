@@ -1,3 +1,4 @@
+import { log } from "console";
 import fetch from "node-fetch";
 const { CLIENT_ID, APP_SECRET } = process.env;
 const base = "https://api-m.sandbox.paypal.com";
@@ -60,6 +61,8 @@ export async function generateAccessToken() {
 
 async function handleResponse(response) {
   if (response.status === 200 || response.status === 201) {
+    log('---handle')
+    // response.render('/thanks');
     return response.json();
   }
 
