@@ -8,6 +8,27 @@
     background-color: #800e49;
    } */
 
+  /*  Animations */
+/* ADDING SCROLL EFFECT */
+
+.hidden1{
+  opacity: 0;
+  transition: all 1s;
+  filter: blur(2px);
+  transform: translateY(100%);
+}
+
+@media(prefers-reduced-motion){
+  .hidden1{
+      transition: none;
+  }
+}
+.show1{
+  opacity:1;
+  filter: blur(0);
+  transform: translateX(0);
+}
+
 .nav_l {
   overflow-y: hidden;
 }
@@ -149,7 +170,6 @@ font-weight: 500;
   width: 100%;
   border-radius: 30px;
   color: black;
-  /* justify-content: space-around; */
 }
 .dash_section2 h1,h2,p {
   color: black;
@@ -157,11 +177,6 @@ font-weight: 500;
 .dash_section2 h1,
 h2 {
   font-weight: 400;
-}
-
-
-.d_show {
-  display: block;
 }
 
 .user_dash {
@@ -252,7 +267,7 @@ h2 {
   word-wrap: break-word;
   /* margin: 0; */
   margin-top:3%;
-  margin-bottom: 10px; /* Add a margin-bottom to create space between each question and answer */
+  margin-bottom: 10px; 
   border-bottom: 1px solid #C4C4C4;
 }
 .question {
@@ -289,14 +304,22 @@ h2 {
 font-style: normal;
 font-weight: 500;
   color: black;
+  overflow: hidden;
 }
 .question_click{
   /* background-color: #ff1fa2;s */
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .question_click i {
   width:100%;
   height: 100%;
+}
+.question_click i:hover {
+  color: #6c0d3c;
+  width:200%;
+  height: 200%;
 }
 .qs h4, pre {
   margin: 0;
@@ -306,22 +329,21 @@ font-weight: 500;
   white-space: pre-wrap;
 }
 
-.answer{
+/* .answer{
   background-color: #fff01f;
   margin: 0;
   position: relative;
   width:100%;
   padding: 0;
+  display: none;
 }
 
 .answer span, p, pre{
-  /* overflow: hidden; */
-  /* white-space: pre-wrap; */
   word-wrap: break-word;
   padding:0;
   margin: 0;
   margin-bottom: 5px;
-}
+} */
 
 .answer_text pre{
   font-family: "Lato", sans-serif;
@@ -341,19 +363,33 @@ font-weight: 500;
 .dash_section5{
   margin-bottom: 3%;
 }
-/*-----------Thanks page----------*/
+/*-----------Thanks page (PDF & all answers)----------*/
 .page3{
+  margin-top: 5%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
 }
-.pdf_sec2{
+.pdf_sec2,.pdf_display{
   width:90%;
   padding: 4% 2%;
   background-color: rgb(255, 238, 238);
   border-radius: 30px;
 }
+.pdf_sec3{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  border-radius: 30px;
+  color: black;
+}
+
+.pdf_display iframe{
+  width: 95%;
+}
+
 
 .pdf_email{
   display: flex;
@@ -527,6 +563,14 @@ font-weight: 500;
 }
 .card-container {
   margin: 3rem;
+  width: 25rem;
+  border-radius: 29px; 
+  box-shadow: 0 25px 25px rgba(0, 0, 0, 0.1), 0 25px 25px rgba(0, 0, 0, 0.1);
+}
+.card-container .card{
+  width: 25rem;
+  border-radius: 29px; 
+  box-shadow: 0 25px 25px rgba(0, 0, 0, 0.1), 0 25px 25px rgba(0, 0, 0, 0.1);
 }
 .card-container h2 {
   color: #9d35de;

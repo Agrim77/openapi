@@ -1,24 +1,24 @@
-
-console.log("ans.js which dispalyas inside qs disabled rn");
-// document.addEventListener('DOMContentLoaded', () => {
-//     const toggleIcons = document.querySelectorAll('.toggle-icon');
-  
-//     toggleIcons.forEach(icon => {
-//       icon.addEventListener('click', () => {
-//         console.log("clicked")
-//         const questionContainer = icon.closest('.question-container');
-//         const answer = questionContainer.querySelector('.answer');
-  
-//         answer.classList.toggle('show');
-//         icon.classList.toggle('fa-circle-plus');
-//         icon.classList.toggle('fa-circle-minus');
-  
-//         if (answer.classList.contains('show')) {
-//           answer.style.maxHeight = `${answer.scrollHeight}px`;
-//         } else {
-//           answer.style.maxHeight = '0';
-//         }
-//       });
-//     });
-//   });
+console.log("answers dropdown script in client side right now ");
+document.addEventListener('DOMContentLoaded', () => {
+    // function toggleAnswer(index) {
+    //     const answerElement = document.getElementById(`answer${index}`);
+    //     const iconElement = document.querySelector(`#question${index} .question_click i`);
+    
+    //     if (answerElement.style.display === 'none') {
+    //       answerElement.style.display = 'block';
+    //       iconElement.classList.remove('fa-circle-plus');
+    //       iconElement.classList.add('fa-circle-minus');
+    
+    //       if (index >= 2) {
+    //         console.log("Question > 2");
+    //         const payBtnElement = document.getElementById('pay-btn');
+    //         payBtnElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    //       }
+    //     } else {
+    //       answerElement.style.display = 'none';
+    //       iconElement.classList.remove('fa-circle-minus');
+    //       iconElement.classList.add('fa-circle-plus');
+    //     }
+    //   }
+  });
   

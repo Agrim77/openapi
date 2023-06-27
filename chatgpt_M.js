@@ -23,7 +23,7 @@ export function qs_as_format(inputText){
     return line;
   });
   const formattedText = formattedLines.join("\n");
-  log(formattedText);
+  // log(formattedText);
   return formattedText;
 }
 
@@ -173,7 +173,7 @@ export async function model1(jd, cv) {
   Questions can include implementation, algorithm code, how to use the technology mentioned in JD to solve a problem. 
   Include code in answers, and explain the code in layman's terms.
   If candidates CV does not have the answer to question asked, provide an answer. \n
-  Here is the JD :\n ${jd} \n  Here is the CV :\n ${cv}.  `;
+  Here is the JD :\n ${jd} \n  Here is the CV of candidate :\n ${cv}.  `;
   const prompt2 = `As a top Career Adviser, based on the JD (Job description) and CV (Resume) below, List out the 20 Questions & answers,according to JD and CV earlier provided. Assess the candidate's knowledge and understanding related to the provided Job Description and CV.
   If candidates CV does not have the answer to question asked, provide an answer to the concept or technology asked.
   IMPORTANT: The format should be as follows

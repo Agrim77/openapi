@@ -1,5 +1,5 @@
 import dotenv from 'dotenv';
-import express from 'express';
+import express, { response } from 'express';
 import http from 'http';
 import path from 'path';
 import helmet from 'helmet';
@@ -70,7 +70,8 @@ app.post("/my-server/capture-paypal-order", async (req, res) => {
 app.get("/resume", (req, res) => {
   log("\n ------Get route resume(FOR DEV PRODUCTION ONLY-- comment out)----- \n");
   const result = model.convert();
-  log(result);
+  net_result.push(result)
+  log(net_result);
   res.render("success", {result, CLIENT_ID});
 });
 
@@ -78,27 +79,18 @@ app.get("/loader", (req, res) => {
   res.render("loader");
 })
 
-app.post("/resume", async (req, res) => {
-  // res.render("loader");
-  const exp = req.body.exp;
-  const proj = req.body.proj;
-  const skills = req.body.skills;
-  const jd = req.body.jd;
-  const ach = req.body.ach;
-  const cv = `
-    Past Experience:  
-    ${exp} \n
-    and personal projects : 
-    ${proj} \n
-    and Skills:
-    ${skills} \n
-    Achievements:
-    ${ach} `;
+const net_result = [];
 
+app.post("/resume", async (req, res) => {
+  const jd = req.body.jd;
+
+  const cv = req.body.cv;
   model.model1(jd, cv)
     .then((result) => {
       log("\n---------In app.js model1 promise--------\n");
-      log(result);
+      // log(result);
+      net_result.push(result);
+      log(net_result)
       res.render("success", {result: result, CLIENT_ID});
     })
     .catch((error) => {
@@ -108,8 +100,11 @@ app.post("/resume", async (req, res) => {
 });
 
 app.get("/thanks", (req, res) => {
+  log("-------thanks loaded: net result of all outputs----");
+  const concatenatedArray = [].concat(...net_result);
+  log(concatenatedArray);
   if(pay_flag)
-    res.render("thanks");
+    res.render("thanks",{result : concatenatedArray, isThanksPage: true} );
   else
     res.render("error", {"msg":"payment route"});
 })

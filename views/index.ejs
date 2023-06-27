@@ -3,6 +3,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/loader.js"></script>
 <script src="/js/page1.js"></script>
+<script defer src="/js/animate.js"></script>
 <title>InterviewHacks</title>
   </head>
   <body>
@@ -13,7 +14,7 @@
 
   <div class="hero">
     <div class="intro">
-      <div class="hero_header">
+      <div class="hero_header ">
         <h4>GET JOB READY - INTERVIEW HACKS</h4>
         <br />
         <h1>Top 50 questions to ace your interview</h1>
@@ -40,7 +41,7 @@
   <div class="section_1">
     <h1>HOW IT WORKS</h1>
     <br><br>
-    <img src="/step-1-1.png" alt="" />
+    <img class="hidden1" src="/step-1-1.png" alt="" />
     <!-- <div class="arrow0">
       <img src="/step-1-1.png" alt="" />
     </div> -->
@@ -48,15 +49,15 @@
   </div>
 
   <div class="section_2">
-    <div class="arrow1"></div>
-    <div class="desc">
+    <div class="arrow1 hidden2"></div>
+    <div class="desc hidden2">
       <h3>
         Nail your interviews with ease! <br /><br />
         Upload your CV, enter the job link or upload your JD , make $50 payment, and obtain expert responses to 50 important interview questions 
       </h3>
     </div>
     <div class="arrow2"></div>
-    <img src="/step-1-2.png" alt="" />
+    <img class="hidden1" src="/step-1-2.png" alt="" />
   
   </div>
 
@@ -70,24 +71,20 @@
     <!-- onsubmit="show()" -->
     <div class="cardz">
       <h3>STEP 1:</h3>
-      <div class="card-container" id="cv_card">
-        <div
-          class="card text-center p-4 shadow"
-          style="width: 25rem; border-radius: 29px; box-shadow: 0 25px 25px rgba(0, 0, 0, 0.1), 0 25px 25px rgba(0, 0, 0, 0.1);"
-        >
+      <div class="card-container hidden1" id="cv_card">
+        <div class="card text-center p-4 shadow">
           <h2 class="card-title pb-3">Paste Your CV</h2>
           <div class="mb-3">
             <label for="experience" class="form-label"
-              >Paste Your Internships & Experience</label
+              >Experience, Internships, Personal Projects, Skills, Achievements, etc..</label
             >
             <textarea
               class="form-control"
-              id="exp"
-              name="exp"
-              rows="3"
+              name="cv"
+              rows="10"
             ></textarea>
           </div>
-          <div class="mb-3">
+          <!-- <div class="mb-3">
             <label for="projects" class="form-label"
               >Write About Your Personal Projects</label
             >
@@ -116,16 +113,15 @@
               name="ach"
               rows="1"
             ></textarea>
-          </div>
+          </div> -->
         </div>
       </div>
-      <img style="width: auto;
+      <img class="hidden1" style="width: auto;
       height: 80px;" src="/step-two-arrow.png" alt="" />
       <h3>STEP 2:</h3>
-      <div class="card-container">
+      <div class="card-container hidden1">
         <div
           class="card text-center p-4 shadow"
-          style="width: 25rem; border-radius: 29px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.1);"
         >
           <h2 class="card-title pb-3">Paste your JD</h2>
           <div class="mb-3">
@@ -151,16 +147,15 @@
         </div>
       </div>
 
-      <div class="section_3">
+      <div class="section_3 hidden1">
         <img src="/step-1-3.png" alt="" />     
       </div>
 
       <!-- <div class="buttons">
         <button type="submit" class="btn-p">Generate Answers</button>
       </div> -->
-      <div class="submit-button">
+      <div class="submit-button hidden1">
         <button  type="submit" class="btn-p">Submit</button>
-        <!-- <input type="submit" value="Submit"> -->
       </div>
     </div>
   </form>

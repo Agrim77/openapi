@@ -1,9 +1,13 @@
 <%- include('./partials/header') %>
 <script src="https://www.paypal.com/sdk/js?client-id=<%= CLIENT_ID %>"></script>
+<script>
+  let isThanksPage = false;
+</script>
 <script src="/js/search_qs.js"></script>
 <script src="/js/q_and_a_drop.js"></script>
 <script src="/js/dropdown_qs.js"></script>
 <script src="https://kit.fontawesome.com/510a4172a7.js" crossorigin="anonymous"></script>
+<script defer src="/js/animate.js"></script>
 <title>Ready !</title>
 
   </head>
@@ -19,7 +23,6 @@
 
     <div class="dashboard_search">
       <div class="search-bar">
-        <!-- <button class="btn btn-outline-secondary" type="button" id="button-addon1">Button</button> -->
         <input
           type="text"
           id="search-input"
@@ -67,7 +70,7 @@
     </div>
   </div>
 
-  <div class="dash_section3">
+  <div class="dash_section3 hidden1">
     <h4 style="font-weight:700;">Hi User,</h4>
     <h1 style="font-weight:700;">We are here to help</h1>
     <p style="color:grey;">
@@ -77,24 +80,28 @@
   </div>
 
   <div class="dash_section4">
-    <div class="dash_section4_head">
+    <div class="dash_section4_head hidden1">
       <h1 style="font-weight:700;"><%- result.length %> Top Interview Questions</h1>
       <p style="color:grey;">Everything you need to know to ace your interviews!</p>
     </div>
     
     
       <% for (let i = 0; i < result.length; i++) { %>
-      <div class="qs" id="question<%=i%>">
-          <div class="question">
+      <div class="qs " id="question<%=i%>">
+          <div class="question hidden1">
             <div class="question_area"><h4><pre><%= i+1 %>: <%= result[i].ques %>
                 </pre></h4>
             </div>
             <div class="question_click">
-              <i class="fa-solid fa-circle-plus" style="color: #5794ff; "onclick="toggleAnswer(<%=i%>)"></i>
-            </div>
+              <% if (i < 2) { %>
+                <i class="fa-solid fa-circle-minus" style="color: #5794ff;" onclick="toggleAnswer(`<%- i %>`);"></i>
+              <% } else { %>
+                <i class="fa-solid fa-circle-plus" style="color: #5794ff;" onclick="toggleAnswer(`<%- i %>`);"></i>
+                <% } %>
+              </div>
           </div>  
           <% if (i < 2) { %>
-            <pre id="answer<%=i%>" class="answer_text" style="display: none;"><%-result[i].ans %></pre>
+            <pre id="answer<%=i%>" class="answer_text hidden1" ><%-result[i].ans %></pre>
           <% } %>
       </div>
       <% } %>
@@ -103,29 +110,40 @@
   </div>
 
   <div class="dash_section5">
-    <div class="pay-button">
+    <div class="pay-button" id = "pay-btn">
       <button type="submit" id="show_paypal" class="btn-p">Pay to view all 50 Answers >></button>
       <div class="paypal_btn" id="paypal_button"></div>
   </div>
   <script>
+    function startAnimation() {
+      const payBtnElement = document.getElementsByClassName('pay-button')[0];
+      payBtnElement.classList.add('animate');
+      payBtnElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
     function toggleAnswer(index) {
     const answerElement = document.getElementById(`answer${index}`);
     const iconElement = document.querySelector(`#question${index} .question_click i`);
-
-    if (answerElement.style.display === 'none') {
+    if (index >= 2) {
+        console.log("Question > 2");
+        const payBtnElements = document.getElementsByClassName('pay-button');
+        if (payBtnElements.length > 0) {
+          payBtnElements[0].scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    }
+    else{
+      if (answerElement.style.display === 'none') {
       answerElement.style.display = 'block';
       iconElement.classList.remove('fa-circle-plus');
       iconElement.classList.add('fa-circle-minus');
 
-      if (index >= 2) {
-        const payBtnElement = document.getElementById('pay-btn');
-        payBtnElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
+      
     } else {
       answerElement.style.display = 'none';
       iconElement.classList.remove('fa-circle-minus');
       iconElement.classList.add('fa-circle-plus');
     }
+    }
+    
   }
   </script>
   <script src="/js/paypal_client.js"></script>

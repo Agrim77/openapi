@@ -1,3 +1,34 @@
+-----thanks --------
+<div class="dropdown-container">
+        <div class="btn-group dropstart">
+          <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            Select Your Question
+          </button>
+          <ul class="dropdown-menu dropdown-menu-lg-start">
+            <% for (let i = 0; i < result.length; i++) { %>
+              <li>
+                <a class="dropdown-item" href="#question<%= i %>"><%= i+1 %>: <%= result[i].ques.substring(0, 27) %> ....</a>
+              </li>
+              <% } %>
+          </ul>
+        </div>
+      </div>
+
+
+<div class="dash_section4">
+        <% for (let i = 0; i < result.length; i++) { %>
+          <div class="qs hidden1" id="question<%=i%>">
+              <div class="question">
+                <div class="question_area"><h4><pre><%= i+1 %>: <%= result[i].ques %>
+                    </pre></h4>
+                </div>
+                <div class="question_click">
+                    <i class="fa-solid fa-circle-plus" style="color: #5794ff;" onclick="toggleAnswer(`<%- i %>`);"></i>
+                  </div>
+              </div>  
+              <pre id="answer<%=i%>" class="answer_text" ><%-result[i].ans %></pre>
+          </div>
+      </div>
 ---email----
 const transporter = nodemailer.createTransport({
     host: 'smtp.ethereal.email',

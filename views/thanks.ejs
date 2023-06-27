@@ -1,20 +1,81 @@
 <%- include('./partials/header') %>
+<script>
+let isThanksPage = true;
+</script>
+<script defer src="/js/search_qs.js"></script>
+<script src="/js/q_and_a_drop.js"></script>
+<script src="/js/dropdown_qs.js"></script>
+<script src="/js/animate.js"></script>
 <title>Ready !</title>
   </head>
 <body>
 <%- include('./partials/navbar') %>
 <div class="page3">
-  <div class="pdf_sec1">
+  <!-- <div class="pdf_sec1">
     <h1>Success</h1>
-  </div>
+  </div> -->
 
   <div class="pdf_sec2">
+    <!-------cENTERED HEADEDIG ------->
     <div class="dash_section4_head">
-        <h1 style="font-weight:700;">Top Interview Questions</h1>
+        <h1 style="font-weight:700;">Your Curated Top Interview Questions</h1>
         <p style="color:grey;">Everything you need to know to ace your interviews!</p>
     </div>
-      
+  </div>
+
+    <div class="pdf_sec3">
+      <!------SEARCH------->
+      <div class="dashboard_search">
+        <div class="search-bar">
+          <input
+            type="text"
+            id="search-input"
+            placeholder="What are you looking for?"
+          />
+          <button id="search-button">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+      </div>
+
+      <!------DROPDWON TO SELECT QUESTIONS----->
+      <div class="dropdown-container">
+          <div class="btn-group dropstart">
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+              Select Your Question
+            </button>
+            <ul class="dropdown-menu dropdown-menu-lg-start">
+              <% for (let i = 0; i < result.length; i++) { %>
+                <li>
+                  <a class="dropdown-item" href="#question<%= i %>"><%= i+1 %>: <%= result[i].ques.substring(0, 27) %> ....</a>
+                </li>
+                <% } %>
+            </ul>
+          </div>
+      </div>
+
+    </div>
+    
+    <div class="pdf_sec4">
+      <div class="dash_section4">
+        <% for (let i = 0; i < result.length; i++) { %>
+          <div class="qs " id="question<%=i%>">
+              <div class="question">
+                <div class="question_area"><h4><pre><%= i+1 %>: <%= result[i].ques %></pre></h4></div>
+                <div class="question_click">
+                  <i class="fa-solid fa-circle-plus" style="color: #5794ff;" onclick="toggleAnswer(`<%- i %>`);"></i>
+                </div>
+              </div>  
+              <pre id="answer<%=i%>" class="answer_text " style="display: none;"><%- result[i].ans %></pre>
+          </div>
+          <% } %>
+      </div>
+    </div>
+    
+
+
     <div class="pdf_display">
+      <h1> Your Curated Answers PDF !</h1>
         <iframe src="/pdfs/q_and_a.pdf" width="100%" height="600px"></iframe>
     </div>
 
@@ -56,7 +117,24 @@
       </form>
     </div>
       
-    </div>
 </div>
 
+<script>
+  
+  function toggleAnswer(index) {
+  const answerElement = document.getElementById(`answer${index}`);
+  const iconElement = document.querySelector(`#question${index} .question_click i`);
+  if (answerElement.style.display === 'none') {
+    answerElement.style.display = 'block';
+    iconElement.classList.remove('fa-circle-plus');
+    iconElement.classList.add('fa-circle-minus');
+
+    
+  } else {
+    answerElement.style.display = 'none';
+    iconElement.classList.remove('fa-circle-minus');
+    iconElement.classList.add('fa-circle-plus');
+  }
+}
+</script>
 <%- include('./partials/footer') %>
