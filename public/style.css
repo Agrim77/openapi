@@ -118,7 +118,7 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#7F0D47", en
   width: 100%;
 }
 .dashboard_intro {
-  font-family: Poppins;
+  font-family:'Poppins', sans-serif;
 font-weight: 500;
   width: 60%;
   padding: 4% 5%;
@@ -291,7 +291,8 @@ h2 {
   height: 100%;
   
   margin-top:0;
-  height: 100%;
+  margin-bottom: 3%;
+  margin-right: 2%;
   font-family:'Poppins', sans-serif;
   font-weight: 700;
   color: black;
@@ -350,7 +351,9 @@ font-weight: 500;
   font-weight: 300;
   color: grey;
   padding: 0;
-  margin:0;
+  margin-top:0;
+  margin-left:0;
+  margin-bottom: 3%;
   height: 100%; /* occupy full height of parent */
   /* white-space: pre-wrap;
   word-wrap: break-word; */
@@ -372,12 +375,18 @@ font-weight: 500;
   justify-content: space-between;
 }
 .pdf_sec2,.pdf_display{
+  display: flex;
+  flex-direction: column;
+  font-family:'Poppins', sans-serif;
+  align-items: center;
+  /* justify-content: space-between; */
   width:90%;
+  margin: 0 auto;
   padding: 4% 2%;
   background-color: rgb(255, 238, 238);
   border-radius: 30px;
 }
-.pdf_sec3{
+.pdf_tools{
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -389,13 +398,19 @@ font-weight: 500;
 .pdf_display iframe{
   width: 95%;
 }
-
+.pdf_sec4{
+  margin: 0 auto;
+}
 
 .pdf_email{
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+}
+
+.success{
+  background-color: white;
 }
 
 
@@ -637,17 +652,19 @@ textarea {
 .download-button {
   display: inline-block;
   padding: 10px 20px;
+  /* text-decoration: none; */
   background-color: #790e44;
   color: #fff;
   border: none;
   border-radius: 50px;
   text-decoration: none;
-  font-family: Arial, sans-serif;
+  font-family:'Poppins', sans-serif;
   font-size: 16px;
 }
 
 .download-button:hover {
-  background-color: #6c0d3c;
+  background-color: #e1cad6;
+  color: black;
 }
 
 

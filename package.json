@@ -12,6 +12,7 @@
   "dependencies": {
     "body-parser": "^1.20.2",
     "console": "^0.7.2",
+    "country-state-city": "^3.1.4",
     "dotenv": "^16.0.3",
     "ejs": "^3.1.9",
     "express": "^4.18.2",

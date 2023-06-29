@@ -114,12 +114,16 @@
       <button type="submit" id="show_paypal" class="btn-p">Pay to view all 50 Answers >></button>
       <div class="paypal_btn" id="paypal_button"></div>
   </div>
+
+  
+
   <script>
     function startAnimation() {
       const payBtnElement = document.getElementsByClassName('pay-button')[0];
       payBtnElement.classList.add('animate');
       payBtnElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
+
     function toggleAnswer(index) {
     const answerElement = document.getElementById(`answer${index}`);
     const iconElement = document.querySelector(`#question${index} .question_click i`);

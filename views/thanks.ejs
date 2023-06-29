@@ -6,6 +6,7 @@ let isThanksPage = true;
 <script src="/js/q_and_a_drop.js"></script>
 <script src="/js/dropdown_qs.js"></script>
 <script src="/js/animate.js"></script>
+<script src="/js/email.js"></script>
 <title>Ready !</title>
   </head>
 <body>
@@ -23,41 +24,43 @@ let isThanksPage = true;
     </div>
   </div>
 
-    <div class="pdf_sec3">
-      <!------SEARCH------->
-      <div class="dashboard_search">
-        <div class="search-bar">
-          <input
-            type="text"
-            id="search-input"
-            placeholder="What are you looking for?"
-          />
-          <button id="search-button">
-            <i class="fas fa-search"></i>
-          </button>
-        </div>
-      </div>
-
-      <!------DROPDWON TO SELECT QUESTIONS----->
-      <div class="dropdown-container">
-          <div class="btn-group dropstart">
-            <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-              Select Your Question
-            </button>
-            <ul class="dropdown-menu dropdown-menu-lg-start">
-              <% for (let i = 0; i < result.length; i++) { %>
-                <li>
-                  <a class="dropdown-item" href="#question<%= i %>"><%= i+1 %>: <%= result[i].ques.substring(0, 27) %> ....</a>
-                </li>
-                <% } %>
-            </ul>
-          </div>
-      </div>
-
-    </div>
     
+    <!----Q/A's---->
     <div class="pdf_sec4">
       <div class="dash_section4">
+      <div class="pdf_tools">
+        <!------SEARCH------->
+        <div class="dashboard_search">
+          <div class="search-bar">
+            <input
+              type="text"
+              id="search-input"
+              placeholder="What are you looking for?"
+            />
+            <button id="search-button">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+        </div>
+  
+        <!------DROPDWON TO SELECT QUESTIONS----->
+        <div class="dropdown-container">
+            <div class="btn-group dropstart">
+              <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                Select Your Question
+              </button>
+              <ul class="dropdown-menu dropdown-menu-lg-start">
+                <% for (let i = 0; i < result.length; i++) { %>
+                  <li>
+                    <a class="dropdown-item" href="#question<%= i %>"><%= i+1 %>: <%= result[i].ques.substring(0, 27) %> ....</a>
+                  </li>
+                  <% } %>
+              </ul>
+            </div>
+        </div>
+  
+      </div>
+      
         <% for (let i = 0; i < result.length; i++) { %>
           <div class="qs " id="question<%=i%>">
               <div class="question">
@@ -77,11 +80,11 @@ let isThanksPage = true;
     <div class="pdf_display">
       <h1> Your Curated Answers PDF !</h1>
         <iframe src="/pdfs/q_and_a.pdf" width="100%" height="600px"></iframe>
-    </div>
-
-    <div class="pdf_button">
+        <br><br>
         <a href="/pdfs/q_and_a.pdf" download class="download-button">Download PDF</a>
     </div>
+
+    
 
     <div class="pdf_email">
       <form id="pdf_form" method="post" action="/send-email">
@@ -91,28 +94,38 @@ let isThanksPage = true;
             style="width: 25rem; border-radius: 29px; box-shadow: 0 25px 25px rgba(0, 0, 0, 0.1), 0 25px 25px rgba(0, 0, 0, 0.1);"
           >
             <h2 class="card-title pb-3">Write Your Details</h2>
-
+  
             <div class="mb-3">
               <label for="user_email" class="form-label">Your Email:</label>
               <input type="email" class="form-control" name="user_email" aria-describedby="emailHelp" required>
             </div>
-
+  
             <div class="mb-3">
               <label for="user_name" class="form-label"> Your Name:</label>
               <input type="text" class="form-control" name="user_name" aria-describedby="emailHelp" required>
             </div>
-
+  
             <div class="mb-3">
-              <label for="">Your Phone Number</label>
-              <input class="form-control" type="tel" id="mobile" name="user_phone" pattern="[0-9]{10}" required>
+              <label for="user_country" class="form-label">Your Country:</label>
+              <select name="user_country" id="user_country" class="form-control" required>
+                <% countries.forEach(country => { %>
+                  <option id="" data-country-code="<%= country.isoCode %>" value="<%= country.name %>"><%= country.name %></option>
+                <% }); %>
+              </select>
             </div>
-
-
+      
+            <div class="mb-3">
+              <label name="user_city" for="user_city" class="form-label">Your City:</label>
+              <select id="city-select" class="form-control" required>
+                <option value="">Select City</option>
+              </select>
+            </div>
+            
           </div>
         </div>
         
         <div class="buttons">
-        <button type="submit" class="btn-p">Email Me PDF</button>
+        <button id="email-button" type="submit" class="btn-p">Email Me PDF</button>
       </div>
       </form>
     </div>
@@ -120,6 +133,27 @@ let isThanksPage = true;
 </div>
 
 <script>
+  const countrySelect = document.getElementById('user_country');
+  const citySelect = document.getElementById('city-select');
+    countrySelect.addEventListener('change', async () => {
+      const selectedOption = countrySelect.options[countrySelect.selectedIndex];
+      const countryCode = selectedOption.getAttribute('data-country-code');
+
+      // Fetch the cities of the selected country using the country code
+      const response = await fetch(`/cities/${countryCode}`);
+      const cities = await response.json();
+
+      // Clear existing options
+      citySelect.innerHTML = '<option value="">Select City</option>';
+
+      // Populate the cities dropdown with the retrieved cities
+      cities.forEach(city => {
+        const option = document.createElement('option');
+        option.value = city;
+        option.textContent = city;
+        citySelect.appendChild(option);
+      });
+    });
   
   function toggleAnswer(index) {
   const answerElement = document.getElementById(`answer${index}`);

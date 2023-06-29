@@ -13,7 +13,9 @@ import * as paypal from "./paypal_api.js";
 import { log } from 'console';
 const port = process.env.PORT;
 const app = express();
-const {CLIENT_ID, APP_SECRET} = process.env;
+const {CLIENT_ID, APP_SECRET, NODE_ENV} = process.env;
+
+import { Country, State, City }  from 'country-state-city';
 
 // app.use('/app',express.static(path.join('../app')))
 // app.use('/public',express.static(path.join('../public')))
@@ -23,7 +25,11 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-const limiter = rateLimit({
+const isDev = NODE_ENV === "dev";
+
+const limiter = isDev 
+? (req,res, next) => next() 
+: rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 10, // limit each IP to 10 requests per windowMs
 });
@@ -71,7 +77,7 @@ app.get("/resume", (req, res) => {
   log("\n ------Get route resume(FOR DEV PRODUCTION ONLY-- comment out)----- \n");
   const result = model.convert();
   net_result.push(result)
-  log(net_result);
+  log(net_result)
   res.render("success", {result, CLIENT_ID});
 });
 
@@ -99,19 +105,29 @@ app.post("/resume", async (req, res) => {
     });
 });
 
+app.get('/cities/:countryCode', (req, res) => {
+  const countryCode = req.params.countryCode;
+  const cities = City.getCitiesOfCountry(countryCode);
+  res.json(cities.map(city => city.name));
+});
+
 app.get("/thanks", (req, res) => {
+  const countries = Country.getAllCountries();
+  const citiesByCountry = {};
   log("-------thanks loaded: net result of all outputs----");
   const concatenatedArray = [].concat(...net_result);
   log(concatenatedArray);
-  if(pay_flag)
-    res.render("thanks",{result : concatenatedArray, isThanksPage: true} );
-  else
-    res.render("error", {"msg":"payment route"});
+  if(pay_flag){
+    res.render("thanks",{result : concatenatedArray, isThanksPage: true, countries} );
+  }
+  else{
+    res.render("error", {"msg":"First make the payment"});
+  }
 })
 
 app.post('/send-email', (req, res) => {
-  const { user_name, user_email, user_phone } = req.body;
-  log(user_name, user_email, user_phone);
+  const { user_name, user_email, user_phone, user_country, user_city } = req.body;
+  log(user_name, user_email, user_phone, user_country, user_city);
   // Create a Nodemailer transporter
   const transporter = nodemailer.createTransport({
     service: 'Gmail',
@@ -120,16 +136,6 @@ app.post('/send-email', (req, res) => {
       pass: process.env.MY_PASS,
     },
   });
-  // let testAccount = await nodemailer.createTestAccount();
-
-//   const transporter = nodemailer.createTransport({
-//     host: 'smtp.ethereal.email',
-//     port: 587,
-//     auth: {
-//         user: 'merlin.romaguera12@ethereal.email',
-//         pass: 'MWVqaM1Cc5yzFyHtRw'
-//     }
-// });
 
   // Construct the email message
   const mailOptions = {
@@ -149,10 +155,11 @@ app.post('/send-email', (req, res) => {
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
       console.log(error);
-      res.status(500).send('Error sending email');
+      // res.status(500).send('Error sending email');
+      res.status(500).json({ success: false, message: 'Error sending email' });
     } else {
       console.log('Email sent: ' + info.response);
-      res.send('Email sent successfully');
+      res.json({ success: true, message: 'Email sent successfully' });
     }
   });
 });
