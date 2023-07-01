@@ -1,12 +1,8 @@
 import { Configuration, OpenAIApi } from "openai";
-// import readlineSync from "readline-sync";
 import dotenv from "dotenv";
 dotenv.config();
 import { log } from "console";
 import * as pdf_gen from './pdfGen.js'
-//---FOR TEST PURPOSE---
-// model1(jd, cv)
-// convert();
 
 export function qs_as_format(inputText){
   log("\n----Converting to proper question & answer format-------\n")
@@ -163,18 +159,18 @@ export function convert(completionText) {
 }
 
 
-export async function model1(jd, cv) {
-  const prompt1 = `As a top Career Adviser, based on the JD (Job description) and CV (Resume) below, List out the 10 Questions & answers to most important coding questions.
+export async function model1(jd, cv, count) {
+  prompt_count = count;
+  const prompt1 = `As a top Career Adviser, based on the JD (Job description) and CV (Resume) below, List out the 15 Questions & answers to most important interview questions.
   IMPORTANT: The output format should be as follows:
 
   "Question 1 <Space> : <space> What is meaning of React 
   Answer 1 <Space> : <Space> React means a framework"
 
-  Questions can include implementation, algorithm code, how to use the technology mentioned in JD to solve a problem. 
-  Include code in answers, and explain the code in layman's terms.
-  If candidates CV does not have the answer to question asked, provide an answer. \n
+  If candidates CV does not have the answer to question asked, provide an answer.
+   \n
   Here is the JD :\n ${jd} \n  Here is the CV of candidate :\n ${cv}.  `;
-  const prompt2 = `As a top Career Adviser, based on the JD (Job description) and CV (Resume) below, List out the 20 Questions & answers,according to JD and CV earlier provided. Assess the candidate's knowledge and understanding related to the provided Job Description and CV.
+  const prompt2 = `As a top Career Adviser, based on the JD (Job description) and CV (Resume) below, List out the 15 advanced  level questions & answers. Assess the candidate's knowledge and understanding related to the provided Job Description and CV.
   If candidates CV does not have the answer to question asked, provide an answer to the concept or technology asked.
   IMPORTANT: The format should be as follows
   Question 1 <Space> : <Space> Question generated
@@ -183,6 +179,11 @@ export async function model1(jd, cv) {
 
   Here is the JD :\n ${jd} \n  Here is the CV :\n ${cv}.`;
 
+  const prompt3 = `As a top Career Adviser, based on the JD (Job description) and CV (Resume) below, List out the 15 medium level questions & answers. These should cover the essential skills and qualifications required for this position. Ensure that the output follows this format:
+  Question 1 <Space> : <Space> Question generated
+  Answer 1 <Space> : <Space> Answer generated
+  If candidates CV does not have the answer to question asked, provide an answer to the concept or technology asked.
+  Here is the JD :\n ${jd} \n  Here is the CV :\n ${cv}.`;
   const configuration = new Configuration({
     apiKey: process.env.OPENAI_API_KEY,
   });
@@ -194,10 +195,9 @@ export async function model1(jd, cv) {
     log(`------ Running prompt ${count} ------`);
     
     var user_input = prompt1;
-    if (count == 2) user_input = prompt2;
-    count++;
+    if (promp_count == 2) user_input = prompt2;
+    prompt_count++;
     log(user_input + "\n");
-    // const user_input = readlineSync.question("Your input: ");
 
     const messages = [];
     for (const [input_text, completion_text] of history) {

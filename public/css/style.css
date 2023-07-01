@@ -1,15 +1,43 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: "Lato", sans-serif;
+  font-family: "Source Sans", sans-serif;
   /* overflow-x: hidden; */
 }
-/* body{
-    background-color: #800e49;
-   } */
+@font-face {
+  font-family: 'Source Sans';
+  src: url('fonts/SourceSansPro-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 
-  /*  Animations */
-/* ADDING SCROLL EFFECT */
+@font-face {
+  font-family: 'Source Sans';
+  src: url('fonts/SourceSansPro-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Source Sans';
+  src: url('fonts/SSourceSansPro-Semibold.ttf') format('truetype');
+  font-weight: 600; /* or 'semibold' */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Source Serif';
+  src: url('fonts/SourceSerifPro-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Source Serif';
+  src: url('fonts/SourceSerifPro-Semibold.ttf') format('truetype');
+  font-weight: 600; /* or 'semibold' */
+  font-style: normal;
+}
+
 
 .hidden1{
   opacity: 0;
@@ -28,7 +56,12 @@
   filter: blur(0);
   transform: translateX(0);
 }
-
+.navbar {
+  transition: background-color 0.3s ease;
+}
+.navbar.scrolled {
+  background-color: white;
+}
 .nav_l {
   overflow-y: hidden;
 }
@@ -118,11 +151,14 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#7F0D47", en
   width: 100%;
 }
 .dashboard_intro {
-  font-family:'Poppins', sans-serif;
-font-weight: 500;
   width: 60%;
   padding: 4% 5%;
   /* background-color: #9d35de; */
+}
+.dashboard_intro h2{
+  font-family: 'Source Sans', sans-serif;
+  font-size: 30px;
+  font-weight:bold;
 }
 .dashboard_search {
   width: 37%;
@@ -209,6 +245,9 @@ h2 {
   border-radius: 30px;
   padding: 3% 8%;
 }
+.user_nav h2{
+  font-weight: 600;
+}
 .dropdown-container {
   position: relative;
   z-index: 1;
@@ -291,19 +330,36 @@ h2 {
   height: 100%;
   
   margin-top:0;
-  margin-bottom: 3%;
+  margin-bottom: 2%;
   margin-right: 2%;
-  font-family:'Poppins', sans-serif;
+  /* font-family:'Poppins', sans-serif; */
+  font-family: 'Source Sans', sans-serif;
+  font-size: 24px;
   font-weight: 700;
   color: black;
   overflow: hidden;
   white-space: pre-wrap;
   word-wrap: break-word;
 }
-.question_area h4, pre{
-  font-family:'Poppins', sans-serif;
-font-style: normal;
-font-weight: 500;
+.answer_text{
+  font-family: 'Source Serif', serif;
+  font-size: 15px;
+  font-weight: 300;
+  color: rgb(86, 86, 86);
+  padding: 0;
+  margin-top:0;
+  margin-left:0;
+  margin-bottom: 3%;
+  height: 100%; /* occupy full height of parent */
+  /* white-space: pre-wrap;
+  word-wrap: break-word; */
+}
+.question_area pre{
+  /* font-family:'Poppins', sans-serif; */
+  font-family: 'Source Sans', sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
   color: black;
   overflow: hidden;
 }
@@ -346,18 +402,7 @@ font-weight: 500;
   margin-bottom: 5px;
 } */
 
-.answer_text pre{
-  font-family: "Lato", sans-serif;
-  font-weight: 300;
-  color: grey;
-  padding: 0;
-  margin-top:0;
-  margin-left:0;
-  margin-bottom: 3%;
-  height: 100%; /* occupy full height of parent */
-  /* white-space: pre-wrap;
-  word-wrap: break-word; */
-}
+
 
 .question_text .highlight,
 .answer .highlight {
@@ -377,7 +422,8 @@ font-weight: 500;
 .pdf_sec2,.pdf_display{
   display: flex;
   flex-direction: column;
-  font-family:'Poppins', sans-serif;
+  font-family: 'Source Sans', sans-serif;
+  font-size: 24px;
   align-items: center;
   /* justify-content: space-between; */
   width:90%;
@@ -501,7 +547,8 @@ font-weight: 500;
   align-items: center;
 }
 .section_1 h1 {
-  font-family: "Koulen", cursive;
+  font-family: 'Source Sans', sans-serif;
+  /* font-size: 55px; */
   font-weight: 400;
   overflow: hidden;
   color: white;
@@ -658,7 +705,8 @@ textarea {
   border: none;
   border-radius: 50px;
   text-decoration: none;
-  font-family:'Poppins', sans-serif;
+  /* font-family:'Poppins', sans-serif; */
+  font-family: 'Source Serif', serif;
   font-size: 16px;
 }
 

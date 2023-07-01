@@ -72,6 +72,18 @@ let isThanksPage = true;
               <pre id="answer<%=i%>" class="answer_text " style="display: none;"><%- result[i].ans %></pre>
           </div>
           <% } %>
+
+          <br>
+          <div class="pagination">
+            <nav aria-label="Page navigation example">
+              <ul class="pagination">
+                <li class="page-item"><a class="page-link" href="/thanks?page=1">1-15</a></li>
+                <li class="page-item"><a class="page-link" href="/thanks?page=2">16-30</a></li>
+                <li class="page-item"><a class="page-link" href="/thanks?page=3">31-50</a></li>
+              </ul>
+            </nav>
+          </div>
+          
       </div>
     </div>
     

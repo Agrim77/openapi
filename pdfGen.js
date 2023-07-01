@@ -19,7 +19,7 @@ export function createPDF(result, folderPath, filename) {
 	doc.pipe(fs.createWriteStream(filePath));
 }
 function generateHeader(doc) {
-    const imagePath = path.join(process.cwd(), 'public', 'favicon-16x16.png');
+    const imagePath = path.join(process.cwd(), 'public/images', 'favicon-16x16.png');
 	doc.image(imagePath, 50, 45, { width: 15 })
 		.fillColor('#444444')
 		.fontSize(15)

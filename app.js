@@ -86,12 +86,12 @@ app.get("/loader", (req, res) => {
 })
 
 const net_result = [];
-
+let jd, cv;
+let count = 1;
 app.post("/resume", async (req, res) => {
-  const jd = req.body.jd;
-
-  const cv = req.body.cv;
-  model.model1(jd, cv)
+  jd = req.body.jd;
+  cv = req.body.cv;
+  model.model1(jd, cv, count)
     .then((result) => {
       log("\n---------In app.js model1 promise--------\n");
       // log(result);
@@ -111,19 +111,36 @@ app.get('/cities/:countryCode', (req, res) => {
   res.json(cities.map(city => city.name));
 });
 
+const countries = {};
 app.get("/thanks", (req, res) => {
-  const countries = Country.getAllCountries();
-  const citiesByCountry = {};
+  countries = Country.getAllCountries();
   log("-------thanks loaded: net result of all outputs----");
   const concatenatedArray = [].concat(...net_result);
+  const page = req.query.page;
   log(concatenatedArray);
   if(pay_flag){
-    res.render("thanks",{result : concatenatedArray, isThanksPage: true, countries} );
+    
+    let startIndex, endIndex;
+    if (page === '1') {
+      startIndex = 0;
+      endIndex = 14;
+    } else if (page === '2') {
+      startIndex = 15;
+      endIndex = 29;
+    } else if (page === '3') {
+      startIndex = 30;
+      endIndex = concatenatedArray.length - 1;
+    }
+
+    const thanks_result = concatenatedArray.slice(startIndex, endIndex + 1);
+    res.render("thanks",{result : thanks_result, isThanksPage: true, countries, count, page} );
   }
   else{
     res.render("error", {"msg":"First make the payment"});
   }
 })
+
+
 
 app.post('/send-email', (req, res) => {
   const { user_name, user_email, user_phone, user_country, user_city } = req.body;
@@ -137,6 +154,20 @@ app.post('/send-email', (req, res) => {
     },
   });
 
+  function model_call(jd, cv, count){
+    model.model1(jd, cv, count)
+    .then((result) => {
+      log("\n---------In app.js model1 promise--------\n");
+      // log(result);
+      net_result.push(result);
+      log(net_result)
+      res.render("success", {result: result, CLIENT_ID});
+    })
+    .catch((error) => {
+      log(error);
+      res.render("error");
+    });
+  } 
   // Construct the email message
   const mailOptions = {
     from: process.env.MY_EMAIL,
