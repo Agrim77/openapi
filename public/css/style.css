@@ -357,9 +357,9 @@ h2 {
 .question_area pre{
   /* font-family:'Poppins', sans-serif; */
   font-family: 'Source Sans', sans-serif;
-  font-size: 24px;
+  font-size: 22px;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 600;
   color: black;
   overflow: hidden;
 }
@@ -432,6 +432,21 @@ h2 {
   background-color: rgb(255, 238, 238);
   border-radius: 30px;
 }
+.pdf_dash_section4 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 4% auto;
+  /* padding: 5% 5%; */
+  background: rgba(127, 13, 71, 0.04);
+  border-radius: 66px;
+  width: 80rem; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+.pdf_display h2{
+  color:rgb(56, 56, 56);
+  font-weight: 600;
+}
 .pdf_tools{
   display: flex;
   align-items: center;
@@ -453,6 +468,12 @@ h2 {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+}
+.pdf_button{
+  margin: 0 auto;
+}
+.pdf_email label{
+  font-size: small;
 }
 
 .success{
@@ -595,9 +616,9 @@ h2 {
   padding: 5% 15%;
   color: black;
 }
-.desc h3 {
+.desc h4 {
   font-weight: 400;
-  color: black;
+  color: rgb(54, 54, 54);
 }
 .section_2 img {
   margin-top: -4%;

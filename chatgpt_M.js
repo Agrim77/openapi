@@ -145,7 +145,92 @@ export function convert(completionText) {
   Answer 11 : React Router is a powerful routing library used to handle client-side navigation between different views or components in a React application. It allows developers to define routes and associate them with specific components, controlling which components are rendered based on the current route in the application. This provides a dynamic, SPA (Single Page Application) experience for users.
 
   Question 12 : Explain the concept of a virtual DOM in React.
-  Answer 12 : The virtual DOM is a lightweight, in-memory representation of the actual DOM used by React to optimize component rendering. When a component's state changes, React generates a new virtual DOM and performs a diffing algorithm to determine the minimal set of changes required to update the actual DOM. This process is called reconciliation, and it makes React applications render updates more efficiently and performantly.`;
+  Answer 12 : The virtual DOM is a lightweight, in-memory representation of the actual DOM used by React to optimize component rendering. When a component's state changes, React generates a new virtual DOM and performs a diffing algorithm to determine the minimal set of changes required to update the actual DOM. This process is called reconciliation, and it makes React applications render updates more efficiently and performantly.
+  
+  Question 13:How do you typically go about debugging and testing your code?
+  Answer 13:Debugging and testing code involve using various developer tools, such as React Developer Tools for frontend debugging, and Google Chrome Developer Tools for checking API calls and error handling. Backend debugging might involve using a tool like Postman to test API endpoints. Unit testing frameworks like Jest or Mocha can also be used to test individual functions or components.
+
+  Question 14 :What is your approach to documenting a project?
+  Answer 14 :Documenting a project starts with writing clear and concise code comments that explain the functionality of the code segments. In addition, creating
+  a comprehensive readme file that details the project's requirements, technologies, installation process, and usage guidelines is crucial. Also, using tools like JSDoc or ApiDoc for generating API documentation, and documenting any custom configurations or settings unique to the project, is essential.
+
+  Question 15 : Can you list the different data sources, SDKs, and APIs you have experience working with?
+  Answer 15 : In the CV, the candidate has mentioned working with Firebase, Axios, and Heroku for backend-frontend connections and environment-variable protection. They have also likely worked with other data sources, SDKs, and APIs in their past projects, but specific examples are not provided.
+
+  Question 16 : How do you demonstrate your strong analytical skills in your work?
+  Answer 16 : Strong analytical skills can be demonstrated by efficiently analyzing project requirements, breaking complex problems down into manageable tasks, and using algorithms and data structures to optimize code performance. Additionally, these skills can be showcased by continuously seeking to improve the project deliverables while maintaining high code quality and adhering to deadlines.
+
+  Question 17 : What is your experience with HTML/CSS and frontend frameworks like React?
+  Answer 17 : The candidate's CV mentions experience in developing web applications using HTML, CSS, and JavaScript, along with frontend frameworks like ReactJs. Moreover, they have used React components, and state management libraries such as Redux, and additional libraries like Tailwind CSS.
+  
+  Question 18 : What is Axios and how is it used in a React project?
+  Answer 18 : Axios is a popular JavaScript library for making HTTP requests from the client to the server. In a React project, Axios is used to fetch data from APIs and send data back to the server. It provides a more flexible, easy-to-use interface than the built-in JavaScript fetch method and handles XMLHttpRequests, making it compatible with older browsers.
+  
+  Question 19 : How do you implement authentication using Google Auth in a project?
+  Answer 19 : To implement authentication using Google Auth, you can use the Google APIs Client Library or a popular library like Firebase Authentication. You'll need to register your project on the Google API Console, obtain OAuth 2.0 client credentials, and include the appropriate SDKs or libraries in your project. Once set up, users can sign in with their Google accounts, granting access to their profile information and enabling you to integrate authentication seamlessly in your application.
+
+  Question 20 : What are the main differences between SQL and NoSQL databases?
+  Answer 20 : SQL databases are relational and use structured query language (SQL) for managing and querying data. They operate on predefined schema, have strict
+  relationships between tables, and usually follow the ACID properties. NoSQL databases, on the other hand, are non-relational and can store unstructured and semi-structured data. They don't follow a fixed schema and offer more flexibility in data storage and retrieval. Examples of NoSQL databases include MongoDB, Couchbase, and Cassandra.
+  
+  Question 21: Can you explain the process of building data and logic-driven web-based workflow systems using bubble.io?
+  Answer 21: Building data and logic-driven web-based workflow systems using bubble.io involves creating user interfaces using bubble's visual editor, setting up
+  database structures and workflows, and defining the logic behind the workflows using bubble's built-in tools. Custom coding might be required if the built-in tools are not enough to meet the requirements.
+
+  Question 22: What projects have you worked on in the past with custom coding?
+  Answer 22: In the CV, the candidate has mentioned working on the DISTORT, MATCHER, and ALL_CRYPTO projects with custom coding. The DISTORT project is a Discord import ReactDOM from "react-dom/client";
+  import { BrowserRouter, Routes, Route } from "react-router-dom";
+  import Layout from "./pages/Layout";
+  import Home from "./pages/Home";
+  import Blogs from "./pages/Blogs";
+  import Contact from "./pages/Contact";
+  import NoPage from "./pages/NoPage";
+
+  export default function App() {
+    return (
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="blogs" element={<Blogs />} />
+            <Route path="contact" element={<Contact />} />
+            <Route path="*" element={<NoPage />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    );
+  }
+
+  const root = ReactDOM.createRoot(document.getElementById('root'));
+  root.render(<App />);
+
+  Question 23:How do you typically go about debugging and testing your code?
+  Answer 23:Debugging and testing code involve using various developer tools, such as React Developer Tools for frontend debugging, and Google Chrome Developer Tools for checking API calls and error handling. Backend debugging might involve using a tool like Postman to test API endpoints. Unit testing frameworks like Jest or Mocha can also be used to test individual functions or components.
+
+  Question 24 :What is your approach to documenting a project?
+  Answer 24 :Documenting a project starts with writing clear and concise code comments that explain the functionality of the code segments. In addition, creating
+  a comprehensive readme file that details the project's requirements, technologies, installation process, and usage guidelines is crucial. Also, using tools like JSDoc or ApiDoc for generating API documentation, and documenting any custom configurations or settings unique to the project, is essential.
+
+  Question 25: Can you list the different data sources, SDKs, and APIs you have experience working with?
+  Answer 25 : In the CV, the candidate has mentioned working with Firebase, Axios, and Heroku for backend-frontend connections and environment-variable protection. They have also likely worked with other data sources, SDKs, and APIs in their past projects, but specific examples are not provided.
+
+  Question 26 : How do you demonstrate your strong analytical skills in your work?
+  Answer 26 : Strong analytical skills can be demonstrated by efficiently analyzing project requirements, breaking complex problems down into manageable tasks, and using algorithms and data structures to optimize code performance. Additionally, these skills can be showcased by continuously seeking to improve the project deliverables while maintaining high code quality and adhering to deadlines.
+
+  Question 27 : What is your experience with HTML/CSS and frontend frameworks like React?
+  Answer 27 : The candidate's CV mentions experience in developing web applications using HTML, CSS, and JavaScript, along with frontend frameworks like ReactJs. Moreover, they have used React components, and state management libraries such as Redux, and additional libraries like Tailwind CSS.
+  
+  Question 28 : What is Axios and how is it used in a React project?
+  Answer 28 : Axios is a popular JavaScript library for making HTTP requests from the client to the server. In a React project, Axios is used to fetch data from APIs and send data back to the server. It provides a more flexible, easy-to-use interface than the built-in JavaScript fetch method and handles XMLHttpRequests, making it compatible with older browsers.
+
+  Question 29 : How do you implement authentication using Google Auth in a project?
+  Answer 29 : To implement authentication using Google Auth, you can use the Google APIs Client Library or a popular library like Firebase Authentication. You'll need to register your project on the Google API Console, obtain OAuth 2.0 client credentials, and include the appropriate SDKs or libraries in your project. Once set up, users can sign in with their Google accounts, granting access to their profile information and enabling you to integrate authentication seamlessly in your application.
+
+  Question 30 : What are the main differences between SQL and NoSQL databases?
+  Answer 30 : SQL databases are relational and use structured query language (SQL) for managing and querying data. They operate on predefined schema, have strict
+  relationships between tables, and usually follow the ACID properties. NoSQL databases, on the other hand, are non-relational and can store unstructured and semi-structured data. They don't follow a fixed schema and offer more flexibility in data storage and retrieval. Examples of NoSQL databases include MongoDB, Couchbase, and Cassandra.
+  
+  `;
   var inputText = completionText;
   if (!completionText) {
     inputText = inputText2;
@@ -160,8 +245,8 @@ export function convert(completionText) {
 
 
 export async function model1(jd, cv, count) {
-  prompt_count = count;
-  const prompt1 = `As a top Career Adviser, based on the JD (Job description) and CV (Resume) below, List out the 15 Questions & answers to most important interview questions.
+  // let prompt_count = count;
+  const prompt1 = `As a top Career Adviser, based on the JD (Job description) and CV (Resume) below, List out the 15 Questions & very descriptive answers (more than 4 lines) to most important interview questions.
   IMPORTANT: The output format should be as follows:
 
   "Question 1 <Space> : <space> What is meaning of React 
@@ -170,8 +255,8 @@ export async function model1(jd, cv, count) {
   If candidates CV does not have the answer to question asked, provide an answer.
    \n
   Here is the JD :\n ${jd} \n  Here is the CV of candidate :\n ${cv}.  `;
-  const prompt2 = `As a top Career Adviser, based on the JD (Job description) and CV (Resume) below, List out the 15 advanced  level questions & answers. Assess the candidate's knowledge and understanding related to the provided Job Description and CV.
-  If candidates CV does not have the answer to question asked, provide an answer to the concept or technology asked.
+  const prompt2 = `As a top Career Adviser, based on the JD (Job description) and CV (Resume) below, you are tasked with generating a set of detailed interview questions and answers for a job opening in your organization. The goal is to assess the candidate's suitability for the role based on their skills, qualifications, and experience. Please generate 15 interview questions and very descriptive answers that delve deep into the requirements of the job. Assess the candidate's knowledge and understanding related to the provided Job Description and CV.
+  If candidates CV does not have the answer to question asked, provide an answer to the concept asked.
   IMPORTANT: The format should be as follows
   Question 1 <Space> : <Space> Question generated
   Answer 1 <Space> : <Space> Answer generated
@@ -179,7 +264,7 @@ export async function model1(jd, cv, count) {
 
   Here is the JD :\n ${jd} \n  Here is the CV :\n ${cv}.`;
 
-  const prompt3 = `As a top Career Adviser, based on the JD (Job description) and CV (Resume) below, List out the 15 medium level questions & answers. These should cover the essential skills and qualifications required for this position. Ensure that the output follows this format:
+  const prompt3 = `As a top Career Adviser, based on the JD (Job description) and CV (Resume) below, List out the 20 medium level questions & very descriotive answers. These should cover the essential skills and qualifications required for this position. Ensure that the output follows this format:
   Question 1 <Space> : <Space> Question generated
   Answer 1 <Space> : <Space> Answer generated
   If candidates CV does not have the answer to question asked, provide an answer to the concept or technology asked.
@@ -188,15 +273,14 @@ export async function model1(jd, cv, count) {
     apiKey: process.env.OPENAI_API_KEY,
   });
   const openai = new OpenAIApi(configuration);
-  var count = 1;
 
   const history = [];
   while (true) {
     log(`------ Running prompt ${count} ------`);
     
     var user_input = prompt1;
-    if (promp_count == 2) user_input = prompt2;
-    prompt_count++;
+    if (count === 2) user_input = prompt2;
+    else if(count === 3) user_input = prompt3;
     log(user_input + "\n");
 
     const messages = [];

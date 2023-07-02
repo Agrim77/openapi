@@ -21,6 +21,7 @@ import { Country, State, City }  from 'country-state-city';
 // app.use('/public',express.static(path.join('../public')))
 app.use(express.static("public"));
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 // always code for body-parser
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -33,6 +34,11 @@ const limiter = isDev
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 10, // limit each IP to 10 requests per windowMs
 });
+let net_result = [];
+let concatenatedArray = [];
+let jd, cv;
+let count = 1;
+let flag_2 = false, flag_3 = false;
 
 //middlewares
 // app.use(helmet());
@@ -56,7 +62,7 @@ app.post("/my-server/create-paypal-order", async (req, res) => {
     const order = await paypal.createOrder();
     res.json(order);
   } catch (err) {
-    res.status(500).render('error',{error:err.message});
+    res.status(500).render('error',{"msg":err.message});
   }
 });
 
@@ -75,28 +81,26 @@ app.post("/my-server/capture-paypal-order", async (req, res) => {
 //TODO: comment this route after going live
 app.get("/resume", (req, res) => {
   log("\n ------Get route resume(FOR DEV PRODUCTION ONLY-- comment out)----- \n");
-  const result = model.convert();
-  net_result.push(result)
+  const resume_get_result = model.convert();
+  net_result.push(resume_get_result)
   log(net_result)
-  res.render("success", {result, CLIENT_ID});
+  res.render("success", {result:resume_get_result, CLIENT_ID});
 });
 
 app.get("/loader", (req, res) => {
   res.render("loader");
 })
 
-const net_result = [];
-let jd, cv;
-let count = 1;
+
 app.post("/resume", async (req, res) => {
   jd = req.body.jd;
   cv = req.body.cv;
+  log(jd, cv)
   model.model1(jd, cv, count)
     .then((result) => {
-      log("\n---------In app.js model1 promise--------\n");
-      // log(result);
       net_result.push(result);
-      log(net_result)
+      log("NET RESULT\n");
+      log(net_result);
       res.render("success", {result: result, CLIENT_ID});
     })
     .catch((error) => {
@@ -110,35 +114,66 @@ app.get('/cities/:countryCode', (req, res) => {
   const cities = City.getCitiesOfCountry(countryCode);
   res.json(cities.map(city => city.name));
 });
+let countries = {};
 
-const countries = {};
-app.get("/thanks", (req, res) => {
+async function model_call(jd, cv, count) {
+  return new Promise((resolve, reject) => {
+    model.model1(jd, cv, count)
+      .then((result) => {
+        log("\n---------In app.js model1 promise--------\n");
+        net_result.push(result);
+        concatenatedArray = [].concat(...net_result);
+        log(net_result);
+        resolve();
+      })
+      .catch((error) => {
+        log(error);
+        reject(error);
+      });
+  });
+}
+
+app.get("/thanks", async (req, res) => {
   countries = Country.getAllCountries();
   log("-------thanks loaded: net result of all outputs----");
-  const concatenatedArray = [].concat(...net_result);
+  log(req.query);
   const page = req.query.page;
-  log(concatenatedArray);
-  if(pay_flag){
-    
+    log(page);
     let startIndex, endIndex;
     if (page === '1') {
+      log("pagination 1");
       startIndex = 0;
       endIndex = 14;
+      concatenatedArray = [].concat(...net_result);
     } else if (page === '2') {
+      log("pagination 2");
       startIndex = 15;
       endIndex = 29;
+      if (concatenatedArray.length < 30) {
+        await model_call(jd, cv, 2);
+        // !flag_2 && 
+        flag_2 = true;
+      }
     } else if (page === '3') {
+      log("pagination 3");
+      if (concatenatedArray.length < 50) {
+        await model_call(jd, cv, 3);
+        // !flag_3 && 
+        flag_3 = true;
+      }
       startIndex = 30;
       endIndex = concatenatedArray.length - 1;
     }
 
-    const thanks_result = concatenatedArray.slice(startIndex, endIndex + 1);
-    res.render("thanks",{result : thanks_result, isThanksPage: true, countries, count, page} );
-  }
-  else{
-    res.render("error", {"msg":"First make the payment"});
-  }
-})
+    log(concatenatedArray);
+    let thanks_result = concatenatedArray.slice(startIndex, endIndex + 1);
+
+    res.render("thanks", { result: thanks_result, isThanksPage: true, countries, count, page });
+  // } else {
+  //   res.render("error", { "msg": "First make the payment" });
+  // }
+});
+
 
 
 
@@ -154,20 +189,6 @@ app.post('/send-email', (req, res) => {
     },
   });
 
-  function model_call(jd, cv, count){
-    model.model1(jd, cv, count)
-    .then((result) => {
-      log("\n---------In app.js model1 promise--------\n");
-      // log(result);
-      net_result.push(result);
-      log(net_result)
-      res.render("success", {result: result, CLIENT_ID});
-    })
-    .catch((error) => {
-      log(error);
-      res.render("error");
-    });
-  } 
   // Construct the email message
   const mailOptions = {
     from: process.env.MY_EMAIL,

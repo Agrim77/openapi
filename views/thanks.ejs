@@ -26,8 +26,10 @@ let isThanksPage = true;
 
     
     <!----Q/A's---->
-    <div class="pdf_sec4">
-      <div class="dash_section4">
+  <div class="pdf_sec4">
+      <div class="pdf_dash_section4">
+
+      <!---- SEARCH & DROPDOWN OF QUESTIONS----->
       <div class="pdf_tools">
         <!------SEARCH------->
         <div class="dashboard_search">
@@ -78,19 +80,65 @@ let isThanksPage = true;
             <nav aria-label="Page navigation example">
               <ul class="pagination">
                 <li class="page-item"><a class="page-link" href="/thanks?page=1">1-15</a></li>
-                <li class="page-item"><a class="page-link" href="/thanks?page=2">16-30</a></li>
+                <li class="page-item"><a class="page-link" href="/thanks?page=3">16-30</a></li>
                 <li class="page-item"><a class="page-link" href="/thanks?page=3">31-50</a></li>
               </ul>
             </nav>
           </div>
           
       </div>
-    </div>
+  </div>
     
 
 
     <div class="pdf_display">
-      <h1> Your Curated Answers PDF !</h1>
+      <div class="pdf_email">
+        <form id="pdf_form" method="post" action="/send-email">
+          <div class="card-container">
+            <div
+              class="card text-center p-4 shadow"
+              style="width: 25rem; border-radius: 29px; box-shadow: 0 25px 25px rgba(0, 0, 0, 0.1), 0 25px 25px rgba(0, 0, 0, 0.1);"
+            >
+              <h2 class="card-title pb-3">Write Your Details</h2>
+    
+              <div class="mb-3">
+                <label for="user_email" class="form-label">Your Email:</label>
+                <input type="email" class="form-control" name="user_email" aria-describedby="emailHelp" required>
+              </div>
+    
+              <div class="mb-3">
+                <label for="user_name" class="form-label"> Your Name:</label>
+                <input type="text" class="form-control" name="user_name" aria-describedby="emailHelp" required>
+              </div>
+    
+              <div class="mb-3">
+                <label for="user_country" class="form-label">Your Country:</label>
+                <select name="user_country" id="user_country" class="form-control" required>
+                  <% countries.forEach(country => { %>
+                    <option id="" data-country-code="<%= country.isoCode %>" value="<%= country.name %>"><%= country.name %></option>
+                  <% }); %>
+                </select>
+              </div>
+        
+              <div class="mb-3">
+                <label name="user_city" for="user_city" class="form-label">Your City:</label>
+                <select id="city-select" class="form-control" required>
+                  <option value="">Select City</option>
+                </select>
+              </div>
+              
+              <div class="buttons pdf_button">
+                <button id="email-button" type="submit" class="btn-p">Email Me PDF</button>
+              </div>
+          </div>
+          
+         
+        </div>
+        </form>
+      </div>
+      <br>
+      <h2> Your Curated Answers PDF !</h2>
+      <br>
         <iframe src="/pdfs/q_and_a.pdf" width="100%" height="600px"></iframe>
         <br><br>
         <a href="/pdfs/q_and_a.pdf" download class="download-button">Download PDF</a>
@@ -98,49 +146,7 @@ let isThanksPage = true;
 
     
 
-    <div class="pdf_email">
-      <form id="pdf_form" method="post" action="/send-email">
-        <div class="card-container">
-          <div
-            class="card text-center p-4 shadow"
-            style="width: 25rem; border-radius: 29px; box-shadow: 0 25px 25px rgba(0, 0, 0, 0.1), 0 25px 25px rgba(0, 0, 0, 0.1);"
-          >
-            <h2 class="card-title pb-3">Write Your Details</h2>
-  
-            <div class="mb-3">
-              <label for="user_email" class="form-label">Your Email:</label>
-              <input type="email" class="form-control" name="user_email" aria-describedby="emailHelp" required>
-            </div>
-  
-            <div class="mb-3">
-              <label for="user_name" class="form-label"> Your Name:</label>
-              <input type="text" class="form-control" name="user_name" aria-describedby="emailHelp" required>
-            </div>
-  
-            <div class="mb-3">
-              <label for="user_country" class="form-label">Your Country:</label>
-              <select name="user_country" id="user_country" class="form-control" required>
-                <% countries.forEach(country => { %>
-                  <option id="" data-country-code="<%= country.isoCode %>" value="<%= country.name %>"><%= country.name %></option>
-                <% }); %>
-              </select>
-            </div>
-      
-            <div class="mb-3">
-              <label name="user_city" for="user_city" class="form-label">Your City:</label>
-              <select id="city-select" class="form-control" required>
-                <option value="">Select City</option>
-              </select>
-            </div>
-            
-          </div>
-        </div>
-        
-        <div class="buttons">
-        <button id="email-button" type="submit" class="btn-p">Email Me PDF</button>
-      </div>
-      </form>
-    </div>
+    
       
 </div>
 

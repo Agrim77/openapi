@@ -58,6 +58,7 @@ function generateDocument(doc, result) {
       }
   
       doc.moveDown();
+      
     }
   }
   
