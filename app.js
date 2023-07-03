@@ -39,6 +39,7 @@ let concatenatedArray = [];
 let jd, cv;
 let count = 1;
 let flag_2 = false, flag_3 = false;
+let result1 = {}, result2 = {}, result3 = {};
 
 //middlewares
 // app.use(helmet());
@@ -98,10 +99,11 @@ app.post("/resume", async (req, res) => {
   log(jd, cv)
   model.model1(jd, cv, count)
     .then((result) => {
+      result1 = result;
       net_result.push(result);
-      log("NET RESULT\n");
       log(net_result);
-      res.render("success", {result: result, CLIENT_ID});
+      concatenatedArray = [].concat(...net_result);
+      res.render("success", {result: concatenatedArray, CLIENT_ID});
     })
     .catch((error) => {
       log(error);
@@ -121,6 +123,10 @@ async function model_call(jd, cv, count) {
     model.model1(jd, cv, count)
       .then((result) => {
         log("\n---------In app.js model1 promise--------\n");
+        if(count === 2)
+        result2 = result;
+        else if(count === 3)
+        result3 = result;
         net_result.push(result);
         concatenatedArray = [].concat(...net_result);
         log(net_result);
@@ -140,8 +146,10 @@ app.get("/thanks", async (req, res) => {
   const page = req.query.page;
     log(page);
     let startIndex, endIndex;
+    let thanks_result = {};
     if (page === '1') {
       log("pagination 1");
+      thanks_result = result1;
       startIndex = 0;
       endIndex = 14;
       concatenatedArray = [].concat(...net_result);
@@ -154,6 +162,7 @@ app.get("/thanks", async (req, res) => {
         // !flag_2 && 
         flag_2 = true;
       }
+      thanks_result = result2;
     } else if (page === '3') {
       log("pagination 3");
       if (concatenatedArray.length < 50) {
@@ -161,12 +170,14 @@ app.get("/thanks", async (req, res) => {
         // !flag_3 && 
         flag_3 = true;
       }
+      thanks_result = result3;
       startIndex = 30;
       endIndex = concatenatedArray.length - 1;
     }
-
+    log("----concatenated array now---")
     log(concatenatedArray);
-    let thanks_result = concatenatedArray.slice(startIndex, endIndex + 1);
+    // let thanks_result = concatenatedArray.slice(startIndex, endIndex + 1);
+    
 
     res.render("thanks", { result: thanks_result, isThanksPage: true, countries, count, page });
   // } else {
