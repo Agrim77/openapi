@@ -469,8 +469,17 @@ h2 {
   align-items: center;
   justify-content: space-between;
 }
-.pdf_button{
+.pdf_email_button{
   margin: 0 auto;
+  font-size: 12px;
+  transition: background-color 0.3s ease-in;
+}
+.pdf_frame_container{
+  width:90%;
+}
+.pdf_email_button:hover{
+  margin: 0 auto;
+  background-color: rgb(186, 30, 30);
 }
 .pdf_email label{
   font-size: small;

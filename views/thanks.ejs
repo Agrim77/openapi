@@ -15,15 +15,57 @@ let isThanksPage = true;
   <!-- <div class="pdf_sec1">
     <h1>Success</h1>
   </div> -->
+  
 
-  <div class="pdf_sec2">
-    <!-------cENTERED HEADEDIG ------->
+  <!-- <div class="pdf_sec2">
     <div class="dash_section4_head">
         <h1 style="font-weight:700;">Your Curated Top Interview Questions</h1>
         <p style="color:grey;">Everything you need to know to ace your interviews!</p>
     </div>
+  </div> -->
+  <div class="dash_section2" style="margin-top: 7%;">
+    <div class="user_dash">
+      <div class="user_content">
+        <h1>Good Evening User !</h1>
+        <br />
+        <p>A simple quote of the day !</p>
+      </div>
+      <div class="user_img">
+        <img src="images/vector.png" alt="" />
+      </div>
+    </div>
+    <div class="user_nav">
+      <div>
+        <h2><%- result.length %> Questions</h2>
+      </div>
+      <div class="dropdown-container">
+        <div class="btn-group dropstart">
+          <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            Select Your Question
+          </button>
+          <ul class="dropdown-menu dropdown-menu-lg-start">
+            <% for (let i = 0; i < result.length; i++) { %>
+              <li>
+                <a class="dropdown-item" href="#question<%= i %>"><%= i+1 %>: <%= result[i].ques.substring(0, 27) %> ....</a>
+                <!-- <li><a class="dropdown-item disabled">Disabled link</a></li> -->
+              </li>
+              <% } %>
+          </ul>
+        </div>
+      </div>
+      
+      
+    </div>
   </div>
 
+  <div class="dash_section3">
+    <h4 style="font-weight:700;">Hi User,</h4>
+    <h1 style="font-weight:700;">We are here to help</h1>
+    <p style="color:grey;">
+      Welcome to the expert response to the 50 top
+      interview questions tailored to you !
+    </p>
+  </div>
     
     <!----Q/A's---->
   <div class="pdf_sec4">
@@ -76,15 +118,15 @@ let isThanksPage = true;
           <% } %>
 
           <br>
-          <div class="pagination">
+          <!-- <div class="pagination">
             <nav aria-label="Page navigation example">
               <ul class="pagination">
-                <li class="page-item"><a class="page-link" href="/thanks?page=1">1-15</a></li>
-                <li class="page-item"><a class="page-link" href="/thanks?page=2">16-30</a></li>
-                <li class="page-item"><a class="page-link" href="/thanks?page=3">31-50</a></li>
+                <li class="page-item"><a class="page-link" href="/thanks?page=1">15 Questions</a></li>
+                <li class="page-item"><a class="page-link" href="/thanks?page=2">15 Questions</a></li>
+                <li class="page-item"><a class="page-link" href="/thanks?page=3">20 Questions</a></li>
               </ul>
             </nav>
-          </div>
+          </div> -->
           
       </div>
   </div>
@@ -93,6 +135,17 @@ let isThanksPage = true;
 
     <div class="pdf_display">
       <div class="pdf_email">
+
+        <h2> Generate Your Curated Answers PDF !</h2>
+      <br>
+      <!-- <div class="buttons pdf_gen_button">
+        <button id="pdf_gen_button" class="btn-p">Generate pdf</button>
+      </div> -->
+      <!-- <div id="pdf_frame_container"> -->
+        <iframe id="pdf_frame" src="/pdfs/q_and_a.pdf" width="100%" height="600px"></iframe>
+      <!-- </div> -->
+      <br><br>
+      <a href="/pdfs/q_and_a.pdf" download class="download-button">Download PDF</a>
         <form id="pdf_form" method="post" action="/send-email">
           <div class="card-container">
             <div
@@ -127,7 +180,7 @@ let isThanksPage = true;
                 </select>
               </div>
               
-              <div class="buttons pdf_button">
+              <div class="buttons pdf_email_button">
                 <button id="email-button" type="submit" class="btn-p">Email Me PDF</button>
               </div>
           </div>
@@ -137,11 +190,7 @@ let isThanksPage = true;
         </form>
       </div>
       <br>
-      <h2> Your Curated Answers PDF !</h2>
-      <br>
-        <iframe src="/pdfs/q_and_a.pdf" width="100%" height="600px"></iframe>
-        <br><br>
-        <a href="/pdfs/q_and_a.pdf" download class="download-button">Download PDF</a>
+      
     </div>
 
     
@@ -173,6 +222,33 @@ let isThanksPage = true;
       });
     });
   
+    //------------pdf generation----------
+  //   document.getElementById('pdf_gen_button').addEventListener('click', function() {
+  //   fetch('/generate_pdf', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     },
+  //     // body: JSON.stringify({ /* Any data you want to send to the server */ })
+  //   })
+  //   .then(function(response) {
+  //     if (response.ok) {
+  //       return response.json();
+  //     } else {
+  //       throw new Error('Failed to generate PDF');
+  //     }
+  //   })
+  //   .then(function(data) {
+  //     const pdfPath = data.pdf_path;
+  //     document.getElementById('pdf_frame').src = pdfPath;
+  //     document.getElementById('pdf_frame').style.display = 'block';
+  //   })
+  //   .catch(function(error) {
+  //     console.error('Error generating PDF:', error);
+  //   });
+  // });
+
+  //Showing icons
   function toggleAnswer(index) {
   const answerElement = document.getElementById(`answer${index}`);
   const iconElement = document.querySelector(`#question${index} .question_click i`);

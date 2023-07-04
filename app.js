@@ -10,6 +10,7 @@ import nodemailer from 'nodemailer';
 dotenv.config();
 // import "dotenv/config"; // loads variables from .env file
 import * as paypal from "./paypal_api.js";
+import * as pdf_gen from './pdfGen.js'
 import { log } from 'console';
 const port = process.env.PORT;
 const app = express();
@@ -96,7 +97,7 @@ app.get("/loader", (req, res) => {
 app.post("/resume", async (req, res) => {
   jd = req.body.jd;
   cv = req.body.cv;
-  log(jd, cv)
+  // log(jd, cv)
   model.model1(jd, cv, count)
     .then((result) => {
       result1 = result;
@@ -118,17 +119,34 @@ app.get('/cities/:countryCode', (req, res) => {
 });
 let countries = {};
 
+
+app.post('/generate_pdf',async (req, res) => {
+  log("---generate_pdf----")
+  log(concatenatedArray)
+  if(!flag_2)
+  await model_call(jd, cv, 2);
+  if(!flag_3)
+  await model_call(jd, cv, 3);
+  pdf_gen.createPDF(concatenatedArray, 'public/pdfs', 'q_and_a.pdf');
+  const pdfPath = '/pdfs/q_and_a.pdf';
+  res.json({ pdf_path: pdfPath });
+});
+
 async function model_call(jd, cv, count) {
   return new Promise((resolve, reject) => {
     model.model1(jd, cv, count)
       .then((result) => {
         log("\n---------In app.js model1 promise--------\n");
-        if(count === 2)
-        result2 = result;
-        else if(count === 3)
-        result3 = result;
+        if(count === 2){
+          result2 = result;
+          flag_2 = true;
+        } else if(count === 3){
+          result3 = result;
+          flag_3 = true;
+        }
+        
         net_result.push(result);
-        concatenatedArray = [].concat(...net_result);
+        // concatenatedArray = [].concat(...net_result);
         log(net_result);
         resolve();
       })
@@ -142,44 +160,45 @@ async function model_call(jd, cv, count) {
 app.get("/thanks", async (req, res) => {
   countries = Country.getAllCountries();
   log("-------thanks loaded: net result of all outputs----");
-  log(req.query);
-  const page = req.query.page;
-    log(page);
-    let startIndex, endIndex;
-    let thanks_result = {};
-    if (page === '1') {
-      log("pagination 1");
-      thanks_result = result1;
-      startIndex = 0;
-      endIndex = 14;
-      concatenatedArray = [].concat(...net_result);
-    } else if (page === '2') {
-      log("pagination 2");
-      startIndex = 15;
-      endIndex = 29;
-      if (concatenatedArray.length < 30) {
-        await model_call(jd, cv, 2);
-        // !flag_2 && 
-        flag_2 = true;
-      }
-      thanks_result = result2;
-    } else if (page === '3') {
-      log("pagination 3");
-      if (concatenatedArray.length < 50) {
-        await model_call(jd, cv, 3);
-        // !flag_3 && 
-        flag_3 = true;
-      }
-      thanks_result = result3;
-      startIndex = 30;
-      endIndex = concatenatedArray.length - 1;
-    }
+  if(!flag_2)
+  await model_call(jd, cv, 2);
+  flag_2 = true;
+  if(!flag_3)
+  await model_call(jd, cv, 3);
+  flag_3 = true;
+  // log(req.query);
+  // const page = req.query.page;
+  //   log(page);
+  //   let startIndex, endIndex;
+  //   let thanks_result = {};
+  //   if (page === '1') {
+  //     thanks_result = result1;
+  //     startIndex = 0;
+  //     endIndex = 14;
+  //     concatenatedArray = [].concat(...net_result);
+  //   } else if (page === '2') {
+  //     startIndex = 15;
+  //     endIndex = 29;
+  //     if (!flag_2 && concatenatedArray.length < 30) {
+  //       await model_call(jd, cv, 2);
+  //       flag_2 = true;
+  //     }
+  //     thanks_result = result2;
+  //   } else if (page === '3') {
+  //       if (flag_3 && concatenatedArray.length < 50) {
+  //       await model_call(jd, cv, 3);
+  //       flag_3 = true;
+  //     }
+  //     thanks_result = result3;
+  //     startIndex = 30;
+  //     endIndex = concatenatedArray.length - 1;
+  //   }
     log("----concatenated array now---")
+    concatenatedArray = [].concat(...net_result);
     log(concatenatedArray);
-    // let thanks_result = concatenatedArray.slice(startIndex, endIndex + 1);
     
 
-    res.render("thanks", { result: thanks_result, isThanksPage: true, countries, count, page });
+    res.render("thanks", { result: concatenatedArray, isThanksPage: true, countries});
   // } else {
   //   res.render("error", { "msg": "First make the payment" });
   // }
