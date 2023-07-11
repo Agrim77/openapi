@@ -1,0 +1,178 @@
+<%- include('./partials/header') %>
+    </head>
+
+    <body>
+        
+         <!-- Top Bar Start -->
+         <div class="topbar">
+
+            <!-- LOGO -->
+            <div class="topbar-left">
+                <a href="/" class="logo">
+                    <span>
+                        <img src="images/small-logo.webp" alt="logo-small" class="logo-sm">
+                    </span>
+                    <span>
+                        <img src="images/IHLogonew.png" alt="logo-large" class="logo-lg logo-light">
+                        <!-- <img src="images/IHLogonew.png" alt="logo-large" class="logo-lg"> -->
+                    </span>
+                </a>
+            </div>
+            <!--end logo-->
+            <!-- Navbar -->
+            <nav class="navbar-custom">    
+                <ul class="list-unstyled topbar-nav float-right mb-0"> 
+
+                    <li class="dropdown">
+                        <a class="nav-link dropdown-toggle waves-effect waves-light nav-user" data-toggle="dropdown" href="#" role="button"
+                            aria-haspopup="false" aria-expanded="false">
+                            <img src="images/users/user-1.png" alt="profile-user" class="rounded-circle" /> 
+                            <span class="ml-1 nav-user-name hidden-sm">User Name <i class="mdi mdi-chevron-down"></i> </span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" href="auth-update"><i class="ti-user text-muted mr-2"></i> Profile Update</a>
+                            <div class="dropdown-divider mb-0"></div>
+                            <a class="dropdown-item" href="#"><i class="ti-power-off text-muted mr-2"></i> Logout</a>
+                        </div>
+                    </li>
+                </ul><!--end topbar-nav-->
+    
+                <ul class="list-unstyled topbar-nav mb-0">                        
+                    <li>
+                        <button class="nav-link button-menu-mobile waves-effect waves-light">
+                            <i class="ti-menu nav-icon"></i>
+                        </button>
+                    </li>
+                    
+                </ul>
+            </nav>
+            <!-- end navbar-->
+        </div>
+        <!-- Top Bar End -->
+
+        
+        <!-- Left Sidenav -->
+        <div class="left-sidenav">
+            <ul class="metismenu left-sidenav-menu">
+                <li>
+                    <a href="javascript: void(0);"><i class="ti-layers-alt"></i><span>Pages</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
+                    <ul class="nav-second-level" aria-expanded="false">
+                        <li class="nav-item"><a class="nav-link" href="user-profile"><i class="ti-control-record"></i>Profile</a></li>
+                        <li class="nav-item"><a class="nav-link" href="auth-update"><i class="ti-control-record"></i>Update Profile</a></li>
+                        <li class="nav-item"><a class="nav-link" href="auth-recover-pw"><i class="ti-control-record"></i>Recover Password</a></li>
+                        <li class="nav-item"><a class="nav-link" href="support-client"><i class="ti-control-record"></i>Support and Helpdesk</a></li>
+                        <li class="nav-item"><a class="nav-link" href=""><i class="ti-control-record"></i>----</a></li>
+                        <li class="nav-item"><a class="nav-link" href="auth-login"><i class="ti-control-record"></i>Login</a></li>
+                        <li class="nav-item"><a class="nav-link" href="auth-register"><i class="ti-control-record"></i>Register</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!-- end left-sidenav-->
+
+        <div class="page-wrapper">
+            <!-- Page Content-->
+            <div class="page-content">
+                <br>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body  met-pro-bg">
+                                    <div class="met-profile">
+                                        <div class="row">
+                                            <div class="col-lg-4 align-self-center mb-3 mb-lg-0">
+                                                <div class="met-profile-main">
+                                                    <div class="met-profile_user-detail">
+                                                        <h5 class="met-user-name">Rosa Dodson</h5>                                                        
+                                                        <!-- <p class="mb-0 met-user-name-post">UI/UX Designer</p> -->
+                                                    </div>
+                                                </div>                                                
+                                            </div><!--end col-->
+                                            <div class="col-lg-4 ml-auto">
+                                                <ul class="list-unstyled personal-detail">
+                                                    <li class=""><i class="dripicons-phone mr-2 text-info font-18"></i> <b> phone </b> : +91 23456 78910</li>
+                                                    <li class="mt-2"><i class="dripicons-mail text-info font-18 mt-2 mr-2"></i> <b> Email </b> : mannat.theme@gmail.com</li>
+                                                </ul>
+                                            </div><!--end col-->
+                                        </div><!--end row-->
+                                    </div><!--end f_profile-->                                                                                
+                                </div><!--end card-body-->
+                                
+                            </div><!--end card-->
+                        </div><!--end col-->
+                    </div><!--end row-->
+                    
+                    <!--- STATISTICS -->
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="header-title mt-0 mb-3">Your Results</h4>
+                                    <div class="table-responsive browser_users">
+                                        <table class="table mb-0">
+                                            <thead class="thead-light">
+                                                <tr>
+                                                    <th class="border-top-0">Interview question answers</th>
+                                                    <th class="border-top-0">Transactions</th>
+                                                </tr><!--end tr-->
+                                            </thead>
+                                            <tbody>   
+                                                <tr>      
+                                                    <td>50</td>          
+                                                    <td>498</td>
+                                                </tr><!--end tr-->    
+                                                <tr>                                                        
+                                                   
+                                                    <td>1836</td>          
+                                                    <td>455</td>
+                                                </tr><!--end tr-->    
+                                                <!--end tr-->                                
+                                            </tbody>
+                                        </table> <!--end table-->                                               
+                                    </div><!--end /div-->
+                                </div><!--end card-body-->
+                            </div><!--end card-->
+                        </div><!--end col-->
+
+                    </div><!--end row-->
+                    
+
+                </div><!-- container -->
+
+                <footer class="footer text-center text-sm-left">
+                    &copy; 2023 InterviewHacks.HQ <span class="text-muted d-none d-sm-inline-block float-right">Crafted with <i class="mdi mdi-heart text-danger"></i> by Edioper+</span>
+                </footer><!--end footer-->
+            </div>
+            <!-- end page content -->
+        </div>
+        <!-- end page-wrapper -->
+
+        
+
+
+        <!-- jQuery  -->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/jquery-ui.min.js"></script>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script src="js/metismenu.min.js"></script>
+        <script src="js/waves.js"></script>
+        <script src="js/feather.min.js"></script>
+        <script src="js/jquery.slimscroll.min.js"></script>   
+        
+        <script src="plugins/dropify/js/dropify.min.js"></script>
+        <script src="plugins/moment/moment.js"></script>
+        <script src="plugins/filter/isotope.pkgd.min.js"></script>
+        <script src="plugins/filter/masonry.pkgd.min.js"></script>
+        <script src="plugins/filter/jquery.magnific-popup.min.js"></script>
+        <script src="plugins/chartjs/chart.min.js"></script>
+        <script src="plugins/chartjs/roundedBar.min.js"></script>
+        <script src="plugins/lightpick/lightpick.js"></script>
+        <script src="js/jquery.profile.init.js"></script>
+
+        <!-- App js -->
+        <script src="js/app.js"></script>
+        
+    </body>
+
+</html>

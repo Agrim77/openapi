@@ -1,3 +1,21 @@
+-----EMAIL DROP DOWNS----
+
+              <!-- <div class="mb-3">
+                <label for="user_country" class="form-label">Your Country:</label>
+                <select name="user_country" id="user_country" class="form-control" required>
+                  <% countries.forEach(country => { %>
+                    <option id="" data-country-code="<%= country.isoCode %>" value="<%= country.name %>"><%= country.name %></option>
+                  <% }); %>
+                </select>
+              </div> -->
+        
+              <!-- <div class="mb-3">
+                <label name="user_city" for="user_city" class="form-label">Your City:</label>
+                <select id="city-select" class="form-control" required>
+                  <option value="">Select City</option>
+                </select>
+              </div> -->
+
 -----thanks --------
 <div class="dropdown-container">
         <div class="btn-group dropstart">

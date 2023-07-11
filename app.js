@@ -160,12 +160,16 @@ async function model_call(jd, cv, count) {
 app.get("/thanks", async (req, res) => {
   countries = Country.getAllCountries();
   log("-------thanks loaded: net result of all outputs----");
-  if(!flag_2)
-  await model_call(jd, cv, 2);
-  flag_2 = true;
-  if(!flag_3)
-  await model_call(jd, cv, 3);
-  flag_3 = true;
+
+  // if(!flag_2)
+  // await model_call(jd, cv, 2);
+  // flag_2 = true;
+  // if(!flag_3)
+  // await model_call(jd, cv, 3);
+  // flag_3 = true;
+
+
+
   // log(req.query);
   // const page = req.query.page;
   //   log(page);
@@ -193,9 +197,14 @@ app.get("/thanks", async (req, res) => {
   //     startIndex = 30;
   //     endIndex = concatenatedArray.length - 1;
   //   }
-    log("----concatenated array now---")
+
+    const resume_get_result = model.convert();
+    net_result.push(resume_get_result)
+
+    // log("----concatenated array now---")
     concatenatedArray = [].concat(...net_result);
-    log(concatenatedArray);
+    // log(concatenatedArray);
+    
     
 
     res.render("thanks", { result: concatenatedArray, isThanksPage: true, countries});
@@ -204,12 +213,41 @@ app.get("/thanks", async (req, res) => {
   // }
 });
 
+app.get("/user-profile", (req, res) =>{
+  res.render("user-profile");
+})
+app.get("/user-profile", (req, res) =>{
+  res.render("user-profile");
+})
+app.get("/auth-update", (req, res) =>{
+  res.render("auth-update");
+})
+app.get("/user-profile", (req, res) =>{
+  res.render("user-profile");
+})
+app.get("/user-profile", (req, res) =>{
+  res.render("user-profile");
+})
+app.get("/user-profile", (req, res) =>{
+  res.render("user-profile");
+})
+app.get("/user-profile", (req, res) =>{
+  res.render("user-profile");
+})
+
+
+app.get("/super-admin", (req,res) => {
+  res.render("super-admin");
+})
 
 
 
 app.post('/send-email', (req, res) => {
-  const { user_name, user_email, user_phone, user_country, user_city } = req.body;
-  log(user_name, user_email, user_phone, user_country, user_city);
+  const { user_name, user_email } = req.body;
+  log(req.body)
+  //, user_phone, user_country, user_city
+  // , user_phone, user_country, user_city
+  log(user_name, user_email);
   // Create a Nodemailer transporter
   const transporter = nodemailer.createTransport({
     service: 'Gmail',

@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
     
       if (data.success) {
         emailButton.classList.add('success'); 
-        emailButton.textContent = 'Email Sent Successfully';
+        emailButton.textContent = 'Email sent succesfully <br> Check Your Spam';
       } else {
         // Display an error message if the email was not sent successfully
         console.error(data.message);

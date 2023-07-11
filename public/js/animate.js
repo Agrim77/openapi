@@ -5,8 +5,6 @@ const observer = new IntersectionObserver((entries) => {
             if(entry.isIntersecting){
                 // console.log('element intersecting');
                 entry.target.classList.add('show1');
-            } else {
-                entry.target.classList.remove('show1');
             }
         });
     });

@@ -1,0 +1,248 @@
+<%- include('./partials/header') %>
+    </head>
+
+    <body>
+        
+         <!-- Top Bar Start -->
+         <div class="topbar">
+
+            <!-- LOGO -->
+            <div class="topbar-left">
+                <a href="../dashboard/crm-index" class="logo">
+                    <span>
+                        <img src="images/IHLogonew.png" alt="logo-small" class="logo-sm">
+                    </span>
+                    <span>
+                        <img src="images/IHLogonew.png" alt="logo-large" class="logo-lg logo-light">
+                        <!-- <img src="images/IHLogonew.png" alt="logo-large" class="logo-lg"> -->
+                    </span>
+                </a>
+            </div>
+            <!--end logo-->
+            <!-- Navbar -->
+            <nav class="navbar-custom">    
+                <ul class="list-unstyled topbar-nav float-right mb-0"> 
+                    <li class="dropdown">
+                        <a class="nav-link dropdown-toggle waves-effect waves-light nav-user" data-toggle="dropdown" href="#" role="button"
+                            aria-haspopup="false" aria-expanded="false">
+                            <img src="images/users/user-1.png" alt="profile-user" class="rounded-circle" /> 
+                            <span class="ml-1 nav-user-name hidden-sm">Super Admin</span>
+                        </a>
+                    </li>
+                </ul><!--end topbar-nav-->
+    
+                <ul class="list-unstyled topbar-nav mb-0">                        
+                    <li>
+                        <button class="nav-link button-menu-mobile waves-effect waves-light">
+                            <i class="ti-menu nav-icon"></i>
+                        </button>
+                    </li>
+                    <li class="hide-phone app-search">
+                        <form role="search" class="">
+                            <input type="text" id="AllCompo" placeholder="Search..." class="form-control">
+                            <a href=""><i class="fas fa-search"></i></a>
+                        </form>
+                    </li>
+                </ul>
+            </nav>
+            <!-- end navbar-->
+        </div>
+        <!-- Top Bar End -->
+
+        
+        <!-- Left Sidenav -->
+        <div class="left-sidenav">
+            <ul class="metismenu left-sidenav-menu">
+                <li>
+                    <a href="javascript: void(0);"><i class="ti-layers-alt"></i><span>Pages</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
+                    <ul class="nav-second-level" aria-expanded="false">
+                        <li class="nav-item"><a class="nav-link" href="/super-admin"><i class="ti-control-record"></i>User Management</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/payment_management"><i class="ti-control-record"></i>Payment Management</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/pages-profile"><i class="ti-control-record"></i>Analytics</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/pages-profile"><i class="ti-control-record"></i>Support Mangement</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!-- end left-sidenav-->
+
+        <div class="page-wrapper">
+            <!-- Page Content-->
+            <div class="page-content">
+                <br>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body  met-pro-bg">
+                                    <div class="met-profile">
+                                        <div class="row">
+                                            <div class="col-lg-4 align-self-center mb-3 mb-lg-0">
+                                                <div class="met-profile-main">
+                                                    <div class="met-profile-main-pic">
+                                                        <img src="images/users/user-4.jpg" alt="" class="rounded-circle">
+                                                    </div>
+                                                    <div class="met-profile_user-detail">
+                                                        <h5 class="met-user-name">User Management</h5>                                                        
+                                                        <!-- <p class="mb-0 met-user-name-post">UI/UX Designer</p> -->
+                                                    </div>
+                                                </div>                                                
+                                            </div><!--end col-->
+                                        </div><!--end row-->
+                                    </div><!--end f_profile-->                                                                                
+                                </div><!--end card-body-->
+                                
+                            </div><!--end card-->
+                        </div><!--end col-->
+                    </div><!--end row-->
+
+                    <!--- CREATE USER-->
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="mt-0 header-title">Create User</h4>
+                            <p class="text-muted mb-3">User Management: Create User</p> 
+                            <form>
+                                <div class="form-group">
+                                    <label for="username">Username</label>
+                                    <div class="input-group mb-3">
+                                        <span class="auth-form-icon">
+                                            <i class="dripicons-user"></i> 
+                                        </span>                                                                                                              
+                                        <input type="text" class="form-control" id="username" placeholder="Enter username">
+                                    </div>                                    
+                                </div><!--end form-group--> 
+
+                                <div class="form-group">
+                                    <label for="useremail">Email</label>
+                                    <div class="input-group mb-3">
+                                        <span class="auth-form-icon">
+                                            <i class="dripicons-mail"></i> 
+                                        </span>                                                                                                              
+                                        <input type="email" class="form-control" id="useremail" placeholder="Enter Email">
+                                    </div>                                    
+                                </div><!--end form-group-->
+    
+                                <div class="form-group">
+                                    <label for="userpassword">Password</label>                                            
+                                    <div class="input-group mb-3"> 
+                                        <span class="auth-form-icon">
+                                            <i class="dripicons-lock"></i> 
+                                        </span>                                                       
+                                        <input type="password" class="form-control" id="userpassword" placeholder="Enter password">
+                                    </div>                               
+                                </div><!--end form-group--> 
+
+                                <div class="form-group">
+                                    <label for="conf_password">Country and City</label>                                            
+                                    <div class="mb-3">
+                                        <label for="user_country" class="form-label">Your Country:</label>
+                                        <select name="user_country" id="user_country" class="form-control" required>
+                                          <option value="1">Country 1</option>
+                                          <option value="1">Country 2</option>
+                                        </select>
+                                      </div>
+                                
+                                      <div class="mb-3">
+                                        <label name="user_city" for="user_city" class="form-label">Your City:</label>
+                                        <select id="city-select" class="form-control" required>
+                                          <option value="">Select City</option>
+                                          <option value="">City 1</option>
+                                          <option value="">City 2</option>
+                                        </select>
+                                      </div> 
+                                </div><!--end form-group--> 
+    
+                                <div class="form-group mb-0 row">
+                                    <div class="col-12 mt-2">
+                                        <button class="btn btn-gradient-primary btn-round btn-block waves-effect waves-light" type="submit">Register<i class="fas fa-sign-in-alt ml-1"></i></button>
+                                    </div><!--end col--> 
+                                </div>
+                            </form>                                           
+                        </div><!--end card-body-->
+                    </div><!--end card-->
+                    
+                    <!--- EDIT/ DELETE -->
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="header-title mt-0 mb-3">Manage Users</h4>
+                                    <div class="table-responsive browser_users">
+                                        <table class="table mb-0">
+                                            <thead class="thead-light">
+                                                <tr>
+                                                    <th class="border-top-0">User Names</th>
+                                                    <th class="border-top-0">Action</th>
+                                                </tr><!--end tr-->
+                                            </thead>
+                                            <tbody>   
+                                                <tr>      
+                                                    <td>User 1</td>          
+                                                    <td>                                         
+                                                        <a href="#" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>
+                                                        <a href="#"><i class="fas fa-trash-alt text-danger font-16"></i></a>
+                                                    </td>
+                                                </tr><!--end tr-->    
+                                                <tr>      
+                                                    <td>User 2</td>          
+                                                    <td>                                         
+                                                        <a href="#" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>
+                                                        <a href="#"><i class="fas fa-trash-alt text-danger font-16"></i></a>
+                                                    </td>
+                                                </tr><tr>      
+                                                    <td>User 3</td>          
+                                                    <td>                                         
+                                                        <a href="#" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>
+                                                        <a href="#"><i class="fas fa-trash-alt text-danger font-16"></i></a>
+                                                    </td>
+                                                </tr><!--end tr-->    
+                                                <!--end tr-->                                
+                                            </tbody>
+                                        </table> <!--end table-->                                               
+                                    </div><!--end /div-->
+                                </div><!--end card-body-->
+                            </div><!--end card-->
+                        </div><!--end col-->
+
+                    </div><!--end row-->
+                    
+                    
+
+                </div><!-- container -->
+
+                <footer class="footer text-center text-sm-left">
+                    &copy; 2023 InterviewHacks.HQ <span class="text-muted d-none d-sm-inline-block float-right">Crafted with <i class="mdi mdi-heart text-danger"></i> by Edioper+</span>
+                </footer><!--end footer-->
+            </div>
+            <!-- end page content -->
+        </div>
+        <!-- end page-wrapper -->
+
+        
+
+
+        <!-- jQuery  -->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/jquery-ui.min.js"></script>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script src="js/metismenu.min.js"></script>
+        <script src="js/waves.js"></script>
+        <script src="js/feather.min.js"></script>
+        <script src="js/jquery.slimscroll.min.js"></script>   
+        
+        <script src="plugins/dropify/js/dropify.min.js"></script>
+        <script src="plugins/moment/moment.js"></script>
+        <script src="plugins/filter/isotope.pkgd.min.js"></script>
+        <script src="plugins/filter/masonry.pkgd.min.js"></script>
+        <script src="plugins/filter/jquery.magnific-popup.min.js"></script>
+        <script src="plugins/chartjs/chart.min.js"></script>
+        <script src="plugins/chartjs/roundedBar.min.js"></script>
+        <script src="plugins/lightpick/lightpick.js"></script>
+        <script src="../asse/jquery.profile.init.js"></script>
+
+        <!-- App js -->
+        <script src="js/app.js"></script>
+        
+    </body>
+
+<>

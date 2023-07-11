@@ -1,7 +1,7 @@
 console.log('-- dropdown script loaded---')
 document.addEventListener("DOMContentLoaded", function() {
   const searchInput = document.getElementById("search-input");
-  const searchButton = document.getElementById("search-button");
+  // const searchButton = document.getElementById("search-button");
   const qsElements = document.getElementsByClassName("qs");
 
   function highlightText() {
@@ -75,8 +75,6 @@ document.addEventListener("DOMContentLoaded", function() {
       qsElements[index].scrollIntoView({ behavior: "smooth", block: "start" });
     }
   }
-
-  searchButton.addEventListener("click", highlightText);
   searchInput.addEventListener("keyup", function(event) {
     if (event.key === "Enter") {
       highlightText();

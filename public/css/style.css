@@ -6,34 +6,34 @@
 }
 @font-face {
   font-family: 'Source Sans';
-  src: url('fonts/SourceSansPro-Regular.ttf') format('truetype');
+  src: url('../fonts/SourceSansPro-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Source Sans';
-  src: url('fonts/SourceSansPro-Light.ttf') format('truetype');
+  src: url('../fonts/SourceSansPro-Light.ttf') format('truetype');
   font-weight: 300;
   font-style: normal;
 }
 @font-face {
   font-family: 'Source Sans';
-  src: url('fonts/SSourceSansPro-Semibold.ttf') format('truetype');
+  src: url('../fonts/SourceSansPro-Semibold.ttf') format('truetype');
   font-weight: 600; /* or 'semibold' */
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Source Serif';
-  src: url('fonts/SourceSerifPro-Regular.ttf') format('truetype');
+  src: url('../fonts/SourceSerifPro-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Source Serif';
-  src: url('fonts/SourceSerifPro-Semibold.ttf') format('truetype');
+  src: url('../fonts/SourceSerifPro-Semibold.ttf') format('truetype');
   font-weight: 600; /* or 'semibold' */
   font-style: normal;
 }
@@ -59,8 +59,24 @@
 .navbar {
   transition: background-color 0.3s ease;
 }
+.navbar-nav {
+  display: flex;
+  justify-content: space-between;
+}
+.nav-item{
+  /* display: block; */
+  margin-right: 17px;
+}
+.navb a {
+  text-decoration: none;
+  color: white;
+}
 .navbar.scrolled {
   background-color: white;
+}
+.nav-item.scrolled{
+  text-decoration: none;
+  color:#800E49;
 }
 .nav_l {
   overflow-y: hidden;
@@ -74,22 +90,11 @@
   overflow-x: hidden;
   /* align-items: */
 }
-.navb a {
-  text-decoration: none;
-  color: #d88bb4;
-}
+
 .page1 {
   overflow-x: hidden;
-  background-color: #800e49;
-  /* background: hsla(329, 81%, 27%, 1);
-
-background: linear-gradient(270deg, hsla(329, 81%, 27%, 1) 0%, hsla(329, 85%, 36%, 1) 50%, hsla(329, 83%, 34%, 1) 100%);
-
-background: -moz-linear-gradient(270deg, hsla(329, 81%, 27%, 1) 0%, hsla(329, 85%, 36%, 1) 50%, hsla(329, 83%, 34%, 1) 100%);
-
-background: -webkit-linear-gradient(270deg, hsla(329, 81%, 27%, 1) 0%, hsla(329, 85%, 36%, 1) 50%, hsla(329, 83%, 34%, 1) 100%);
-
-filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#7F0D47", endColorstr="#AA0E5E", GradientType=1 ); */
+  background: linear-gradient(169deg, #81104a 0.03%, #920c51 51.25%, #a51660 100%);
+  
 }
 
 /*-----------LOADER----------*/
@@ -137,6 +142,8 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#7F0D47", en
 /*------------success page ------------*/
 .page2 {
   background-color: white;
+  font-family: 'Source Sans';
+  font-weight: 300;
   color: black;
   display: flex;
   flex-direction: column;
@@ -168,23 +175,42 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#7F0D47", en
 .dashboard_intro h2 {
   color: black;
 }
+input.search-questions[type="text"] {
+  border: none;
+  outline: none;
+  border-radius: 3.20031rem;
+  padding: 9px 4px 9px 40px;
+  background: #c9c9c9 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' class='bi bi-search' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'%3E%3C/path%3E%3C/svg%3E") no-repeat 13px center;
+  /* background: #F1F6F7; */
+  margin: 0;
+  padding: 7px 8px;
+  font-size: 14px;
+  color: inherit;
+  /* border: 1px solid transparent; */
+}
+input[type="search"]::placeholder {
+color: #ABABAB;
+margin-left: 4%;
+border: none;
+outline: none;
+}
+
 .search-bar {
   display: flex;
   align-items: center;
   width: 400px;
-  border-radius: 25px;
+  /* border-radius: 25px; */
   overflow: hidden;
 }
+.search-questions{
+  width: 400px;
+}
 
-#search-input {
+/* #search-input {
   flex: 1;
-  color: rgb(72, 66, 66);
-  background-color: rgb(255, 238, 238);
-  border: 1px solid rgb(179, 179, 179);
   outline: none;
   padding: 10px;
-  border-radius: 25px 0 0 25px;
-}
+} */
 
 #search-button {
   background-color: #ccc;
@@ -205,15 +231,20 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#7F0D47", en
   justify-content: space-around;
   width: 100%;
   border-radius: 30px;
-  color: black;
+  color: #7F0D47;;
 }
-.dash_section2 h1,h2,p {
-  color: black;
+.dash_section2 h1,h2 {
+  color: #7F0D47;
+}
+
+.dash_section2 p{
+  color: #999;
 }
 .dash_section2 h1,
-h2 {
-  font-weight: 400;
+h2, p {
+  font-weight: 500;
 }
+
 
 .user_dash {
   display: flex;
@@ -223,6 +254,8 @@ h2 {
   border-radius: 30px;
 }
 .user_dash p {
+  font-family: 'Source Serif', serif;
+  font-weight: 500;
   color: rgb(80, 80, 80);
 }
 .user_dash img {
@@ -288,7 +321,7 @@ h2 {
   background: rgba(127, 13, 71, 0.04);
   border-radius: 66px;
   width: 80rem; 
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.1); */
 }
 .dash_section4_head{
   text-align: center;
@@ -374,7 +407,6 @@ h2 {
   height: 100%;
 }
 .question_click i:hover {
-  color: #6c0d3c;
   width:200%;
   height: 200%;
 }
@@ -409,7 +441,11 @@ h2 {
   background-color: yellow;
 }
 .dash_section5{
-  margin-bottom: 3%;
+  width:100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10%;
 }
 /*-----------Thanks page (PDF & all answers)----------*/
 .page3{
@@ -441,7 +477,6 @@ h2 {
   background: rgba(127, 13, 71, 0.04);
   border-radius: 66px;
   width: 80rem; 
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 .pdf_display h2{
   color:rgb(56, 56, 56);
@@ -456,14 +491,12 @@ h2 {
   color: black;
 }
 
-.pdf_display iframe{
-  width: 95%;
-}
 .pdf_sec4{
   margin: 0 auto;
 }
 
 .pdf_email{
+  width: 90%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -484,11 +517,25 @@ h2 {
 .pdf_email label{
   font-size: small;
 }
-
-.success{
-  background-color: white;
+i{
+  cursor: pointer;
 }
 
+/* .success{
+  background-color: rgb(125, 13, 13);
+} */
+.ratings {
+  color: #c4d106;
+  cursor: pointer;
+}
+
+.ratings .fas.fa-star {
+  transition: color 0.3s;
+}
+
+.ratings .fa-solid.fa-star:hover ~ .fa-solid.fa-star {
+  color: gold;
+}
 
 
 /*----------LANDING PAGE----------*/
@@ -542,10 +589,12 @@ h2 {
   color: white;
   width: 100%;
   overflow: hidden;
+  font-family: 'Source Serif', serif;
+  font-size: 16px;
   word-wrap: break-word;
 }
 .intro .btn-p{
-  border: solid;
+  border: solid 0.5x;
 }
 .hero_img {
   position: absolute;
@@ -605,6 +654,7 @@ h2 {
 .section_2 {
   color: black;
   display: flex;
+  position: relative;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -618,45 +668,78 @@ h2 {
   border-bottom: 50px solid white;
 }
 .desc {
+  position: relative;
   background-color: white;
   width: 100%;
   text-align: center;
   height: auto;
   padding: 5% 15%;
   color: black;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .desc h4 {
   font-weight: 400;
   color: rgb(54, 54, 54);
 }
-.section_2 img {
+.section_2 .desc_img{
+  width:auto;
+  max-height: 80px;
+  width: auto;
+  max-height: 80px;
+  margin-top: auto;
+  /* height:80px; */
+  /* position: absolute;
+  bottom: 0;
+  left: 50%;
+  z-index: 4;
+  transform: translateX(-50%); */
+}
+
+/* .section_2 img {
   margin-top: -4%;
   width: auto;
   height: 80px;
-}
-.arrow2 {
+} */
+/* .arrow2 {
   background-color: white;
   width: 0;
   height: 0;
   border-left: 50vw solid transparent;
   border-right: 50vw solid transparent;
   border-bottom: 50px solid #800e49;
+} */
+.arrow2 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 0;
+  border-left: 50vw solid transparent;
+  border-right: 50vw solid transparent;
+  border-top: 80px solid transparent;
+  z-index: 2;
 }
+
 .cardz {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-bottom: 9%;
 }
 .cardz h3 {
   font-weight: 400;
   color: white;
-  margin: 7% 0%;
+  margin-top: 7%;
+  margin-bottom: 3%;
 }
 .card-container {
   margin: 3rem;
   width: 25rem;
-  border-radius: 29px; 
+  border-radius: 3.75rem;
   box-shadow: 0 25px 25px rgba(0, 0, 0, 0.1), 0 25px 25px rgba(0, 0, 0, 0.1);
 }
 .card-container .card{
@@ -665,8 +748,10 @@ h2 {
   box-shadow: 0 25px 25px rgba(0, 0, 0, 0.1), 0 25px 25px rgba(0, 0, 0, 0.1);
 }
 .card-container h2 {
-  color: #9d35de;
+  color: #2F336B;
+  font-size: 2.8125rem;
   font-weight: 700;
+  letter-spacing: 0.19688rem;
 }
 .card-container p {
   color: gray;
@@ -681,10 +766,25 @@ textarea {
 .btn-p {
   color: #ffffff;
   padding: 0.5rem 1rem;
-  background-color: #800e49;
+  background-color: transparent;
   border-radius: 100px;
   border-color: #ffffff;
-  transition: backgorund-color 0.5s;
+  transition: background-color 0.5s;
+}
+.btn-p2{
+  outline: none;
+  font-size: 1.3rem;
+  color: #ffffff;
+  width:100%;
+  padding: 0.5rem 1rem;
+  border:0px;
+  background-color: #7F0D47;
+  border-radius: 100px;
+  border-color: #ffffff;
+  transition: background-color 0.5s;
+}
+.btn-p2:hover{
+  background-color: rgb(83, 8, 48);
 }
 .btn-p:hover {
   background-color: #ce3989;
@@ -711,16 +811,22 @@ textarea {
 
 
 .pay-button {
+  outline: none;
+  border: 0px;
+  height: 60px;
+  width:40%;
   display: flex;
   justify-content: center;
   margin-top: 20px;
+  font-family: 'Source Sans';
+  font-weight: 300;
 }
 
 .custom-button {
   background-color: #800e49;
   color: white;
   border: 2px solid white;
-  border-radius: 25px;
+  border-radius: 300px;
   padding: 15px 30px;
   font-size: 18px;
   width: 631px;
@@ -729,8 +835,10 @@ textarea {
 .download-button {
   display: inline-block;
   padding: 10px 20px;
+  width:40%;
   /* text-decoration: none; */
-  background-color: #790e44;
+  background-color: #7F0D47;
+  border-radius: 100px;
   color: #fff;
   border: none;
   border-radius: 50px;
@@ -738,16 +846,18 @@ textarea {
   /* font-family:'Poppins', sans-serif; */
   font-family: 'Source Serif', serif;
   font-size: 16px;
+  transition: background-color 0.5s;
 }
 
 .download-button:hover {
-  background-color: #e1cad6;
-  color: black;
+  background-color: #680b3b;
 }
 
 
 
 footer {
-  margin-top: 3%;
-  text-align: center;
+  width: 100%;
+  height: 30px;
+  margin-top: 4%;
+  color: rgb(248, 208, 208);
 }

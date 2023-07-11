@@ -12,26 +12,25 @@ let isThanksPage = true;
 <body>
 <%- include('./partials/navbar') %>
 <div class="page3">
-  <!-- <div class="pdf_sec1">
-    <h1>Success</h1>
-  </div> -->
-  
+  <div class="dash_section3" style="margin-top: 2%;">
+    <h4 style="font-weight:700;">Your payment is Successful</h4>
+    <h1 style="font-weight:700;">Here are your 50 questions</h1>
+    <p style="color:grey;">
+      Wish you luck for your interview !
+    </p>
+  </div>
 
-  <!-- <div class="pdf_sec2">
-    <div class="dash_section4_head">
-        <h1 style="font-weight:700;">Your Curated Top Interview Questions</h1>
-        <p style="color:grey;">Everything you need to know to ace your interviews!</p>
-    </div>
-  </div> -->
-  <div class="dash_section2" style="margin-top: 7%;">
+  
+  <div class="dash_section2">
     <div class="user_dash">
       <div class="user_content">
         <h1>Good Evening User !</h1>
         <br />
-        <p>A simple quote of the day !</p>
+        <p>Simple quote !</p>
+        <button  type="button" style="width:auto; font-size:1rem;" class="btn-p2" onclick="window.location.href='/'"> Go Back >> </button>
       </div>
       <div class="user_img">
-        <img src="images/vector.png" alt="" />
+        <img src="images/happy-user.webp" alt="" />
       </div>
     </div>
     <div class="user_nav">
@@ -58,14 +57,14 @@ let isThanksPage = true;
     </div>
   </div>
 
-  <div class="dash_section3">
+  <!-- <div class="dash_section3">
     <h4 style="font-weight:700;">Hi User,</h4>
     <h1 style="font-weight:700;">We are here to help</h1>
     <p style="color:grey;">
       Welcome to the expert response to the 50 top
       interview questions tailored to you !
     </p>
-  </div>
+  </div> -->
     
     <!----Q/A's---->
   <div class="pdf_sec4">
@@ -76,19 +75,21 @@ let isThanksPage = true;
         <!------SEARCH------->
         <div class="dashboard_search">
           <div class="search-bar">
+            <!-- Changed input type from text to search-->
             <input
               type="text"
               id="search-input"
-              placeholder="What are you looking for?"
+              class="search-questions"
+              placeholder="           what are you looking for?"
             />
-            <button id="search-button">
+            <!-- <button id="search-button">
               <i class="fas fa-search"></i>
-            </button>
+            </button> -->
           </div>
         </div>
   
         <!------DROPDWON TO SELECT QUESTIONS----->
-        <div class="dropdown-container">
+        <!-- <div class="dropdown-container">
             <div class="btn-group dropstart">
               <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                 Select Your Question
@@ -101,7 +102,7 @@ let isThanksPage = true;
                   <% } %>
               </ul>
             </div>
-        </div>
+        </div> -->
   
       </div>
       
@@ -110,7 +111,7 @@ let isThanksPage = true;
               <div class="question">
                 <div class="question_area"><h4><pre><%- i+1 %>: <%= unescape(result[i].ques) %></pre></h4></div>
                 <div class="question_click">
-                  <i class="fa-solid fa-circle-plus" style="color: #5794ff;" onclick="toggleAnswer(`<%- i %>`);"></i>
+                  <i class="fa-solid fa-circle-plus fa-lg" style="color: #eb268c"  onclick="toggleAnswer(`<%- i %>`);"></i>
                 </div>
               </div>  
               <pre id="answer<%=i%>" class="answer_text " style="display: none;"><%- result[i].ans %></pre>
@@ -136,7 +137,7 @@ let isThanksPage = true;
     <div class="pdf_display">
       <div class="pdf_email">
 
-        <h2> Generate Your Curated Answers PDF !</h2>
+        <h2>Here's your curated answers PDF !</h2>
       <br>
       <!-- <div class="buttons pdf_gen_button">
         <button id="pdf_gen_button" class="btn-p">Generate pdf</button>
@@ -145,61 +146,99 @@ let isThanksPage = true;
         <iframe id="pdf_frame" src="/pdfs/q_and_a.pdf" width="100%" height="600px"></iframe>
       <!-- </div> -->
       <br><br>
-      <a href="/pdfs/q_and_a.pdf" download class="download-button">Download PDF</a>
-        <form id="pdf_form" method="post" action="/send-email">
-          <div class="card-container">
-            <div
-              class="card text-center p-4 shadow"
-              style="width: 25rem; border-radius: 29px; box-shadow: 0 25px 25px rgba(0, 0, 0, 0.1), 0 25px 25px rgba(0, 0, 0, 0.1);"
-            >
-              <h2 class="card-title pb-3">Write Your Details</h2>
-    
-              <div class="mb-3">
-                <label for="user_email" class="form-label">Your Email:</label>
-                <input type="email" class="form-control" name="user_email" aria-describedby="emailHelp" required>
-              </div>
-    
-              <div class="mb-3">
-                <label for="user_name" class="form-label"> Your Name:</label>
-                <input type="text" class="form-control" name="user_name" aria-describedby="emailHelp" required>
-              </div>
-    
-              <div class="mb-3">
-                <label for="user_country" class="form-label">Your Country:</label>
-                <select name="user_country" id="user_country" class="form-control" required>
-                  <% countries.forEach(country => { %>
-                    <option id="" data-country-code="<%= country.isoCode %>" value="<%= country.name %>"><%= country.name %></option>
-                  <% }); %>
-                </select>
-              </div>
+      <button class="btn-p2" onclick="downloadPDF()">Download PDF</button>
+      <!-- <a href="/pdfs/q_and_a.pdf" download class="download-button">Download PDF</a> -->
         
-              <div class="mb-3">
-                <label name="user_city" for="user_city" class="form-label">Your City:</label>
-                <select id="city-select" class="form-control" required>
-                  <option value="">Select City</option>
-                </select>
-              </div>
-              
-              <div class="buttons pdf_email_button">
-                <button id="email-button" type="submit" class="btn-p">Email Me PDF</button>
-              </div>
-          </div>
-          
-         
-        </div>
-        </form>
       </div>
       <br>
       
     </div>
 
+    <form id="pdf_form" method="post" action="/send-email">
+      <div class="card-container">
+        <div
+          class="card text-center p-4 shadow"
+          style="width: 25rem; border-radius: 29px; box-shadow: 0 25px 25px rgba(0, 0, 0, 0.1), 0 25px 25px rgba(0, 0, 0, 0.1);"
+        >
+          <h2 class="card-title pb-3">Write Your Details</h2>
+
+          <div class="mb-3">
+            <label for="user_email" class="form-label">Your Email:</label>
+            <input type="email" class="form-control" name="user_email" aria-describedby="emailHelp" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="user_name" class="form-label"> Your Name:</label>
+            <input type="text" class="form-control" name="user_name" aria-describedby="emailHelp" required>
+          </div>
+
+          
+          <div class="buttons pdf_email_button">
+            <button id="email-button" style="font-size:1rem;" type="submit" class="btn-p2">Email Me PDF</button>
+          </div>
+      </div>
+      
+     
+    </div>
+    </form>
+
+    <div class="card" style="margin:5% 0;">
+      <div class="card-body">
+        <div class="p-4 bg-light text-center align-item-center">
+          <h4 class="header-title">Rate your Experience</h4>
+          <div class="ratings">
+            <i class="fa-regular fa-star fa-lg"></i>
+            <i class="fa-regular fa-star fa-lg"></i>
+            <i class="fa-regular fa-star fa-lg"></i>
+            <i class="fa-regular fa-star fa-lg"></i>
+            <i class="fa-regular fa-star fa-lg"></i>
+          </div>
+    </div>
+    </div>
+    </div>
+
     
 
     
-      
+    <footer class="footer text-center text-sm-left" style="color:rgb(72, 65, 65); background-color:rgb(247, 247, 247) ;">
+      &copy; 2023 InterviewHacks.HQ 
+    </footer><!--end footer-->
 </div>
 
 <script>
+  //-----STAR RATINGS
+  const stars = document.querySelectorAll('.ratings .fa-regular.fa-star');
+
+stars.forEach((star, index) => {
+  star.addEventListener('mouseenter', () => {
+    for (let i = 0; i <= index; i++) {
+      stars[i].classList.add('hover');
+      stars[i].classList.remove('fa-regular');
+      stars[i].classList.add('fa-solid');
+    }
+  });
+
+  star.addEventListener('mouseleave', () => {
+    for (let i = 0; i <= index; i++) {
+      stars[i].classList.remove('hover');
+      stars[i].classList.add('fa-regular');
+      stars[i].classList.remove('fa-solid');
+    }
+  });
+});
+
+  //--------download button---------
+   function downloadPDF() {
+    // Create a virtual link element
+    var link = document.createElement('a');
+    link.href = '/pdfs/q_and_a.pdf';
+    link.download = 'q_and_a.pdf';
+
+    // Programmatically trigger the download
+    link.click();
+  }
+
+  //----------COUNTRY SCRIPT------------
   const countrySelect = document.getElementById('user_country');
   const citySelect = document.getElementById('city-select');
     countrySelect.addEventListener('change', async () => {
